@@ -1,0 +1,101 @@
+::placeholder {
+    color: rgba(209, 209, 209, 0.8);
+}
+
+form{
+    display: flex;
+    width: 100%;
+}
+
+input, textarea, select {
+    box-sizing: border-box;
+    height: 48px;
+    border-radius: 10px;
+    padding: 12px 21px;
+    border: 1px solid #d1d1d1;
+    margin-bottom: 32px;
+    font-size: 20px;
+    font-family: "Inter", sans-serif;
+    outline: 0;
+}
+
+textarea {
+    height: 120px;
+    font-family: "Inter", sans-serif;
+}
+
+label{
+    margin-bottom: 8px;
+}
+
+.div-input-prio{
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 56px;
+    margin-bottom: 32px;
+    gap: 16px;
+}
+
+.div-prio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: #fff;
+    height: 56px;
+    flex: 1;
+    gap: 8px;
+    padding: 16px 10px;
+    border-radius: 10px;
+}
+
+.div-input-prio img {
+    width: 20px;
+    height: 15px;
+}
+
+.seperator-vertical-gray{
+    width: 1px;
+    height: 424px;
+    background-color: #d1d1d1;
+    margin: 0 48px;
+}
+
+.div-addtask-input-fields{
+    box-sizing: border-box;
+    display: flex;
+    flex: 1;
+    padding-right: 16px;
+}
+
+.div-addtask-input-fields-left, .div-addtask-input-fields-right {
+    box-sizing: border-box;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.required-field{
+    color: #ff8190;
+}
+
+@media (max-width: 1135px){
+    .div-addtask-input-fields {
+        flex-direction: column;
+    }
+
+    .seperator-vertical-gray{
+        display: none;
+    }
+}
+
+@media (max-width: 900px){
+    .div-addtask-input-fields{
+        padding-right: 0;
+    }
+    .div-addtask-input-fields-left, .div-addtask-input-fields-right {
+        max-width: 100%;
+    }
+}

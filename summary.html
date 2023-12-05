@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <script src="script.js"></script>
+    <script src="assets/js/summary.script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="assets/css/summary.style.css">
+</head>
+
+<body onload="init()">
+    <div class="grid-container">
+        <header w3-include-html="assets/templates/header.html"></header>
+        <nav w3-include-html="assets/templates/navigation.html"></nav>
+        <main>
+            <div class="flex-content-main">
+                <div class="site-title">
+                    <p>Summary</p>
+                    <div class="seperator"></div>
+                    <p class="title-sub">Everything in a Nutshell!</p>
+                </div>
+                <div class="main-content">
+                    <div class="flex-overview">
+                        <div class="main-content-flex-top">
+                            <div class="main-content-flex-top-left">
+                                <img src="assets/icons/summary_pen.png">
+                                <div class="main-content-amounts">
+                                    <p id="amount-to-do">1</p>
+                                    <p>To-do</p>
+                                </div>
+                            </div>
+                            <div class="main-content-flex-top-right">
+                                <img src="assets/icons/summary_pen.png">
+                                <div class="main-content-amounts">
+                                    <p id="amount-done">1</p>
+                                    <p>Done</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-content-flex-middle">
+                                <img src="assets/icons/summary_arrow_up.png">
+                                <div class="main-content-amounts">
+                                    <p id="amount-urgent">1</p>
+                                    <p>Urgent</p>  
+                            </div>
+                            <div class="seperator-vertical-gray"></div>
+                            <div></div>
+                        </div>
+                        <div class="main-content-flex-bottom">
+                            <div class="main-content-flex-bottom-card">
+                                <p id="amount-number-of-tasks">5</p>
+                                <p>Tasks in Board</p>
+                            </div>
+                            <div class="main-content-flex-bottom-card">
+                                <p id="amount-in-progress">5</p>
+                                <p>Tasks in Progress</p>
+                            </div>
+                            <div class="main-content-flex-bottom-card">
+                                <p id="amount-feedback">5</p>
+                                <p>Awaiting Feedback</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="greeting">
+                        <p>Good morning</p>
+                        <p id="greeting-user-name">Simon Funke</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>

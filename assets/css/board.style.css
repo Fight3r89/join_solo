@@ -1,0 +1,97 @@
+.no-tasks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px #a8a8a8 dashed;
+    background-color: #e7e7e7;
+    color: #a8a8a8;
+}
+
+.task-card{
+    box-sizing: border-box;
+    width: 252px;
+    min-height: 252px;
+    background-color: #fff;
+    border-radius: 24px;
+    padding: 16px;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.main-content{
+    display: grid;
+    grid-template-columns: repeat(4, 252px);
+    grid-template-areas: 
+        'todo progress feedback done';
+    gap: 26px;
+}
+
+.div-board-section{
+    display: flex;
+    flex-direction: column;
+    min-width: 246px;
+}
+
+.div-board-section-headline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.div-board-section-headline img {
+    width: 24px;
+    height: 24px;
+}
+/*---- Only For Grid-layout ----*/
+.section-to-do{
+    grid-area: todo;
+}
+.section-in-progress{
+    grid-area: progress;
+}
+.section-await-feedback{
+    grid-area: feedback;
+}
+.section-done{
+    grid-area: done;
+}
+/*-----------------------------*/
+
+@media (max-width: 1430px) {
+    .main-content{
+        grid-template-columns: repeat(3, 252px);
+        grid-template-areas: 
+            'todo progress feedback'
+            'done done done';
+    }
+}
+
+@media (max-width: 1160px) {
+    .main-content{
+        grid-template-columns: repeat(2, 252px);
+        grid-template-areas: 
+            'todo progress'
+            'feedback done';
+    }
+}
+
+@media (max-width: 905px){
+    .main-content{
+        justify-content: center;
+    }
+}
+
+@media (max-width: 570px){
+    .main-content{
+        grid-template-columns: 252px;
+        grid-template-areas: 
+            'todo'
+            'progress'
+            'feedback'
+            'done';
+    }
+}

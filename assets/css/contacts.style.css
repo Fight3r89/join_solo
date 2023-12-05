@@ -1,0 +1,53 @@
+main{
+    display: flex;
+    padding: 0;
+}
+
+button{
+    padding: 0 12px;
+    gap: 16px;
+    width: 100%;
+    height: 56px;
+}
+
+.flex-content-main{
+    box-sizing: border-box;
+    padding-top: 110px;
+    padding-left: 55px;
+}
+
+.div-contacts-list{
+    box-sizing: border-box;
+    width: 456px;
+    height: 100%;
+    padding: 22px 52px;
+    background-color: #fff;
+    overflow-y: auto;
+}
+
+@media (max-width:900px){
+    main{
+        flex-direction: column-reverse;
+    }
+
+    button{
+        display: none;
+    }
+
+    .flex-content-main{
+        padding: 48px 16px;
+    }
+
+    .site-title{
+        margin: 0;
+    }
+
+    .main-content{
+        display: none;
+    }
+
+    .div-contacts-list{
+        width: 100%;
+    }
+
+}

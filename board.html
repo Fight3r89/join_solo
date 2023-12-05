@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+    <script src="script.js"></script>
+    <script src="assets/js/board.script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="assets/css/board.style.css">
+</head>
+
+<body onload="init()">
+    <div class="grid-container">
+        <header w3-include-html="assets/templates/header.html"></header>
+        <nav w3-include-html="assets/templates/navigation.html"></nav>
+        <main>
+            <div class="flex-content-main">
+                <div class="site-title">
+                    <p>Board</p>
+                </div>
+                <div class="main-content">
+                    <div class="div-board-section section-to-do">
+                        <div class="div-board-section-headline ">
+                            <p>To do</p>
+                            <img src="assets/icons/plus_button.png">
+                        </div>
+                        <div id="div-tasks-to-do">
+                            <!--Hier werden die Tasks reingerendert-->
+                            <div class="task-card"></div>
+                            <div class="task-card"></div>
+                            <div class="task-card"></div>
+                            
+                        </div>
+                    </div>
+                    <div class="div-board-section section-in-progress">
+                        <div class="div-board-section-headline ">
+                            <p>In progress</p>
+                            <img src="assets/icons/plus_button.png">
+                        </div>
+                        <div id="div-taks-in-progress">
+                            <!--Hier werden die Tasks reingerendert-->
+                            <div class="no-tasks">No tasks To do</div>
+                        </div>
+
+                    </div>
+                    <div class="div-board-section section-await-feedback">
+                        <div class="div-board-section-headline ">
+                            <p>Await feedback</p>
+                            <img src="assets/icons/plus_button.png">
+                        </div>
+                        <div id="div-tasks-await-feedback">
+                            <!--Hier werden die Tasks reingerendert-->
+
+                        </div>
+
+                    </div>
+                    <div class="div-board-section section-done">
+                        <div class="div-board-section-headline ">
+                            <p>Done</p>
+                        </div>
+                        <div id="div-tasks-done">
+                            <!--Hier werden die Tasks reingerendert-->
+                            <div class="task-card"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>
