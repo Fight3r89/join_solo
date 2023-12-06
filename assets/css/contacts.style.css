@@ -7,10 +7,13 @@ button{
     padding: 0 12px;
     gap: 16px;
     width: 100%;
+    min-width: 242px;
     height: 56px;
 }
 
 .flex-content-main{
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     padding-top: 110px;
     padding-left: 55px;
@@ -18,14 +21,51 @@ button{
 
 .div-contacts-list{
     box-sizing: border-box;
-    width: 456px;
+    width: 100%;
+    max-width: 456px;
     height: 100%;
     padding: 22px 52px;
     background-color: #fff;
     overflow-y: auto;
 }
 
-@media (max-width:900px){
+.main-content {
+    flex: 1;
+    box-sizing: border-box;
+}
+
+@media (max-width:1065px){
+    .site-title{
+        flex-direction: column;
+        height:fit-content;
+        margin-bottom: 48px;
+        gap: 0;
+    }
+
+    .title-sub{
+        margin-top: 8px;
+        margin-bottom: 16px;
+    }
+
+    .seperator{
+        display: none;
+    }
+
+    .flex-content-main{
+        padding-left: 16px;
+    }
+    .div-contacts-list{
+        max-width: 348px;
+    }
+    .title-sub{
+        align-self: flex-start;
+    }
+    .seperator-vertical{
+        display: flex;
+    }
+}
+
+@media (max-width:905px){
     main{
         flex-direction: column-reverse;
     }
@@ -35,11 +75,7 @@ button{
     }
 
     .flex-content-main{
-        padding: 48px 16px;
-    }
-
-    .site-title{
-        margin: 0;
+        display: none;
     }
 
     .main-content{
@@ -47,7 +83,7 @@ button{
     }
 
     .div-contacts-list{
-        width: 100%;
+        max-width: 100%;
     }
 
 }

@@ -35,6 +35,15 @@ button {
     border-radius: 3px;
 }
 
+.seperator-vertical{
+    background-color: #29ABE2;
+    border-radius: 3px;
+    min-height: 3px;
+    width: 90px;
+    align-self: self-start;
+    display: none;
+}
+
 header{
     background-color: white;
     grid-area: header;
