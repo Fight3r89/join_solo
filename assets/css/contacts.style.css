@@ -43,7 +43,6 @@ button{
 }
 
 .div-contacts-list-card:hover{
-    /*background-color:rgba(0, 0, 0, 0.04);*/
     background-image: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05));
     border-radius: 15px;
 }
