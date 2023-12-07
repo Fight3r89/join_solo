@@ -183,7 +183,7 @@ main{
 .grid-container{
     display: grid;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     grid-template-columns: 232px auto;
     grid-template-rows: 96px auto;
     grid-template-areas: 
@@ -214,6 +214,7 @@ main{
    
 }
 .flex-content-main {
+    box-sizing: border-box;
     padding-right: 16px;
 }
 
