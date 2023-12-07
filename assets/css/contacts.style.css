@@ -4,11 +4,10 @@ main{
 }
 
 button{
-    padding: 0 12px;
-    gap: 16px;
+    
     width: 100%;
     min-width: 242px;
-    height: 56px;
+    
 }
 
 .flex-content-main{

@@ -26,6 +26,9 @@ button {
     color: white;
     cursor: pointer;
     border: 0;
+    padding: 0 12px;
+    height: 56px;
+    gap: 16px;
   }
 
 .seperator{
