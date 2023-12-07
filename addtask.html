@@ -22,7 +22,7 @@
                     <p>Add Task</p>
                 </div>
                 <div class="main-content">
-                    <form action="">
+                    <form action="" onsubmit="saveTask(); return false;">
                         <div class="div-addtask-input-fields">
                             <div class="div-addtask-input-fields-left">
                                 <label for="title">Title<span class="required-field">*</span></label>
@@ -56,6 +56,9 @@
                                 <label for="subtask">Subtasks</label>
                                 <input type="text" id="subtasks">
                             </div>
+                        </div>
+                        <div>
+                            <button>Create Task</button>
                         </div>
                     </form>
                 </div>
