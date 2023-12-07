@@ -66,6 +66,7 @@ button {
     gap: 8px;
     padding: 16px 10px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .div-input-prio img {
