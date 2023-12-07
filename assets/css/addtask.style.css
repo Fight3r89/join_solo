@@ -33,31 +33,6 @@ button {
     gap: 4px;
 }
 
-.button-bordered{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 110px;
-    height: 56px;
-    border: 1px solid #2a3647;
-    color: #2a3647;
-    border-radius:  10px;
-    cursor: pointer;
-    gap: 4px;
-    transition: translate 0.1s;
-}
-
-.button-bordered:hover{
-    box-shadow: 0 6px 5px rgba(0, 0, 0, 0.1);
-    color: #29abe2;
-    translate: 1px;
-    border-color: #29abe2;  
-}
-
-.button-bordered:hover img {
-    filter: invert(72%) sepia(69%) saturate(3211%) hue-rotate(165deg) brightness(89%) contrast(98%);
-}
-
 .div-input-prio{
     display: flex;
     align-items: center;
