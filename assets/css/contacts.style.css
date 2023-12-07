@@ -7,7 +7,7 @@ button{
     
     width: 100%;
     min-width: 242px;
-    
+    margin-bottom: 22px;
 }
 
 .flex-content-main{
@@ -20,8 +20,7 @@ button{
 
 .div-contacts-list{
     box-sizing: border-box;
-    width: 100%;
-    max-width: 456px;
+    min-width: 456px;
     height: 100%;
     padding: 22px 52px;
     background-color: #fff;
@@ -33,7 +32,56 @@ button{
     box-sizing: border-box;
 }
 
-@media (max-width:1065px){
+.div-contacts-list-card{
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 78px;
+    padding: 15px 24px;
+    gap: 35px;
+    cursor: pointer;
+}
+
+.div-contacts-list-card:hover{
+    /*background-color:rgba(0, 0, 0, 0.04);*/
+    background-image: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05));
+    border-radius: 15px;
+}
+
+.div-contacts-list-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff7a00;
+    display: flex;
+    width: 42px;
+    height: 42px;
+    min-height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 12px;
+}
+
+.div-contacts-list-data p:nth-child(2){
+    font-size: 16px;
+}
+
+.contacts-list-letter{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 58px;
+}
+
+.seperator-contacts-list{
+    width: 100%;
+    height: 1px;
+    background-color: #d1d1d1;
+    margin: 8px 0;
+}
+
+@media (max-width:1175px){
     .site-title{
         flex-direction: column;
         height:fit-content;
@@ -82,7 +130,9 @@ button{
     }
 
     .div-contacts-list{
-        max-width: 100%;
+        min-width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
 }
