@@ -21,6 +21,17 @@
     gap: 32px;
 }
 
+.card-hover:hover {
+    cursor: pointer;
+    background-color: #2a3647;
+    color: #fff;
+    
+}
+
+.main-content-flex-top-left:hover img, .main-content-flex-top-right:hover img {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(303deg) brightness(108%) contrast(101%);
+}
+
 .main-content-flex-top-left,.main-content-flex-top-right{
     padding-left: 57px;
     padding-right: 57px;
