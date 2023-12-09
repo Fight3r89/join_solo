@@ -38,6 +38,18 @@ button {
     box-shadow: 0 6px 5px rgba(0, 0, 0, 0.3);
   }
 
+  input, textarea, select {
+    box-sizing: border-box;
+    height: 48px;
+    border-radius: 10px;
+    padding: 12px 21px;
+    border: 1px solid #d1d1d1;
+    margin-bottom: 32px;
+    font-size: 20px;
+    font-family: "Inter", sans-serif;
+    outline: 0;
+}
+
 .seperator{
     background-color: #29ABE2;
     min-width: 3px;
@@ -209,6 +221,7 @@ main{
     grid-area: main;
     padding-top: 110px;
     padding-left: 96px;
+    padding-right: 16px;
     
 }
 
@@ -247,7 +260,6 @@ main{
 }
 .flex-content-main {
     box-sizing: border-box;
-    padding-right: 16px;
 }
 
 @media (max-width: 905px){

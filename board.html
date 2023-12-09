@@ -18,8 +18,14 @@
         <nav w3-include-html="assets/templates/navigation.html"></nav>
         <main>
             <div class="flex-content-main">
-                <div class="site-title">
-                    <p>Board</p>
+                <div class="div-board-head">
+                    <div class="site-title">
+                        <p>Board</p>
+                    </div>
+                    <div class="div-board-search-bar">
+                        <input type="text" placeholder="Find Task"> <button>Add Task <img src="assets/icons/add.png"></button>
+                    </div>
+                    <img class="board-search-bar-mobile" src="assets/icons/board_head_add.png">
                 </div>
                 <div class="main-content">
                     <div class="div-board-section section-to-do">
@@ -32,7 +38,7 @@
                             <div class="task-card"></div>
                             <div class="task-card"></div>
                             <div class="task-card"></div>
-                            
+
                         </div>
                     </div>
                     <div class="div-board-section section-in-progress">
@@ -69,7 +75,8 @@
                     </div>
                 </div>
             </div>
-        </main>
+            
+        </main> 
     </div>
 
 </body>

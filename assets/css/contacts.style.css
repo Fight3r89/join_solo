@@ -1,6 +1,7 @@
 main{
     display: flex;
     padding: 0;
+    padding-right: 16px;
 }
 
 button{
