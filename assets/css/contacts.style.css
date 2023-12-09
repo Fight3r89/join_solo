@@ -99,9 +99,9 @@ button{
     position: absolute;    
     top: 0;
     bottom:0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    left: 16px;
+    right: 16px;
+    margin: auto; 
     max-width: 1212px;
     height: 592px;
 }
@@ -147,6 +147,7 @@ button{
     flex: 1;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+    padding-right: 48px;
 }
 
 .contacts-add-card-right img {
@@ -157,6 +158,10 @@ button{
 .contacts-add-card-right form {
     display: flex;
     flex-direction: column;
+}
+
+.contacts-add-card-right form input {
+    width: 100%;
 }
 
 .div-contacts-add-form{
