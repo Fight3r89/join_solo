@@ -81,6 +81,93 @@ button{
     margin: 8px 0;
 }
 
+/*Contacts Add/Edit Card*/
+
+.contacts-add-card-container{
+    
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+}
+
+.contacts-add-card{
+    display: flex;
+    background-color: transparent;
+    position: absolute;    
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 1212px;
+    height: 592px;
+}
+
+.contacts-add-card-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: #2a3647;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    height: 100%;
+    max-width: 467px;
+    padding: 66px 48px;
+    gap: 12px;
+}
+
+.contacts-add-card-left .site-title{
+    flex-direction: column;
+    align-items: flex-start;
+    color: #fff;
+    margin-bottom: 0;
+    height: fit-content;
+    gap: 8px;
+}
+
+.contacts-add-card-left .seperator-vertical{
+    display: flex;
+}
+
+.contacts-add-card-left img{
+    width: 55px;
+    height: 66px;
+}
+
+.contacts-add-card-right{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 72px;
+    flex: 1;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.contacts-add-card-right img {
+    width: 120px;
+    height: 120px;
+}
+
+.contacts-add-card-right form {
+    display: flex;
+    flex-direction: column;
+}
+
+.div-contacts-add-form{
+    display: flex;
+    gap: 24px;
+}
+
+.div-contacts-add-form button {
+    max-width: 214px;
+}
+
 @media (max-width:1175px){
     .site-title{
         flex-direction: column;
