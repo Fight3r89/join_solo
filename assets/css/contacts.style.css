@@ -84,13 +84,13 @@ button{
 /*Contacts Add/Edit Card*/
 
 .contacts-add-card-container{
-    
     background-color: rgba(0, 0, 0, 0.2);
     position: absolute;
     top: 0;
     bottom:0;
     left: 0;
     right: 0;
+    overflow-x: hidden;
 }
 
 .contacts-add-card{
@@ -100,10 +100,28 @@ button{
     top: 0;
     bottom:0;
     left: 16px;
-    right: 16px;
+    right: -150%;
     margin: auto; 
     max-width: 1212px;
-    height: 592px;
+    height: 592px;    
+}
+
+@keyframes slide_in {
+    0% {
+        right: -250%;
+    }
+    100% {
+        right: 16px;
+    }
+}
+
+@keyframes slide_out {
+    0% {
+        right: 16px;
+    }
+    100% {
+        right: -250%;
+    }
 }
 
 .contacts-add-card-left{
@@ -150,6 +168,17 @@ button{
     padding-right: 48px;
 }
 
+.add-contacs-close-slider {
+    position: absolute;
+    width: 32px !important;
+    height: 32px !important;
+    top: 48px;
+    right: 48px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
 .contacts-add-card-right img {
     width: 120px;
     height: 120px;
@@ -171,6 +200,10 @@ button{
 
 .div-contacts-add-form button {
     max-width: 214px;
+}
+
+.d-none{
+    display: none;
 }
 
 @media (max-width:1175px){

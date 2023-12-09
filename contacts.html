@@ -18,7 +18,7 @@
         <nav w3-include-html="assets/templates/navigation.html"></nav>
         <main>
             <div class="div-contacts-list">
-                <button>Add new contact <img src="assets/icons/contact_add.png"></button>
+                <button onclick="slideIn()">Add new contact <img src="assets/icons/contact_add.png"></button>
 
                 <div class="div contacts-list-letter">
                     S
@@ -57,7 +57,7 @@
         </main>
     </div>
 
-    <div class="contacts-add-card-container" w3-include-html="assets/templates/contacts-add-card.html"></div>
+    <div id="contacts-add-card-container" class="contacts-add-card-container d-none" w3-include-html="assets/templates/contacts-add-card.html"></div>
     
 
 </body>
