@@ -166,6 +166,7 @@ button{
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     padding-right: 48px;
+    padding-left: 16px;
 }
 
 .add-contacs-close-slider {

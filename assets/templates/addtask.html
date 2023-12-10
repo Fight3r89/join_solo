@@ -1,0 +1,52 @@
+<div id="addtask-card" class="addtask-card">
+    <div class="site-title card">
+        <p>Add Task</p>
+    </div>
+    <img class="addtask-close-slider" src="./assets/icons/close.png" onclick="slideOut()">
+    <div class="main-content-add-task">
+        <form action="" onsubmit="createNewTask(); return false;">
+            <div class="div-addtask-input-fields">
+                <div class="div-addtask-input-fields-left">
+                    <label for="title">Title<span class="required-field">*</span></label>
+                    <input type="text" id="title" placeholder="Enter a title">
+
+                    <label for="description">Description</label>
+                    <textarea id="description" placeholder="Enter a Description"></textarea>
+
+                    <label for="assigned-to">Assigned to</label>
+                    <select name="assigned-to" id="assigned-to">
+                        <option value="notChoosed">Select contacts to assign</option>
+                    </select>
+
+                </div>
+                <div class="seperator-vertical-gray"></div>
+                <div class="div-addtask-input-fields-right">
+                    <label for="date">Due date<span class="required-field">*</span></label>
+                    <input type="date" id="date">
+                    <label for="description">Prio</label>
+                    <div class="div-input-prio">
+                        <div class="div-prio">Urgent<img src="assets/icons/prio_urgent.png"></div>
+                        <div class="div-prio">Medium<img src="assets/icons/prio_medium.png"></div>
+                        <div class="div-prio">Low<img src="assets/icons/prio_low.png"></div>
+                    </div>
+
+                    <label for="category">Category<span class="required-field">*</span></label>
+                    <select name="category" id="category">
+                        <option value="notChoosed">Select tast category</option>
+                    </select>
+
+                    <label for="subtask">Subtasks</label>
+                    <input type="text" id="subtasks">
+                </div>
+            </div>
+            <div class="div-addtask-footer">
+                <p><span class="required-field">*</span>This field is required</p>
+                <div class="div-addtask-buttons">
+                    <div class="button-bordered">Clear<img src="assets/icons/close.png"></div>
+                    <button>Create Task<img src="assets/icons/check.png"> </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

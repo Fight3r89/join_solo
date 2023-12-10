@@ -269,9 +269,9 @@ main{
 
 .main-content{
     display: flex;
-    overflow-y: auto;
-   
+    overflow-y: auto;   
 }
+
 .flex-content-main {
     box-sizing: border-box;
 }

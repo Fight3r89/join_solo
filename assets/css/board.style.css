@@ -1,19 +1,17 @@
-input{
-    margin-bottom: 0;
-}
-button {
+.btn-board-search {
     margin: 0;
     height: 48px;
     gap: 4px;
     min-width: 153px;
 }
 
-input {
+.input-boad-search {
     background-image: url('../icons/search.png');
     background-position: right;
     background-repeat: no-repeat;
     background-size: 18px;
     background-position-x: 275px;
+    margin-bottom: 0;
 }
 
 .board-search-bar-mobile{
@@ -26,7 +24,7 @@ input {
     flex-direction: column;
 }
 
-.site-title{
+.mb-0{
     margin-bottom: 0;
 }
 
@@ -107,6 +105,134 @@ input {
 .section-done{
     grid-area: done;
 }
+
+/*Add Task Container*/
+
+.card {
+    margin-bottom: 32px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+textarea {
+    height: 120px !important;
+    font-family: "Inter", sans-serif;
+}
+
+label{
+    margin-bottom: 8px !important;
+}
+
+.main-content-add-task{
+        display: flex;
+        width: 100%;
+        overflow-y: auto;
+}
+
+.div-addtask-input-fields{
+    box-sizing: border-box;
+    display: flex;
+    flex: 1;
+    padding-right: 16px;
+    padding-bottom: 106px;
+    gap: 48px;
+}
+
+.div-addtask-input-fields-left, .div-addtask-input-fields-right {
+    box-sizing: border-box;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.required-field{
+    color: #ff8190;
+}
+
+.div-addtask-footer{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    max-width: 977px;
+}
+
+.div-addtask-footer p {
+    font-size: 16px;
+}
+
+.div-addtask-buttons{
+    display: flex;
+    gap: 16px;
+}
+
+.addtask-card-container{
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+}
+
+.addtask-card{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;    
+    top: 0;
+    bottom:0;
+    left: 16px;
+    right: -150%;
+    margin: auto; 
+    max-width: 1116px;
+    height: 870px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 74px;
+    padding-right: 65px;
+    border-radius: 30px;
+}
+
+@keyframes slide_in {
+    0% {
+        right: -250%;
+    }
+    100% {
+        right: 16px;
+    }
+}
+
+@keyframes slide_out {
+    0% {
+        right: 16px;
+    }
+    100% {
+        right: -250%;
+    }
+}
+
+.addtask-close-slider {
+    position: absolute;
+    width: 32px !important;
+    height: 32px !important;
+    top: 48px;
+    right: 48px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.d-none{
+    display: none;
+}
+
 /*-----------------------------*/
 
 @media (max-width: 1430px) {
@@ -118,7 +244,7 @@ input {
     }
 }
 
-@media (max-width: 1160px) {
+@media (max-width: 1170px) {
     .main-content{
         grid-template-columns: repeat(2, 252px);
         grid-template-areas: 

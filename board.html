@@ -19,11 +19,11 @@
         <main>
             <div class="flex-content-main">
                 <div class="div-board-head">
-                    <div class="site-title">
+                    <div class="site-title mb-0">
                         <p>Board</p>
                     </div>
                     <div class="div-board-search-bar">
-                        <input type="text" placeholder="Find Task"> <button>Add Task <img src="assets/icons/add.png"></button>
+                        <input class="input-boad-search" type="text" placeholder="Find Task"> <button class="btn-board-search" onclick="slideIn();">Add Task <img src="assets/icons/add.png"></button>
                     </div>
                     <img class="board-search-bar-mobile" src="assets/icons/board_head_add.png">
                 </div>
@@ -78,6 +78,8 @@
             
         </main> 
     </div>
+
+    <div id="addtask-card-container" class="addtask-card-container d-none" w3-include-html="assets/templates/addtask.html"></div>
 
 </body>
 
