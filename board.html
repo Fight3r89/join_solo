@@ -7,6 +7,7 @@
     <title>Board</title>
     <script src="script.js"></script>
     <script src="assets/js/board.script.js"></script>
+    <script src="assets/js/class.task.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="assets/css/board.style.css">
@@ -23,7 +24,9 @@
                         <p>Board</p>
                     </div>
                     <div class="div-board-search-bar">
-                        <input class="input-boad-search" type="text" placeholder="Find Task"> <button class="btn-board-search" onclick="slideIn();">Add Task <img src="assets/icons/add.png"></button>
+                        <input class="input-boad-search" type="text" placeholder="Find Task"> <button
+                            class="btn-board-search" onclick="slideIn();">Add Task <img
+                                src="assets/icons/add.png"></button>
                     </div>
                     <img class="board-search-bar-mobile" src="assets/icons/board_head_add.png">
                 </div>
@@ -35,9 +38,57 @@
                         </div>
                         <div id="div-tasks-to-do">
                             <!--Hier werden die Tasks reingerendert-->
-                            <div class="task-card"></div>
-                            <div class="task-card"></div>
-                            <div class="task-card"></div>
+                            <div class="task-card">
+                                <div class="task-card-category">
+                                    User Story
+                                </div>
+                                <div class="task-card-headline">
+                                    Kochwelt Page & Recipe Recommender
+                                </div>
+                                <div class="task-card-content">
+                                    Build strart page with recipe recommendation...
+                                </div>
+                                <div class="task-card-subtasks">
+                                    <div class="task-card--subtasks-progressbar">bar</div>
+                                    <div class="task-card-subtasks-amount">
+                                        1/2 Subtasks
+                                    </div>
+                                </div>
+                                <div class="task-card-footer">
+                                    <div class="task-card-footer-left">
+                                        <div class="task-card-footer-assigned">
+                                            SF
+                                        </div>
+                                        <div class="task-card-footer-assigned">
+                                            SF
+                                        </div>
+                                    </div>
+                                    <img src="assets/icons/prio_med.png" class="task-card-footer-prio">
+                                </div>
+                            </div>
+
+                            <div class="task-card">
+                                <div class="task-card-category">
+                                    User Story
+                                </div>
+                                <div class="task-card-headline">
+                                    Daily Kochwelt Rezepte
+                                </div>
+                                <div class="task-card-content">
+                                    Implement daily recipe and portion calculator ...
+                                </div>
+                                <div class="task-card-footer">
+                                    <div class="task-card-footer-left">
+                                        <div class="task-card-footer-assigned">
+                                            SF
+                                        </div>
+                                        <div class="task-card-footer-assigned">
+                                            SF
+                                        </div>
+                                    </div>
+                                    <img src="assets/icons/prio_med.png" class="task-card-footer-prio">
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -75,11 +126,15 @@
                     </div>
                 </div>
             </div>
-            
-        </main> 
+
+        </main>
     </div>
 
-    <div id="addtask-card-container" class="addtask-card-container d-none" w3-include-html="assets/templates/addtask.html"></div>
+    <div id="addtask-card-container" class="addtask-card-container d-none"
+        w3-include-html="assets/templates/addtask.html"></div>
+
+    <div id="task-card-slide-container" class="task-card-slide-container"
+        w3-include-html="assets/templates/task-card-slide.html"></div>
 
 </body>
 

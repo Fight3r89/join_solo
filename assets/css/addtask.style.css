@@ -40,9 +40,8 @@ button {
     cursor: pointer;
 }
 
-.div-input-prio img {
-    width: 20px;
-    height: 15px;
+.addtask-close-slider{
+    display: none;
 }
 
 .seperator-vertical-gray{
