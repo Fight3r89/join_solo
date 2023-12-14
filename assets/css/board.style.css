@@ -211,6 +211,10 @@
     gap: 8px;
 }
 
+.task-single-card-subtasks{
+    font-size: 16px;
+}
+
 .task-single-card-assignedto-list{
     display: flex;
     flex-direction: column;
@@ -258,6 +262,35 @@
 .task-single-card-list-card img:hover {
     cursor: pointer;
     border-radius: 50%;
+}
+
+.task-single-card-footer{
+    height: 24px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 16px;
+}
+
+.task-single-card-footer-spacer{
+    height: 100%;
+    width: 1px;
+    background-color: #d1d1d1;
+}
+
+.task-single-card-delete, .task-single-card-edit{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.task-single-card-delete:hover, .task-single-card-edit:hover{
+    cursor: pointer;
+    color: #29abe2;  
+}
+.task-single-card-delete:hover img, .task-single-card-edit:hover img {
+    filter: invert(72%) sepia(69%) saturate(3211%) hue-rotate(165deg) brightness(89%) contrast(98%);
 }
 
 form{
