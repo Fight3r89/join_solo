@@ -18,7 +18,7 @@
         <nav w3-include-html="assets/templates/navigation.html"></nav>
         <main>
             <div class="div-contacts-list">
-                <button onclick="slideIn()">Add new contact <img src="assets/icons/contact_add.png"></button>
+                <button onclick="slideIn('contacts-add-card')">Add new contact <img src="assets/icons/contact_add.png"></button>
 
                 <div class="div contacts-list-letter">
                     S
@@ -26,15 +26,14 @@
 
                 <div class="seperator-contacts-list"></div>
 
-                <div class="div-contacts-list-card">
+                <div class="div-contacts-list-card" onclick="slideIn('single-contact')">
                     <div class="div-contacts-list-logo">SS</div>
                     <div class="div-contacts-list-data">
                         <p>Sten Stensen</p>
                         <p>sten-stensen@sten.de</p>
                     </div>
-
                 </div>
-                <div class="div-contacts-list-card">
+                <div class="div-contacts-list-card" onclick="slideIn('single-contact')">
                     <div class="div-contacts-list-logo">SF</div>
                     <div class="div-contacts-list-data">
                         <p>Simon Funke</p>
@@ -51,7 +50,7 @@
                     <div class="seperator-vertical"></div>
                 </div>
                 <div class="main-content">
-                    hallo    
+                    <div id="single-contact-container" class="single-contact-container d-none" w3-include-html="assets/templates/single-contact.html"></div>    
                 </div>
             </div>
         </main>
@@ -59,7 +58,6 @@
 
     <div id="contacts-add-card-container" class="contacts-add-card-container d-none" w3-include-html="assets/templates/contacts-add-card.html"></div>
     
-
 </body>
 
 </html>
