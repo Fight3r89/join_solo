@@ -8,16 +8,16 @@ function navChangeColor(){
     document.getElementById('nav-board').onclick = null;
 }
 
-function slideIn(){
-    document.getElementById('addtask-card-container').classList.remove('d-none');
-    document.getElementById('addtask-card').style.right = '16px';
-    document.getElementById('addtask-card').style.animation = 'slide_in 0.3s ease-out';
+function slideIn(container){
+    document.getElementById(container+'-container').classList.remove('d-none');
+    document.getElementById(container).style.right = '16px';
+    document.getElementById(container).style.animation = 'slide_in 0.3s ease-out';
 }
 
-function slideOut(){
-    document.getElementById('addtask-card').style.animation = 'slide_out 0.3s ease-out';
+function slideOut(container){
+    document.getElementById(container).style.animation = 'slide_out 0.3s ease-out';
     setTimeout (function(){
-        document.getElementById('addtask-card-container').classList.add('d-none');
-        document.getElementById('addtask-card').style.right = '-150%';
+        document.getElementById(container+'-container').classList.add('d-none');
+        document.getElementById(container).style.right = '-150%';
     },280);
 }

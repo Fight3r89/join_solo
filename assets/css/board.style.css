@@ -169,6 +169,97 @@
     margin-bottom: 32px;
 }
 
+.task-card-slide{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;    
+    top: 0;
+    bottom:0;
+    left: 16px;
+    /*right:16px;*/
+    right: -150%;
+    margin: auto; 
+    max-width: 525px;
+    height: 931px;
+    padding: 48px 40px;
+    border-radius: 30px;
+    gap: 24px;
+}
+
+.task-single-card-headline{
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.task-single-card-date, .task-single-card-prio{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.task-single-card-prio-right{
+    display: flex; 
+    align-items: center; 
+    padding-left: 18px;
+}
+
+.task-single-card-assignedto, .task-single-card-subtasks{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task-single-card-assignedto-list{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.task-single-card-assignedto-list-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 12px;
+    background-color: #ff7a00;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+.task-single-card-assignedto-list-card, .task-single-card-list-card{
+    display: flex;
+    align-items: center;
+    padding: 7px 16px;
+    gap: 16px;
+}
+
+.chkbox-task-single-card-subtasks-list{
+    width: 24px;
+    height: 24px;
+    border: 2px solid #2a3647;
+    border-radius: 3px;
+    margin: 0;
+}
+
+.task-single-card-list-card:hover{
+    cursor: pointer;
+    background-color: #eeeeee;
+    border-radius: 15px;
+}
+
+.task-single-card-list-card:hover img{
+    cursor: pointer;
+    background-color: #d1d1d1;
+}
+
+.task-single-card-list-card img:hover {
+    cursor: pointer;
+    border-radius: 50%;
+}
+
 form{
     display: flex;
     flex-direction: column;
@@ -227,7 +318,7 @@ label{
     gap: 16px;
 }
 
-.addtask-card-container{
+.slide-container{
     background-color: rgba(0, 0, 0, 0.2);
     position: absolute;
     top: 0;
@@ -275,7 +366,7 @@ label{
     }
 }
 
-.addtask-close-slider {
+.close-slider {
     position: absolute;
     width: 32px !important;
     height: 32px !important;
@@ -288,6 +379,10 @@ label{
 
 .d-none{
     display: none;
+}
+
+.fs-61 {
+    font-size: 61px;
 }
 
 /*-----------------------------*/

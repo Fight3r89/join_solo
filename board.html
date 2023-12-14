@@ -25,7 +25,7 @@
                     </div>
                     <div class="div-board-search-bar">
                         <input class="input-boad-search" type="text" placeholder="Find Task"> <button
-                            class="btn-board-search" onclick="slideIn();">Add Task <img
+                            class="btn-board-search" onclick="slideIn('addtask-card');">Add Task <img
                                 src="assets/icons/add.png"></button>
                     </div>
                     <img class="board-search-bar-mobile" src="assets/icons/board_head_add.png">
@@ -38,7 +38,7 @@
                         </div>
                         <div id="div-tasks-to-do">
                             <!--Hier werden die Tasks reingerendert-->
-                            <div class="task-card">
+                            <div class="task-card" onclick="slideIn('task-card-slide')">
                                 <div class="task-card-category">
                                     User Story
                                 </div>
@@ -130,10 +130,10 @@
         </main>
     </div>
 
-    <div id="addtask-card-container" class="addtask-card-container d-none"
+    <div id="addtask-card-container" class="slide-container d-none"
         w3-include-html="assets/templates/addtask.html"></div>
 
-    <div id="task-card-slide-container" class="task-card-slide-container"
+    <div id="task-card-slide-container" class="slide-container d-none"
         w3-include-html="assets/templates/task-card-slide.html"></div>
 
 </body>
