@@ -16,6 +16,14 @@ async function includeHTML() {
     }
 }
 
+function firstLoad() {
+    includeHTML();
+    setTimeout(function () {
+        document.getElementById('content-login').classList.remove('d-none');
+        //document.getElementById('footer').classList.remove('d-none');
+    }, 500);
+}
+
 
 function openSite(site) {
     window.location.href = site+'.html';

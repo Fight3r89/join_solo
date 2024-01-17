@@ -87,7 +87,7 @@ button {
     gap: 16px;
 }
 
-@media (max-width: 1135px){
+@media (max-width: 1170px){
     .div-addtask-input-fields {
         flex-direction: column;
         padding-bottom: 0px;
