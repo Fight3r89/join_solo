@@ -34,7 +34,6 @@ button {
     padding: 0 12px;
     height: 56px;
     gap: 16px;
-    margin-bottom: 10px;
     transition: 0.1s;
 }
 
@@ -97,6 +96,7 @@ select {
 
 .content-index {
     display: flex;
+    grid-area: content;
     width: fit-content;
     height: fit-content;
     align-self: center;
@@ -163,12 +163,12 @@ select {
 }
 
 .div-index-register {
-    position: absolute;
-    right: 122px;
-    top: 67px;
+    grid-area: signup;
     display: flex;
     align-items: center;
     gap: 35px;
+    margin-top: 67px;
+    margin-right: 122px;
     height: fit-content;
     box-sizing: border-box;
     justify-content: end;
@@ -415,6 +415,18 @@ main {
         'nav main';
 }
 
+.grid-container-index {
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    grid-template-columns: 100%;
+    grid-template-rows: 123px auto 75px;
+    grid-template-areas: 
+    'signup'
+    'content'
+    'footer';
+}
+
 .site-title {
     margin-bottom: 56px;
     display: flex;
@@ -524,6 +536,36 @@ main {
 
     .site-title {
         justify-content: center;
+    }
+
+}
+
+@media (max-width: 655px){
+    .content-index {
+        width: 100%;
+    }
+
+    .div-login {
+        width: 100%;
+        padding: 32px 8px;
+    }
+
+    .grid-container-index {
+        display: grid;
+        height: 100vh;
+        width: 100%;
+        grid-template-columns: 100%;
+        grid-template-rows:  auto 123px 75px;
+        grid-template-areas: 
+        'content'
+        'signup'
+        'footer';
+    }
+
+    .div-index-register {
+        margin: 0;
+        margin-bottom: 22px;
+        justify-self: center;
     }
 
 }
