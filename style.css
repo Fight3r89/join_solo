@@ -56,7 +56,6 @@ select {
     border-radius: 10px;
     padding: 12px 21px;
     border: 1px solid #d1d1d1;
-    margin-bottom: 32px;
     font-size: 20px;
     font-family: "Inter", sans-serif;
     outline: 0;
@@ -163,22 +162,48 @@ select {
     font-size: 20px !important;
 }
 
+.div-index-register {
+    position: absolute;
+    right: 122px;
+    top: 67px;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    height: fit-content;
+    box-sizing: border-box;
+    justify-content: end;
+}
+
+.register button {
+    width: 91px;
+    height: 49px;
+    font-size: 16px;
+}
+
+.index-form-div {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.div-register {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    width: 598px;
+    height: 630px;
+    border-radius: 30px;
+    padding: 48px 88px;
+}
+
 .d-none {
     display: none;
 }
-
-/*.sign-up {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-right: 122px;
-    width: 100%;
-    top: 67px;
-    gap: 35px;
-}
-
-/*--------------------------------*/
 
 .seperator {
     background-color: #29ABE2;
@@ -194,6 +219,24 @@ select {
     width: 90px;
     align-self: self-start;
     display: none;
+}
+
+.signup-back{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 64px;
+    left: 48px;
+    width: 32px;
+    height: 32px;
+}
+
+.signup-back:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    transform: scale(1.1);
 }
 
 header {

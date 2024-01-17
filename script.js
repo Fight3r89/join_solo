@@ -20,10 +20,22 @@ function firstLoad() {
     includeHTML();
     setTimeout(function () {
         document.getElementById('content-login').classList.remove('d-none');
+        document.getElementById('div-index-register').classList.remove('d-none');
         //document.getElementById('footer').classList.remove('d-none');
     }, 500);
 }
 
+function openSignUp(){
+    document.getElementById('div-index-register').classList.add('d-none');
+    document.getElementById('content-login').classList.add('d-none');
+    document.getElementById('content-register').classList.remove('d-none');
+}
+
+function closeSignUp(){
+    document.getElementById('div-index-register').classList.remove('d-none');
+    document.getElementById('content-login').classList.remove('d-none');
+    document.getElementById('content-register').classList.add('d-none');
+}
 
 function openSite(site) {
     window.location.href = site+'.html';
