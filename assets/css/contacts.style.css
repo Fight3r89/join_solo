@@ -308,7 +308,16 @@ button{
     }
 }
 
-@media (max-width:905px){
+@media (max-width:1045px){
+    .single-contact-head {
+        flex-direction: column;
+    }
+    .single-contact-logo {
+        width: 120px;
+    }
+}
+
+@media (max-width:1010px){
     main{
         flex-direction: column-reverse;
     }
