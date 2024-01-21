@@ -1,4 +1,5 @@
 let tasks = [];
+let users = [];
 
 
 async function includeHTML() {
@@ -25,31 +26,45 @@ function firstLoad() {
     }, 500);
 }
 
-function openSignUp(){
+function openSignUp() {
     document.getElementById('div-index-register').classList.add('d-none');
     document.getElementById('content-login').classList.add('d-none');
     document.getElementById('content-register').classList.remove('d-none');
 }
 
-function closeSignUp(){
+function closeSignUp() {
     document.getElementById('div-index-register').classList.remove('d-none');
     document.getElementById('content-login').classList.remove('d-none');
     document.getElementById('content-register').classList.add('d-none');
 }
 
 function openSite(site) {
-    window.location.href = site+'.html';
+    window.location.href = site + '.html';
 }
 
-function createNewTask() {
+async function loadUsers(){
+    let user = [];
+    user = JSON.parse(await getItem('users'));
+    user.forEach(e => {
+        let loadUser = new User();
+        loadUser.id = e.id;
+        loadUser.firstName = e.firstName;
+        loadUser.lastName = e.lastName;
+        loadUser.eMail = e.eMail;
+        loadUser.password = e.password;
+        users.push(loadUser);
+    });
+}
+
+/*function createNewTask() {
     let newTask = new Task();
-    /*document.getElementById('title').value;
+    document.getElementById('title').value;
     document.getElementById('description').value;
     document.getElementById('assigned-to').value;
     document.getElementById('date').value;
     //document.getElementById('prio').value;
     document.getElementById('category').value;
-    document.getElementById('subtasks').value;*/
+    document.getElementById('subtasks').value;
 
     newTask.title = document.getElementById('title').value;
     newTask.description = document.getElementById('description').value;
@@ -65,4 +80,4 @@ function createNewTask() {
 
 function loadTasks(){}
 
-function saveTasks(){}
+function saveTasks(){}*/

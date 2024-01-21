@@ -182,8 +182,7 @@ select {
 }
 
 .index-form-div {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 24px;
     margin-bottom: 32px;
 }
@@ -203,7 +202,7 @@ select {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .seperator {
@@ -454,6 +453,17 @@ main {
     box-sizing: border-box;
 }
 
+.error-border {
+    border-color: red;
+}
+
+.login_error{
+    color: red;
+    display: flex;
+    justify-self: end;
+    font-size: 12px;
+}
+
 @media (max-width: 905px) {
     body {
         font-size: 14px;
@@ -546,7 +556,7 @@ main {
         width: 100%;
     }
 
-    .div-login {
+    .div-login, .div-register {
         width: 100%;
         padding: 32px 8px;
     }
@@ -556,8 +566,8 @@ main {
         height: 100vh;
         width: 100%;
         grid-template-columns: 100%;
-        grid-template-rows:  auto 123px 75px;
-        grid-template-areas: 
+        grid-template-rows: auto 123px 75px;
+        grid-template-areas:
         'content'
         'signup'
         'footer';
@@ -567,6 +577,10 @@ main {
         margin: 0;
         margin-bottom: 22px;
         justify-self: center;
+    }
+
+    .div-register {
+        margin-top: 165px;
     }
 
 }

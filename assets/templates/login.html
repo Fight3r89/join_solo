@@ -35,10 +35,11 @@
     <p>Log in</p>
     <div class="seperator-index"></div>
   </div>
-  <form>
+  <form onsubmit="login(); return false;">
     <div class="index-form-div">
-      <input type="text" placeholder="Email" style="width: 100%;">
-      <input type="text" placeholder="Password" style="width: 100%;">
+      <input id="mail" type="text" placeholder="Email" style="width: 100%;">
+      <input id="pass" type="text" placeholder="Password" style="width: 100%;">
+      <p class="login_error d-none" id="login_error"> Die eigegeben Daten sind nicht korekt</p>
     </div>
     <div class="buttons-login">
       <button>Login</button>
