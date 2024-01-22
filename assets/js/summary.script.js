@@ -1,9 +1,3 @@
-let amountOfTasks = 0;
-let tasksTodo = 0;
-let tasksDone = 0;
-let tasksInProgress = 0;
-let tasksAwaitFeedback = 0;
-let tasksUrgent = 0;
 
 async function init() {
     await getUserDataFromLocalStorage();
@@ -38,30 +32,6 @@ function renderAmounts() {
     setAmounts();
     clearHtmlCards();
     setHtmlCards();
-}
-
-function setAmounts() {
-    amountOfTasks = userTasks.length;
-    for (let i = 0; i < userTasks.length; i++) {
-        switch (userTasks[i].task) {
-            case 'todo':
-                tasksTodo += 1;
-                break;
-            case 'inprogress':
-                tasksInProgress += 1;
-                break;
-            case 'awaitfeedback':
-                tasksAwaitFeedback += 1;
-                break;
-            case 'done':
-                tasksDone += 1;
-                break;
-            default:
-                break;
-        }
-        if (userTasks[i].prio == 'urgent') tasksUrgent += 1;
-        //console.log(tasks[i].prio);
-    }
 }
 
 function clearHtmlCards() {

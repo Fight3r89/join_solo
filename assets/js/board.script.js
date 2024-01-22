@@ -3,6 +3,8 @@ async function init() {
     await includeHTML();
     await loadUserTasks();
     navChangeColor();
+    setAmounts();
+    renderHtml();
 }
 
 function navChangeColor(){
@@ -22,4 +24,8 @@ function slideOut(container){
         document.getElementById(container+'-container').classList.add('d-none');
         document.getElementById(container).style.right = '-150%';
     },280);
+}
+
+function renderHtml(){
+
 }
