@@ -500,7 +500,7 @@ label{
 
 @media (max-width: 580px){
     .main-content{
-        grid-template-columns: 252px;
+        grid-template-columns: 100%;
         grid-template-areas: 
             'todo'
             'progress'
