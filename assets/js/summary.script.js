@@ -24,6 +24,8 @@ function renderHtml() {
 
 function renderGreeting() {
     document.getElementById('greeting-user-name').innerHTML = '';
+    document.getElementById('greeting-time').innerHTML = '';
+    document.getElementById('greeting-time').innerHTML = greetingTime();
     document.getElementById('greeting-user-name').innerHTML = loggedInUser.firstName + ' ' + loggedInUser.lastName;
 }
 
@@ -49,4 +51,17 @@ function setHtmlCards() {
     document.getElementById('amount-number-of-tasks').innerHTML = amountOfTasks;
     document.getElementById('amount-in-progress').innerHTML = tasksInProgress;
     document.getElementById('amount-feedback').innerHTML = tasksAwaitFeedback;
+}
+
+function greetingTime(){
+    let currentTime = new Date();
+    let currentHour = currentTime.getHours();
+
+    if(currentHour >= 5 && currentHour < 12){
+        return 'Good morning';
+    }
+    else if(currentHour >= 12 && currentHour < 18){
+        return 'Good day';
+    }
+    else return 'Good evening';
 }
