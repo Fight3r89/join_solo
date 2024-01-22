@@ -171,6 +171,7 @@ input, textarea, select  {
     justify-content: space-between;
     width: 100%;
     margin-bottom: 16px;
+    height: 24px;
 }
 
 .div-board-section-headline img {
