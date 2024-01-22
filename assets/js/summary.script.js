@@ -1,4 +1,3 @@
-
 async function init() {
     await getUserDataFromLocalStorage();
     if (await checkLoggedIn()) {

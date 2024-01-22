@@ -27,5 +27,7 @@ function slideOut(container){
 }
 
 function renderHtml(){
-
+    if(tasksTodo == 0){
+        
+    }
 }
