@@ -17,6 +17,10 @@ button {
     gap: 4px;
 }
 
+input, textarea, select  {
+    margin-bottom: 32px;
+}
+
 .div-input-prio{
     display: flex;
     align-items: center;

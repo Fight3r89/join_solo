@@ -1,3 +1,31 @@
+input, textarea, select  {
+    margin-bottom: 32px;
+}
+
+.div-input-prio {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 56px;
+    margin-bottom: 32px;
+    gap: 16px;
+}
+
+.div-prio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: #fff;
+    height: 56px;
+    flex: 1;
+    gap: 8px;
+    padding: 16px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
 .btn-board-search {
     margin: 0;
     height: 48px;
