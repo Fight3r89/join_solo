@@ -7,6 +7,7 @@
     <title>Board</title>
     <script src="script.js"></script>
     <script src="assets/js/board.script.js"></script>
+    <script src="assets/js/addtask.script.js"></script>
     <script src="assets/js/task.class.js"></script>
     <script src="assets/js/storage.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -25,8 +26,8 @@
                         <p>Board</p>
                     </div>
                     <div class="div-board-search-bar">
-                        <input class="input-boad-search" type="text" placeholder="Find Task"> <button
-                            class="btn-board-search" onclick="slideIn('addtask-card');">Add Task <img
+                        <input class="input-boad-search" type="text" placeholder="Find Task">
+                        <button class="btn-board-search" onclick="slideIn('addtask-card');">Add Task <img
                                 src="assets/icons/add.png"></button>
                     </div>
                     <img class="board-search-bar-mobile" src="assets/icons/board_head_add.png">
@@ -131,8 +132,8 @@
         </main>
     </div>
 
-    <div id="addtask-card-container" class="slide-container d-none"
-        w3-include-html="assets/templates/addtask.html"></div>
+    <div id="addtask-card-container" class="slide-container d-none" w3-include-html="assets/templates/addtask.html">
+    </div>
 
     <div id="task-card-slide-container" class="slide-container d-none"
         w3-include-html="assets/templates/task-card-slide.html"></div>
