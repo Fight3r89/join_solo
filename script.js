@@ -79,3 +79,12 @@ function createNewTask(){
     saveTasksToBackend(newTask);
     clearInputFields();
 }
+
+function clearInputFields(){
+    document.getElementById('title').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('date').value = '';
+    //document.getElementById('assigned-to').value = '';
+    //document.getElementById('category').value = '';
+    document.getElementById('subtasks').value = '';
+}
