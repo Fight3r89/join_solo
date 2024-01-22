@@ -1,20 +1,23 @@
 <div class="div-register" id="div-register">
-    <div class="site-title title-index">
-      <p>Sign Up</p>
-      <div class="seperator-index"></div>
-    </div>
-    <div class="signup-back" onclick="closeSignUp()">
-        <img src="assets/icons/back.png" alt="">
-    </div>
-    <form onsubmit="register(); return false">
-      <div class="index-form-div">
-        <input required id="name" type="text" placeholder="Name" style="width: 100%;">
-        <input  id="email" type="text" placeholder="Email" style="width: 100%;">
-        <input  id="passwrd" type="text" placeholder="Password" style="width: 100%;">
-        <input  id="passwrdConf" type="text" placeholder="Confirm Password" style="width: 100%;">
-      </div>
-      <div class="buttons-login">
-        <button>Sign Up</button>
-      </div>
-    </form>
+  <div class="site-title title-index">
+    <p>Sign Up</p>
+    <div class="seperator-index"></div>
   </div>
+  <div class="signup-back" onclick="closeSignUp()">
+    <img src="assets/icons/back.png" alt="">
+  </div>
+  <form onsubmit="register(); return false">
+    <div class="index-form-div">
+      <input required id="name" type="text" placeholder="Name" style="width: 100%;">
+      <input id="email" type="text" placeholder="Email" style="width: 100%;">
+      <input id="passwrd" type="text" placeholder="Password" style="width: 100%;">
+      <input id="passwrdConf" type="text" placeholder="Confirm Password" style="width: 100%;">
+      <div class="div-policy">
+        <img id="policy" src="/assets/icons/check_box.png" onclick="changeCheckboxImage(this.src)"><p>I accept the <a>Privacy policy</a></p>
+      </div>
+    </div>
+    <div class="buttons-login">
+      <button class="button_no_hover" id="btn-signUp" disabled>Sign Up</button>
+    </div>
+  </form>
+</div>

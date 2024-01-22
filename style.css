@@ -48,11 +48,19 @@ button:hover {
     box-shadow: 0 6px 5px rgba(0, 0, 0, 0.3);
 }
 
+.button_no_hover{
+    background: gray !important;
+    cursor: default;
+}
+.button_no_hover:hover {
+    box-shadow: none;
+}
+
 input,
 textarea,
 select {
     box-sizing: border-box;
-    height: 48px;
+    /*height: 48px;*/
     border-radius: 10px;
     padding: 12px 21px;
     border: 1px solid #d1d1d1;
@@ -185,6 +193,26 @@ select {
     display: grid;
     gap: 24px;
     margin-bottom: 32px;
+}
+
+.div-policy{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.div-policy img:hover {
+    cursor: pointer;
+}
+
+.div-policy p {
+    font-size: 16px;
+}
+
+.div-policy p a {
+    color: #29ABE2;
+    cursor: pointer;
 }
 
 .div-register {

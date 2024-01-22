@@ -3,6 +3,8 @@ let toggleSingleContact = 0;
 async function init() {
     await includeHTML();
     navChangeColor();
+    await getUserDataFromLocalStorage();
+
 }
 
 function navChangeColor(){

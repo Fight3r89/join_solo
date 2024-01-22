@@ -25,7 +25,7 @@ async function register() {
         document.getElementById('email').value = '';
         document.getElementById('passwrd').value = '';
         document.getElementById('passwrdConf').value = '';
-        
+
         console.log("user wird erstellt");
     }
     users = [];
@@ -41,6 +41,24 @@ async function checkUserExist(email) {
     return exist;
 }
 
-async function saveUser(){
+async function saveUser() {
     await setItem('users', users);
+}
+
+function changeCheckboxImage(path) {
+    //console.log(path);
+    let imagePath = new URL(path).pathname.split('/');
+    imagePath.shift();
+    imagePath = imagePath.join('/');
+    console.log(imagePath);
+    if (imagePath == 'assets/icons/check_box.png') {
+        document.getElementById('policy').src = 'assets/icons/check_box_checked.png';
+        document.getElementById('btn-signUp').disabled = false;
+        document.getElementById('btn-signUp').classList.remove('button_no_hover');
+    }
+    else{
+        document.getElementById('policy').src = 'assets/icons/check_box.png';
+        document.getElementById('btn-signUp').disabled = true;
+        document.getElementById('btn-signUp').classList.add('button_no_hover');
+    }
 }
