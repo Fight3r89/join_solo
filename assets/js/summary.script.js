@@ -14,6 +14,8 @@ async function init() {
 function navChangeColor() {
     document.getElementById('nav-summary').classList.add('link-active');
     document.getElementById('nav-summary').onclick = null;
+    document.getElementById('mobile-nav-summary').classList.add('link-active');
+    document.getElementById('mobile-nav-summary').onclick = null;
 }
 
 function renderHtml() {

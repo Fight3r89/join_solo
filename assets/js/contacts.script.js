@@ -10,6 +10,8 @@ async function init() {
 function navChangeColor(){
     document.getElementById('nav-contacts').classList.add('link-active');
     document.getElementById('nav-contacts').onclick = null;
+    document.getElementById('mobile-nav-contacts').classList.add('link-active');
+    document.getElementById('mobile-nav-contacts').onclick = null;
 }
 
 function slideIn(container){
