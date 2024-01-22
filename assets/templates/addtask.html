@@ -8,21 +8,21 @@
             <div class="div-addtask-input-fields">
                 <div class="div-addtask-input-fields-left">
                     <label for="title">Title<span class="required-field">*</span></label>
-                    <input type="text" id="title" placeholder="Enter a title">
+                    <input required type="text" id="title" placeholder="Enter a title">
 
                     <label for="description">Description</label>
                     <textarea id="description" placeholder="Enter a Description"></textarea>
 
                     <label for="assigned-to">Assigned to</label>
                     <select name="assigned-to" id="assigned-to">
-                        <option value="notChoosed">Select contacts to assign</option>
+                        <option value="">Select contacts to assign</option>
                     </select>
 
                 </div>
                 <div class="seperator-vertical-gray"></div>
                 <div class="div-addtask-input-fields-right">
                     <label for="date">Due date<span class="required-field">*</span></label>
-                    <input type="date" id="date">
+                    <input required type="date" id="date">
                     <label for="description">Prio</label>
                     <div class="div-input-prio">
                         <div class="div-prio">Urgent<img src="assets/icons/prio_urgent.png"></div>
@@ -31,10 +31,10 @@
                     </div>
 
                     <label for="category">Category<span class="required-field">*</span></label>
-                    <select name="category" id="category">
-                        <option value="notChoosed">Select tast category</option>
-                        <option value="user-story">User Story</option>
-                        <option value="technical-task">Technical Task</option>
+                    <select required name="category" id="category">
+                        <option value="">Select tast category</option>
+                        <option value="User Story">User Story</option>
+                        <option value="Technical Task">Technical Task</option>
                     </select>
 
                     <label for="subtask">Subtasks</label>

@@ -72,7 +72,7 @@ async function checkLoggedIn(){
     }
 }
 
-function createNewTask(){
+async function createNewTask(){
     let newTask = new Task;
     newTask.autor = loggedInUser.id;
     newTask.title = document.getElementById('title').value;
@@ -82,8 +82,9 @@ function createNewTask(){
     newTask.prio = 'urgent';
     newTask.category = document.getElementById('category').value;
     newTask.subtasks.push(document.getElementById('subtasks').value);
-    saveTasksToBackend(newTask);
+    await saveTasksToBackend(newTask);
     clearInputFields();
+    location.href = 'board.html';
 }
 
 function clearInputFields(){

@@ -61,7 +61,7 @@ function renderTaskCardHtml(task) {
     return `
         <div class="task-card" onclick="slideIn('task-card-slide')">
             <div class="task-card-category">
-                User Story
+                ${task.category}
             </div>
             <div class="task-card-headline">
                 ${task.title}
