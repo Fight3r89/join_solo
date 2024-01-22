@@ -1,7 +1,8 @@
 async function init() {
-    await includeHTML();
-    navChangeColor();
     await getUserDataFromLocalStorage();
+    await includeHTML();
+    await loadUserTasks();
+    navChangeColor();
 }
 
 function navChangeColor(){
