@@ -7,7 +7,7 @@ async function init() {
         renderHtml();
     }
     else {
-       location.href = 'index.html';
+        location.href = 'index.html';
     }
 }
 
@@ -44,6 +44,7 @@ function clearHtmlCards() {
     document.getElementById('amount-number-of-tasks').innerHTML = '';
     document.getElementById('amount-in-progress').innerHTML = '';
     document.getElementById('amount-feedback').innerHTML = '';
+    document.getElementById('upcoming-deadline-date').innerHTML = '';
 }
 
 function setHtmlCards() {
@@ -53,17 +54,41 @@ function setHtmlCards() {
     document.getElementById('amount-number-of-tasks').innerHTML = amountOfTasks;
     document.getElementById('amount-in-progress').innerHTML = tasksInProgress;
     document.getElementById('amount-feedback').innerHTML = tasksAwaitFeedback;
+    document.getElementById('upcoming-deadline-date').innerHTML = upcoomingDeadLine();
 }
 
-function greetingTime(){
+function greetingTime() {
     let currentTime = new Date();
     let currentHour = currentTime.getHours();
 
-    if(currentHour >= 5 && currentHour < 12){
+    if (currentHour >= 5 && currentHour < 12) {
         return 'Good morning';
     }
-    else if(currentHour >= 12 && currentHour < 18){
+    else if (currentHour >= 12 && currentHour < 18) {
         return 'Good day';
     }
     else return 'Good evening';
+}
+
+function upcoomingDeadLine() {
+    const heute = new Date();
+    let nextDate;
+    heute.setHours(0, 0, 0, 0);
+    userTasks.forEach(userTask => {
+        const taskDate = new Date(userTask.date);
+        if (taskDate > heute && (!nextDate || taskDate < nextDate)) {
+            nextDate = taskDate;
+        }
+    });
+    if(nextDate) return formateDeadlineDate(nextDate);
+    else return 'No upcoming Deadline';
+    
+}
+
+function formateDeadlineDate(nextDate) {
+    const unformatedDate = new Date(nextDate);
+    const option = { month: 'long', day: 'numeric', year: 'numeric' };
+    let formatedDate = unformatedDate.toLocaleDateString('de-DE', option);
+    const [day, month, year] = formatedDate.split(' ');
+    return `${month} ${day.replace('.', '')}, ${year}`;
 }

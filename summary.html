@@ -45,24 +45,32 @@
                             </div>
                         </div>
                         <div onclick="location.href = 'board.html';" class="main-content-flex-middle card-hover">
-                            <img src="assets/icons/summary_arrow_up.png">
-                            <div class="main-content-amounts">
-                                <p id="amount-urgent"></p>
-                                <p>Urgent</p>
+                            <div class="main-content-flex-middle-left">
+                                <img src="assets/icons/summary_arrow_up.png">
+                                <div class="main-content-amounts">
+                                    <p id="amount-urgent"></p>
+                                    <p class="fs-16">Urgent</p>
+                                </div>
                             </div>
                             <div class="seperator-vertical-gray"></div>
-                            <div></div>
+                            <div id="div-upcoming-deadline">
+                                <p id="upcoming-deadline-date"></p>
+                                <p class="fs-16">Upcoming Deadline</p>
+                            </div>
                         </div>
                         <div class="main-content-flex-bottom">
-                            <div onclick="location.href = 'board.html';" class="main-content-flex-bottom-card card-hover">
+                            <div onclick="location.href = 'board.html';"
+                                class="main-content-flex-bottom-card card-hover">
                                 <p id="amount-number-of-tasks"></p>
                                 <p>Tasks in Board</p>
                             </div>
-                            <div onclick="location.href = 'board.html';" class="main-content-flex-bottom-card card-hover">
+                            <div onclick="location.href = 'board.html';"
+                                class="main-content-flex-bottom-card card-hover">
                                 <p id="amount-in-progress"></p>
                                 <p>Tasks in Progress</p>
                             </div>
-                            <div onclick="location.href = 'board.html';" class="main-content-flex-bottom-card card-hover">
+                            <div onclick="location.href = 'board.html';"
+                                class="main-content-flex-bottom-card card-hover">
                                 <p id="amount-feedback"></p>
                                 <p>Awaiting Feedback</p>
 
