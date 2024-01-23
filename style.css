@@ -19,7 +19,6 @@ a {
     text-decoration: none;
 }
 
-
 button {
     box-sizing: border-box;
     display: flex;
@@ -48,10 +47,11 @@ button:hover {
     box-shadow: 0 6px 5px rgba(0, 0, 0, 0.3);
 }
 
-.button_no_hover{
+.button_no_hover {
     background: gray !important;
     cursor: default;
 }
+
 .button_no_hover:hover {
     box-shadow: none;
 }
@@ -60,13 +60,13 @@ input,
 textarea,
 select {
     box-sizing: border-box;
-    /*height: 48px;*/
     border-radius: 10px;
     padding: 12px 21px;
     border: 1px solid #d1d1d1;
     font-size: 20px;
     font-family: "Inter", sans-serif;
     outline: 0;
+    width: 100%;
 }
 
 ::placeholder {
@@ -78,9 +78,7 @@ select {
     margin-top: -167px;
     margin-left: -137px;
     top: 50%;
-    /* Oben am Bildschirm */
     left: 50%;
-    /* Links am Bildschirm */
     animation-name: logoSlide;
     animation-duration: 500ms;
     animation-timing-function: ease;
@@ -166,7 +164,7 @@ select {
     width: 110px;
 }
 
-.buttons-login .button-bordered{
+.buttons-login .button-bordered {
     width: 177px;
     font-size: 20px !important;
 }
@@ -195,7 +193,7 @@ select {
     margin-bottom: 32px;
 }
 
-.div-policy{
+.div-policy {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -249,7 +247,7 @@ select {
     display: none;
 }
 
-.signup-back{
+.signup-back {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -456,10 +454,10 @@ main {
     width: 100%;
     grid-template-columns: 100%;
     grid-template-rows: 123px auto 75px;
-    grid-template-areas: 
-    'signup'
-    'content'
-    'footer';
+    grid-template-areas:
+        'signup'
+        'content'
+        'footer';
 }
 
 .site-title {
@@ -492,32 +490,32 @@ main {
     border-color: red;
 }
 
-.login_error{
+.login_error {
     color: red;
     display: flex;
     justify-self: end;
     font-size: 12px;
 }
 
-.bg-color-urgent{
+.bg-color-urgent {
     background-color: red !important;
-  }
-  
-  .bg-color-med{
-    background-color: rgb(255,170,5) !important;
-  }
-  
-  .bg-color-low{
-    background-color: rgb(124,226,44) !important;
-  }
-  
-  .prio-selected{
+}
+
+.bg-color-med {
+    background-color: rgb(255, 170, 5) !important;
+}
+
+.bg-color-low {
+    background-color: rgb(124, 226, 44) !important;
+}
+
+.prio-selected {
     color: white;
-  }
-  
-  .prio-selected img{
+}
+
+.prio-selected img {
     filter: brightness(0%) invert(100%);
-    }
+}
 
 @media (max-width: 905px) {
     body {
@@ -606,12 +604,13 @@ main {
 
 }
 
-@media (max-width: 655px){
+@media (max-width: 655px) {
     .content-index {
         width: 100%;
     }
 
-    .div-login, .div-register {
+    .div-login,
+    .div-register {
         width: 100%;
         padding: 32px 8px;
     }
@@ -623,9 +622,9 @@ main {
         grid-template-columns: 100%;
         grid-template-rows: auto 123px 75px;
         grid-template-areas:
-        'content'
-        'signup'
-        'footer';
+            'content'
+            'signup'
+            'footer';
     }
 
     .div-index-register {
