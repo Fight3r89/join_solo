@@ -499,6 +499,26 @@ main {
     font-size: 12px;
 }
 
+.bg-color-urgent{
+    background-color: red !important;
+  }
+  
+  .bg-color-med{
+    background-color: rgb(255,170,5) !important;
+  }
+  
+  .bg-color-low{
+    background-color: rgb(124,226,44) !important;
+  }
+  
+  .prio-selected{
+    color: white;
+  }
+  
+  .prio-selected img{
+    filter: brightness(0%) invert(100%);
+    }
+
 @media (max-width: 905px) {
     body {
         font-size: 14px;

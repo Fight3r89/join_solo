@@ -91,6 +91,26 @@ input, textarea, select  {
     gap: 16px;
 }
 
+.bg-color-urgent{
+    background-color: red !important;
+  }
+  
+  .bg-color-med{
+    background-color: rgb(255,170,5) !important;
+  }
+  
+  .bg-color-low{
+    background-color: rgb(124,226,44) !important;
+  }
+  
+  .prio-selected{
+    color: white;
+  }
+  
+  .prio-selected img{
+    filter: brightness(0%) invert(100%);
+    }
+
 @media (max-width: 1170px){
     .div-addtask-input-fields {
         flex-direction: column;

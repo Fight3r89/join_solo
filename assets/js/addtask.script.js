@@ -1,8 +1,10 @@
 
+
 async function init() {
     await includeHTML();
     navChangeColor();
     await getUserDataFromLocalStorage();
+    addSelection(selected);
 }
 
 function navChangeColor() {

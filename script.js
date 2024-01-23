@@ -8,6 +8,7 @@ let tasksDone = 0;
 let tasksInProgress = 0;
 let tasksAwaitFeedback = 0;
 let tasksUrgent = 0;
+let selected = 'med';
 
 async function includeHTML() {
     let elements = document.querySelectorAll('[w3-include-html]');
@@ -79,7 +80,7 @@ async function createNewTask(){
     newTask.description = document.getElementById('description').value;
     newTask.assigned_to.push(document.getElementById('assigned-to').value);
     newTask.date = document.getElementById('date').value;
-    newTask.prio = 'urgent';
+    newTask.prio = selected;
     newTask.category = document.getElementById('category').value;
     newTask.subtasks.push(document.getElementById('subtasks').value);
     await saveTasksToBackend(newTask);
@@ -118,4 +119,33 @@ function setAmounts() {
         if (userTasks[i].prio == 'urgent') tasksUrgent += 1;
         //console.log(tasks[i].prio);
     }
+}
+
+function choosePrio(prio) {
+    if (!selected) {
+        addSelection(prio);
+        selected = prio;
+    }
+    else if (prio === selected) {
+        removeSelection(selected);
+        selected = null;
+    }
+    else {
+        removeSelection(selected);
+        addSelection(prio);
+        selected = prio;
+    }
+}
+
+function removeSelection(selected) {
+    if (selected) {
+        document.getElementById('prio_' + selected).classList.remove('bg-color-' + selected);
+        document.getElementById('prio_' + selected).classList.remove('prio-selected');
+    }
+}
+
+
+function addSelection(prio) {
+    document.getElementById('prio_' + prio).classList.add('bg-color-' + prio);
+    document.getElementById('prio_' + prio).classList.add('prio-selected');
 }

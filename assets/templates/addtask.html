@@ -25,9 +25,9 @@
                     <input required type="date" id="date">
                     <label for="description">Prio</label>
                     <div class="div-input-prio">
-                        <div class="div-prio">Urgent<img src="assets/icons/prio_urgent.png"></div>
-                        <div class="div-prio">Medium<img src="assets/icons/prio_med.png"></div>
-                        <div class="div-prio">Low<img src="assets/icons/prio_low.png"></div>
+                        <div class="div-prio" id="prio_urgent" onclick="choosePrio('urgent')">Urgent<img src="assets/icons/prio_urgent.png"></div>
+                        <div class="div-prio" id="prio_med" onclick="choosePrio('med')">Medium<img src="assets/icons/prio_med.png"></div>
+                        <div class="div-prio" id="prio_low" onclick="choosePrio('low')">Low<img src="assets/icons/prio_low.png"></div>
                     </div>
 
                     <label for="category">Category<span class="required-field">*</span></label>

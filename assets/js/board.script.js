@@ -32,6 +32,7 @@ function renderHtml() {
     clearTaskCardContainer();
     noTasksToDo();
     renderTaskCards();
+    addSelection(selected);
 }
 
 function clearTaskCardContainer() {
