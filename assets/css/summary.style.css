@@ -125,6 +125,7 @@
     flex: 2;
     justify-content: center;
     gap: 13px;
+    align-items: center;
 }
 
 #upcoming-deadline-date{
