@@ -1,3 +1,6 @@
+let amount_subtasks = 0;
+let subtsasks_done = 0;
+
 async function init() {
     await getUserDataFromLocalStorage();
     await includeHTML();
@@ -55,9 +58,20 @@ function noTasksToDoHtml() {
 
 function renderTaskCards() {
     userTasks.forEach(tasks => {
-        if(tasks.task == 'todo') document.getElementById('div-tasks-to-do').innerHTML += renderTaskCardHtml(tasks);
+        if(tasks.task == 'todo') {document.getElementById('div-tasks-to-do').innerHTML += renderTaskCardHtml(tasks)};
     });
     
+    
+}
+
+function renderAmountOfSubtasks(task){
+    subtsasks_done = 0;
+    task.subtasks.forEach((st) =>{
+        if(st.done){
+            subtsasks_done +=1;
+        }
+    });
+    return `${subtsasks_done}/${task.subtasks.length} Subtasks`;
 }
 
 function renderTaskCardHtml(task) {
@@ -75,7 +89,7 @@ function renderTaskCardHtml(task) {
             <div class="task-card-subtasks">
                 <div class="task-card--subtasks-progressbar">bar</div>
                 <div class="task-card-subtasks-amount">
-                    1/2 Subtasks
+                    ${renderAmountOfSubtasks(task)}
                 </div>
                 </div>
                 <div class="task-card-footer">
