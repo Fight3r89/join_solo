@@ -1,4 +1,6 @@
-input, textarea, select  {
+input,
+textarea,
+select {
     margin-bottom: 32px;
 }
 
@@ -11,7 +13,7 @@ input, textarea, select  {
     gap: 16px;
 }
 
-.div-prio{
+.div-prio {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,21 +44,21 @@ input, textarea, select  {
     margin-bottom: 0;
 }
 
-.board-search-bar-mobile{
+.board-search-bar-mobile {
     display: none;
     cursor: pointer;
 }
 
-.flex-content-main{
+.flex-content-main {
     display: flex;
     flex-direction: column;
 }
 
-.mb-0{
+.mb-0 {
     margin-bottom: 0;
 }
 
-.div-board-head{
+.div-board-head {
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -66,13 +68,13 @@ input, textarea, select  {
     margin-bottom: 56px;
 }
 
-.div-board-search-bar{
+.div-board-search-bar {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-.no-tasks{
+.no-tasks {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,7 +85,7 @@ input, textarea, select  {
     color: #a8a8a8;
 }
 
-.task-card{
+.task-card {
     box-sizing: border-box;
     width: 252px;
     height: fit-content;
@@ -99,7 +101,7 @@ input, textarea, select  {
     cursor: pointer;
 }
 
-.task-card-category{
+.task-card-category {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,28 +114,47 @@ input, textarea, select  {
     margin-bottom: 24px;
 }
 
-.task-card-headline{
+.task-card-headline {
     font-weight: 700;
     margin-bottom: 8px;
     color: #2a3647;
 }
 
-.task-card-content{
+.task-card-content {
     color: #a8a8a8;
     margin-bottom: 24px;
 }
 
-.task-card-subtasks-amount{
+.task-card-subtasks-amount {
     font-size: 12px;
-    margin-bottom: 24px;
 }
 
-.task-card-subtasks, .task-card-footer{
+.task-card-subtasks-progressbar-background {
+    position: relative;
+    background-color: #f4f4f4;
+    flex: 1;
+    height: 8px;
+}
+
+.task-card-subtasks-progressbar{
+    background-color: #0038ff;
+    height: 100%;
+    border-radius: 16px;
+}
+
+.task-card-subtasks,
+.task-card-footer {
     display: flex;
     justify-content: space-between;
 }
 
-.task-card-footer-assigned{
+.task-card-subtasks {
+    margin-bottom: 24px;
+    align-items: center;
+    gap: 11px;
+}
+
+.task-card-footer-assigned {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,19 +168,19 @@ input, textarea, select  {
     margin-right: -8px;
 }
 
-.task-card-footer-left{
+.task-card-footer-left {
     display: flex;
 }
 
-.main-content{
+.main-content {
     display: grid;
     grid-template-columns: repeat(4, 252px);
-    grid-template-areas: 
+    grid-template-areas:
         'todo progress feedback done';
     gap: 26px;
 }
 
-.div-board-section{
+.div-board-section {
     display: flex;
     flex-direction: column;
     min-width: 246px;
@@ -178,17 +199,21 @@ input, textarea, select  {
     width: 24px;
     height: 24px;
 }
+
 /*---- Only For Grid-layout ----*/
-.section-to-do{
+.section-to-do {
     grid-area: todo;
 }
-.section-in-progress{
+
+.section-in-progress {
     grid-area: progress;
 }
-.section-await-feedback{
+
+.section-await-feedback {
     grid-area: feedback;
 }
-.section-done{
+
+.section-done {
     grid-area: done;
 }
 
@@ -198,18 +223,18 @@ input, textarea, select  {
     margin-bottom: 32px;
 }
 
-.task-card-slide{
+.task-card-slide {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     background-color: white;
-    position: absolute;    
+    position: absolute;
     top: 0;
-    bottom:0;
+    bottom: 0;
     left: 16px;
     /*right:16px;*/
     right: -150%;
-    margin: auto; 
+    margin: auto;
     max-width: 525px;
     height: 931px;
     padding: 48px 40px;
@@ -217,40 +242,42 @@ input, textarea, select  {
     gap: 24px;
 }
 
-.task-single-card-headline{
+.task-single-card-headline {
     font-size: 61px;
     font-weight: 700;
 }
 
-.task-single-card-date, .task-single-card-prio{
+.task-single-card-date,
+.task-single-card-prio {
     display: flex;
     align-items: center;
     gap: 25px;
 }
 
-.task-single-card-prio-right{
-    display: flex; 
-    align-items: center; 
+.task-single-card-prio-right {
+    display: flex;
+    align-items: center;
     padding-left: 18px;
 }
 
-.task-single-card-assignedto, .task-single-card-subtasks{
+.task-single-card-assignedto,
+.task-single-card-subtasks {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.task-single-card-subtasks{
+.task-single-card-subtasks {
     font-size: 16px;
 }
 
-.task-single-card-assignedto-list{
+.task-single-card-assignedto-list {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
-.task-single-card-assignedto-list-logo{
+.task-single-card-assignedto-list-logo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -262,14 +289,15 @@ input, textarea, select  {
     border-radius: 50%;
 }
 
-.task-single-card-assignedto-list-card, .task-single-card-list-card{
+.task-single-card-assignedto-list-card,
+.task-single-card-list-card {
     display: flex;
     align-items: center;
     padding: 7px 16px;
     gap: 16px;
 }
 
-.chkbox-task-single-card-subtasks-list{
+.chkbox-task-single-card-subtasks-list {
     width: 24px;
     height: 24px;
     border: 2px solid #2a3647;
@@ -277,13 +305,13 @@ input, textarea, select  {
     margin: 0;
 }
 
-.task-single-card-list-card:hover{
+.task-single-card-list-card:hover {
     cursor: pointer;
     background-color: #eeeeee;
     border-radius: 15px;
 }
 
-.task-single-card-list-card:hover img{
+.task-single-card-list-card:hover img {
     cursor: pointer;
     background-color: #d1d1d1;
 }
@@ -293,7 +321,7 @@ input, textarea, select  {
     border-radius: 50%;
 }
 
-.task-single-card-footer{
+.task-single-card-footer {
     height: 24px;
     display: flex;
     gap: 8px;
@@ -302,27 +330,31 @@ input, textarea, select  {
     font-size: 16px;
 }
 
-.task-single-card-footer-spacer{
+.task-single-card-footer-spacer {
     height: 100%;
     width: 1px;
     background-color: #d1d1d1;
 }
 
-.task-single-card-delete, .task-single-card-edit{
+.task-single-card-delete,
+.task-single-card-edit {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.task-single-card-delete:hover, .task-single-card-edit:hover{
+.task-single-card-delete:hover,
+.task-single-card-edit:hover {
     cursor: pointer;
-    color: #29abe2;  
+    color: #29abe2;
 }
-.task-single-card-delete:hover img, .task-single-card-edit:hover img {
+
+.task-single-card-delete:hover img,
+.task-single-card-edit:hover img {
     filter: invert(72%) sepia(69%) saturate(3211%) hue-rotate(165deg) brightness(89%) contrast(98%);
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -333,17 +365,17 @@ textarea {
     font-family: "Inter", sans-serif;
 }
 
-label{
+label {
     margin-bottom: 8px !important;
 }
 
-.main-content-add-task{
-        display: flex;
-        width: 100%;
-        overflow-y: auto;
+.main-content-add-task {
+    display: flex;
+    width: 100%;
+    overflow-y: auto;
 }
 
-.div-addtask-input-fields{
+.div-addtask-input-fields {
     box-sizing: border-box;
     display: flex;
     flex: 1;
@@ -352,7 +384,8 @@ label{
     gap: 48px;
 }
 
-.div-addtask-input-fields-left, .div-addtask-input-fields-right {
+.div-addtask-input-fields-left,
+.div-addtask-input-fields-right {
     box-sizing: border-box;
     max-width: 440px;
     display: flex;
@@ -360,11 +393,11 @@ label{
     flex: 1;
 }
 
-.required-field{
+.required-field {
     color: #ff8190;
 }
 
-.div-addtask-footer{
+.div-addtask-footer {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -375,32 +408,32 @@ label{
     font-size: 16px;
 }
 
-.div-addtask-buttons{
+.div-addtask-buttons {
     display: flex;
     gap: 16px;
 }
 
-.slide-container{
+.slide-container {
     background-color: rgba(0, 0, 0, 0.2);
-    position: absolute;
+    position: fixed;
     top: 0;
-    bottom:0;
+    bottom: 0;
     left: 0;
     right: 0;
     overflow-x: hidden;
 }
 
-.addtask-card{
+.addtask-card {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     background-color: white;
-    position: absolute;    
+    position: absolute;
     top: 0;
-    bottom:0;
+    bottom: 0;
     left: 16px;
     right: -150%;
-    margin: auto; 
+    margin: auto;
     max-width: 1116px;
     height: 870px;
     padding-top: 64px;
@@ -414,6 +447,7 @@ label{
     0% {
         right: -250%;
     }
+
     100% {
         right: 16px;
     }
@@ -423,6 +457,7 @@ label{
     0% {
         right: 16px;
     }
+
     100% {
         right: -250%;
     }
@@ -439,7 +474,7 @@ label{
     cursor: pointer;
 }
 
-.d-none{
+.d-none {
     display: none;
 }
 
@@ -450,59 +485,59 @@ label{
 /*-----------------------------*/
 
 @media (max-width: 1430px) {
-    .main-content{
+    .main-content {
         grid-template-columns: repeat(3, 252px);
-        grid-template-areas: 
+        grid-template-areas:
             'todo progress feedback'
             'done done done';
     }
 }
 
 @media (max-width: 1170px) {
-    .main-content{
+    .main-content {
         grid-template-columns: repeat(2, 252px);
-        grid-template-areas: 
+        grid-template-areas:
             'todo progress'
             'feedback done';
     }
 
-    .div-board-head{
+    .div-board-head {
         flex-direction: column;
         height: fit-content;
     }
 
-    .site-title{
+    .site-title {
         padding-bottom: 56px;
     }
 }
 
-@media (max-width: 905px){
-    .main-content{
+@media (max-width: 905px) {
+    .main-content {
         justify-content: center;
     }
 
-    .board-search-bar-mobile{
+    .board-search-bar-mobile {
         display: flex;
 
     }
 
-    .div-board-head{
+    .div-board-head {
         flex-direction: row;
     }
 
-    .site-title{
+    .site-title {
         padding-bottom: 0;
     }
 
-    .div-board-search-bar{
+    .div-board-search-bar {
         display: none;
     }
 }
 
-@media (max-width: 580px){
-    .main-content{
+@media (max-width: 580px) {
+    .main-content {
         grid-template-columns: 100%;
-        grid-template-areas: 
+        grid-template-areas:
             'todo'
             'progress'
             'feedback'
