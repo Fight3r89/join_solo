@@ -19,12 +19,12 @@ function subtaskInputDelete() {
     document.getElementById('subtasks-add-delete').classList.add('d-none');
 }
 
-function addSubtaskToArray(){
-    addSubtask.push(document.getElementById('subtasks').value);
-    document.getElementById('subtasks').value = '';
-    document.getElementById('subtasks-plus').classList.remove('d-none');
-    document.getElementById('subtasks-add-delete').classList.add('d-none');
-    showSubtasks();
+function addSubtaskToArray() {
+        addSubtask.push({task:document.getElementById('subtasks').value,done:false});
+        document.getElementById('subtasks').value = '';
+        document.getElementById('subtasks-plus').classList.remove('d-none');
+        document.getElementById('subtasks-add-delete').classList.add('d-none');
+        showSubtasks();
 }
 
 function changeSubtasksAddImage() {
@@ -42,10 +42,10 @@ function changeSubtasksAddImage() {
     });
 }
 
-function showSubtasks(){
+function showSubtasks() {
     document.getElementById('showSubtasks').innerHTML = '';
     addSubtask.forEach(ast => {
-        document.getElementById('showSubtasks').innerHTML += `<li>${ast}</li>`;
+        document.getElementById('showSubtasks').innerHTML += `<div class="subtasks-hover"><li>${ast.task}</li><div style="display:flex; gap:8px"><img src="assets/icons/delete.png"><div style="width: 1px; background: #d1d1d1;"></div><img src="assets/icons/edit.png"></div></div>`;
     });
-    
+
 }

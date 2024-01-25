@@ -35,11 +35,11 @@ async function loadUserTasks() {
             fetchTasks.autor = loggedInUser.id;
             fetchTasks.title = task.title;
             fetchTasks.description = task.description;
-            fetchTasks.assigned_to.push(task.assigned_to);
+            fetchTasks.assigned_to = task.assigned_to;
             fetchTasks.date = task.date;
             fetchTasks.prio = task.prio;
             fetchTasks.category = task.category;
-            fetchTasks.subtasks.push(task.subtasks);
+            fetchTasks.subtasks = task.subtasks;
             fetchTasks.task = task.task;
             userTasks.push(fetchTasks);
         }

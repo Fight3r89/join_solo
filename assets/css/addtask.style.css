@@ -62,7 +62,7 @@ select {
     display: flex;
     flex: 1;
     padding-right: 16px;
-    padding-bottom: 138px;
+    padding-bottom: 38px;
 }
 
 .div-addtask-input-fields-left,
@@ -109,6 +109,20 @@ select {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
+}
+
+.subtasks-hover{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 16px;
+    height: 32px;
+}
+.subtasks-hover:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 @media (max-width: 1170px) {

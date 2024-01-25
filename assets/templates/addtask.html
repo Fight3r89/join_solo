@@ -4,7 +4,7 @@
     </div>
     <img class="close-slider" src="./assets/icons/close.png" onclick="slideOut('addtask-card')">
     <div class="main-content-add-task">
-        <form action="" onsubmit="createNewTask(); return false;">
+        <form action="" onsubmit="createNewTask(); return false">
             <div class="div-addtask-input-fields">
                 <div class="div-addtask-input-fields-left">
                     <label for="title">Title<span class="required-field">*</span></label>
@@ -17,53 +17,57 @@
                     <select name="assigned-to" id="assigned-to">
                         <option value="">Select contacts to assign</option>
                     </select>
-
                 </div>
                 <div class="seperator-vertical-gray"></div>
                 <div class="div-addtask-input-fields-right">
                     <label for="date">Due date<span class="required-field">*</span></label>
-                    <input required type="date" id="date">
+                    <input type="date" id="date">
                     <label for="description">Prio</label>
                     <div class="div-input-prio">
-                        <div class="div-prio" id="prio_urgent" onclick="choosePrio('urgent')">Urgent<img
-                                src="assets/icons/prio_urgent.png"></div>
-                        <div class="div-prio" id="prio_med" onclick="choosePrio('med')">Medium<img
-                                src="assets/icons/prio_med.png"></div>
-                        <div class="div-prio" id="prio_low" onclick="choosePrio('low')">Low<img
-                                src="assets/icons/prio_low.png"></div>
+                        <div class="div-prio" id="prio_urgent" onclick="choosePrio('urgent')">
+                            Urgent
+                            <img src="assets/icons/prio_urgent.png">
+                        </div>
+                        <div class="div-prio" id="prio_med" onclick="choosePrio('med')">
+                            Medium
+                            <img src="assets/icons/prio_med.png">
+                        </div>
+                        <div class="div-prio" id="prio_low" onclick="choosePrio('low')">
+                            Low
+                            <img src="assets/icons/prio_low.png">
+                        </div>
                     </div>
-
                     <label for="category">Category<span class="required-field">*</span></label>
-                    <select required name="category" id="category">
+                    <select name="category" id="category">
                         <option value="">Select tast category</option>
                         <option value="User Story">User Story</option>
                         <option value="Technical Task">Technical Task</option>
                     </select>
-                    <label for="subtask">Subtasks</label>
+                    <label for="subtasks">Subtasks</label>
                     <div style="position: relative;">
                         <input type="text" id="subtasks" placeholder="Add new subtask">
                         <img src="assets/icons/plus.png" id="subtasks-plus" class="subtasks-add-icons">
                         <div id="subtasks-add-delete" class="subtasks-add-icons subtasks-add-delete d-none">
                             <img src="assets/icons/close.png" class="subtasks-img-hover" onclick="subtaskInputDelete()">
                             <div style="width: 1px; background: #d1d1d1;"></div>
-                            <img src="assets/icons/check_blue.png" class="subtasks-img-hover" onclick="addSubtaskToArray()">
+                            <img src="assets/icons/check_blue.png" class="subtasks-img-hover"
+                                onclick="addSubtaskToArray()">
                         </div>
                     </div>
-                    <div id="showSubtasks">
+                    <div style="height: 100px; overflow-y: auto;" id="showSubtasks">
                     </div>
-
+                </div>
+            </div>
+            <div class="div-addtask-footer">
+                <p><span class="required-field">*</span>This field is required</p>
+                <div class="div-addtask-buttons">
+                    <div class="button-bordered" onclick="clearInputFields()">Clear<img src="assets/icons/close.png"></div>
+                    <button>Create Task<img src="assets/icons/check.png"> </button>
                 </div>
 
             </div>
+        </form>
     </div>
-    <div class="div-addtask-footer">
-        <p><span class="required-field">*</span>This field is required</p>
-        <div class="div-addtask-buttons">
-            <div class="button-bordered">Clear<img src="assets/icons/close.png"></div>
-            <button>Create Task<img src="assets/icons/check.png"> </button>
-        </div>
 
-    </div>
-    </form>
 </div>
 </div>
