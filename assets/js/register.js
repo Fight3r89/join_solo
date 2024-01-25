@@ -46,11 +46,9 @@ async function saveUser() {
 }
 
 function changeCheckboxImage(path) {
-    //console.log(path);
     let imagePath = new URL(path).pathname.split('/');
     imagePath.shift();
     imagePath = imagePath.join('/');
-    console.log(imagePath);
     if (imagePath == 'assets/icons/check_box.png') {
         document.getElementById('policy').src = 'assets/icons/check_box_checked.png';
         document.getElementById('btn-signUp').disabled = false;

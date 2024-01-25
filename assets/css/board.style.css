@@ -186,6 +186,12 @@ select {
     min-width: 246px;
 }
 
+.div-tasks-sections {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .div-board-section-headline {
     display: flex;
     align-items: center;
@@ -240,6 +246,19 @@ select {
     padding: 48px 40px;
     border-radius: 30px;
     gap: 24px;
+}
+
+.task-single-card-category{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 27px;
+    padding: 4px 16px;
+    border-radius: 8px;
+    background-color: #0038ff;
+    color: white;
+    margin-bottom: 24px;
 }
 
 .task-single-card-headline {

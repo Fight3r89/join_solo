@@ -27,6 +27,7 @@ function saveTask() {
 }
 
 async function loadUserTasks() {
+    userTasks = [];
     await loadTasksFromBackend();
     tasks.forEach(task => {
         if (task.autor == loggedInUser.id) {
@@ -66,4 +67,16 @@ function setTaskId() {
     else {
         return 1;
     }
+}
+
+async function saveChangesTaskChanges(taskIdFromChangedTask, taskPosition){
+    await loadTasksFromBackend();
+    for (let i = 0; i < tasks.length; i++) {
+        if(tasks[i].taskId == taskIdFromChangedTask){
+            tasks.splice(tasks[i],1);
+            tasks.push(taskPosition);
+        }
+        setItem('tasks', tasks);
+    }
+    tasks = [];
 }

@@ -14,10 +14,11 @@ function navChangeColor() {
     document.getElementById('mobile-nav-board').onclick = null;
 }
 
-function slideIn(container) {
+function slideIn(container, taskId) {
     document.getElementById(container + '-container').classList.remove('d-none');
     document.getElementById(container).style.right = '16px';
     document.getElementById(container).style.animation = 'slide_in 0.3s ease-out';
+    renderSingleTaskCard(taskId);
 }
 
 function slideOut(container) {
@@ -61,23 +62,14 @@ function renderTaskCards() {
 
 }
 
-/*function renderAmountOfSubtasks(task) {
-    subtsasks_done = 0;
-    
-    return `${subtsasks_done}/${task.subtasks.length} Subtasks`;
-}*/
-
 function renderSubtasks(task) {
     let subtsasks_done = 0;
-
     if (task.subtasks.length > 0) {
         task.subtasks.forEach((st) => {
             if (st.done) {
-                console.log(subtsasks_done);
                 subtsasks_done += 1;
             }
         })
-
         return `<div class="task-card-subtasks-progressbar-background">
                     <div class="task-card-subtasks-progressbar" style="width:${subtsasks_done / task.subtasks.length * 100}%"></div>
                 </div>
@@ -92,7 +84,7 @@ function renderSubtasks(task) {
 
 function renderTaskCardHtml(task) {
     return `
-        <div class="task-card" onclick="slideIn('task-card-slide')">
+        <div class="task-card" onclick="slideIn('task-card-slide',${task.taskId})">
             <div class="task-card-category">
                 ${task.category}
             </div>
@@ -117,4 +109,56 @@ function renderTaskCardHtml(task) {
                     <img src="assets/icons/prio_${task.prio}.png" class="task-card-footer-prio">
                 </div>
             </div>`
+}
+
+function renderSingleTaskCard(taskId) {
+    clearSingleTaskCard();
+    setSingleTasCardContent(taskId);
+}
+
+function clearSingleTaskCard() {
+    document.getElementById('ask-single-card-category').innerHTML = '';
+    document.getElementById('task-single-card-headline').innerHTML = '';
+    document.getElementById('task-single-card-content').innerHTML = '';
+    document.getElementById('task-single-card-date').innerHTML = '';
+    document.getElementById('task-single-card-prio-right').innerHTML = '';
+    //document.getElementById('').innerHTML = ''; ASSIGNED TO
+    document.getElementById('task-single-card-subtasks-list').innerHTML = '';
+}
+
+function setSingleTasCardContent(taskId) {
+    for (let i = 0; i < userTasks.length; i++) {
+        if (userTasks[i].taskId == taskId) {
+            let dateSplit = userTasks[i].date.split('-');
+            let dateOutput = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0];
+
+            document.getElementById('ask-single-card-category').innerHTML = userTasks[i].category;
+            document.getElementById('task-single-card-headline').innerHTML = userTasks[i].title;
+            document.getElementById('task-single-card-content').innerHTML = userTasks[i].description;
+            document.getElementById('task-single-card-date').innerHTML = dateOutput;
+            document.getElementById('task-single-card-prio-right').innerHTML = `${userTasks[i].prio[0].toUpperCase() + userTasks[i].prio.slice(1)}
+            <img src="assets/icons/prio_${userTasks[i].prio}.png" class="task-card-footer-prio">`;
+            if (userTasks[i].subtasks.length > 0) {
+                for (let j = 0; j < userTasks[i].subtasks.length; j++) {
+                    let subtasDoneImg;
+                    (userTasks[i].subtasks[j].done) ? subtasDoneImg = 'check_box_checked' : subtasDoneImg = 'check_box';
+                    document.getElementById('task-single-card-subtasks-list').innerHTML += `
+                        <div class="task-single-card-list-card">
+                            <img src="assets/icons/${subtasDoneImg}.png" onclick="changeSubtaskDone(${i},${j})">
+                            <p>${userTasks[i].subtasks[j].task}</p>
+                        </div>`;
+                };
+            }
+            else {
+                document.getElementById('task-single-card-subtasks-list').innerHTML += `<p>No Subtasks avalable</p>`;
+            }
+        }
+    }
+}
+
+function changeSubtaskDone(taskPosition, subTaskPosition) {
+    userTasks[taskPosition].subtasks[subTaskPosition].done = !userTasks[taskPosition].subtasks[subTaskPosition].done
+    renderSingleTaskCard(userTasks[taskPosition].taskId);
+    savesaveChangesTaskChanges(userTasks[taskPosition].taskId, userTasks[taskPosition]); 
+    renderHtml();   
 }

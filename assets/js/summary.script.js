@@ -76,13 +76,16 @@ function upcoomingDeadLine() {
     heute.setHours(0, 0, 0, 0);
     userTasks.forEach(userTask => {
         const taskDate = new Date(userTask.date);
-        if (taskDate > heute && (!nextDate || taskDate < nextDate)) {
-            nextDate = taskDate;
+        if (userTask.prio == 'urgent') {
+            if (taskDate > heute && (!nextDate || taskDate < nextDate)) {
+                nextDate = taskDate;
+            }
         }
     });
-    if(nextDate) return formateDeadlineDate(nextDate);
+
+    if (nextDate) return formateDeadlineDate(nextDate);
     else return 'No upcoming Deadline';
-    
+
 }
 
 function formateDeadlineDate(nextDate) {

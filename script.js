@@ -9,7 +9,7 @@ let tasksDone = 0;
 let tasksInProgress = 0;
 let tasksAwaitFeedback = 0;
 let tasksUrgent = 0;
-let selected = 'med';
+let selected = 'medium';
 
 async function includeHTML() {
     let elements = document.querySelectorAll('[w3-include-html]');
@@ -75,7 +75,6 @@ async function checkLoggedIn(){
 }
 
 async function createNewTask(){
-    //debugger;
     let newTask = new Task;
     newTask.autor = loggedInUser.id;
     newTask.title = document.getElementById('title').value;
@@ -121,7 +120,6 @@ function setAmounts() {
                 break;
         }
         if (userTasks[i].prio == 'urgent') tasksUrgent += 1;
-        //console.log(tasks[i].prio);
     }
 }
 
