@@ -1,7 +1,6 @@
-class User{
+class Person {
     id;
     firstName;
     lastName;
     eMail;
-    password;
 }

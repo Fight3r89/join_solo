@@ -1,7 +1,8 @@
-class User{
+class Contact {
     id;
     firstName;
     lastName;
     eMail;
-    password;
+    phone;
+    assignedTo;
 }

@@ -159,6 +159,6 @@ function setSingleTasCardContent(taskId) {
 function changeSubtaskDone(taskPosition, subTaskPosition) {
     userTasks[taskPosition].subtasks[subTaskPosition].done = !userTasks[taskPosition].subtasks[subTaskPosition].done
     renderSingleTaskCard(userTasks[taskPosition].taskId);
-    savesaveChangesTaskChanges(userTasks[taskPosition].taskId, userTasks[taskPosition]); 
+    saveChangesTaskChanges(userTasks[taskPosition].taskId, userTasks[taskPosition]); 
     renderHtml();   
 }

@@ -80,3 +80,34 @@ async function saveChangesTaskChanges(taskIdFromChangedTask, taskPosition){
     }
     tasks = [];
 }
+
+async function loadContactsFromBackend() {
+    allContacts = JSON.parse(await getItem('contacts'));
+}
+
+async function saveContactsToBackend(contact) {
+    await loadContactsFromBackend();
+    contact.id = allContacts.length;
+    allContacts.push(contact);
+    setItem('contacts', allContacts);
+    allContacts = [];
+}
+
+async function loadUsersContacts() {
+    userContacts = [];
+    await loadContactsFromBackend();
+
+    allContacts.forEach(uc => {
+        if (uc.assignedTo == loggedInUser.id) {
+            let fetchContacts = new Contact;
+            fetchContacts.id = uc.id;
+            fetchContacts.firstName = uc.firstName
+            fetchContacts.lastName = uc.lastName;
+            fetchContacts.eMail = uc.eMail;
+            fetchContacts.phone = uc.phone;
+            fetchContacts.assignedTo = uc.assignedTo;
+            userContacts.push(fetchContacts);
+        }
+    });
+    allContacts = [];
+}
