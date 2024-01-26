@@ -20,7 +20,7 @@ button{
     width: 100%;
 }
 
-.div-contacts-list{
+.div-contacts{
     box-sizing: border-box;
     min-width: 456px;
     height: 100%;
@@ -297,7 +297,7 @@ button{
     .flex-content-main{
         padding-left: 16px;
     }
-    .div-contacts-list{
+    .div-contacts{
         max-width: 348px;
     }
     .title-sub{
@@ -334,7 +334,7 @@ button{
         display: none;
     }
 
-    .div-contacts-list{
+    .div-contacts{
         min-width: 100%;
         padding-left: 16px;
         padding-right: 16px;
