@@ -8,31 +8,31 @@ async function init() {
     renderContactHtml();
 }
 
-function navChangeColor(){
+function navChangeColor() {
     document.getElementById('nav-contacts').classList.add('link-active');
     document.getElementById('nav-contacts').onclick = null;
     document.getElementById('mobile-nav-contacts').classList.add('link-active');
     document.getElementById('mobile-nav-contacts').onclick = null;
 }
 
-function slideIn(container){
-    if(container == 'single-contact' && !document.getElementById('single-contact-container').classList.contains('d-none')){
-        setTimeout (function(){
+function slideIn(container) {
+    if (container == 'single-contact' && !document.getElementById('single-contact-container').classList.contains('d-none')) {
+        setTimeout(function () {
             document.getElementById('single-contact-container').classList.add('d-none');
-        },20);
-        
+        }, 20);
+
     }
-    document.getElementById(container+'-container').classList.remove('d-none');
+    document.getElementById(container + '-container').classList.remove('d-none');
     document.getElementById(container).style.right = '0';
     document.getElementById(container).style.animation = 'slide_in 0.3s ease-out';
 }
 
-function slideOut(container){
+function slideOut(container) {
     document.getElementById(container).style.animation = 'slide_out 0.3s ease-out';
-    setTimeout (function(){
-        document.getElementById(container+'-container').classList.add('d-none');
+    setTimeout(function () {
+        document.getElementById(container + '-container').classList.add('d-none');
         document.getElementById(container).style.right = '-150%';
-    },280); 
+    }, 280);
 }
 
 async function addContact() {
@@ -41,11 +41,11 @@ async function addContact() {
     let firstName;
     let lastName;
 
-    if(nameInput.split(" ").length > 1 ) {
+    if (nameInput.split(" ").length > 1) {
         firstName = nameInput.split(" ")[0];
         lastName = nameInput.split(" ")[1];
     }
-    else{
+    else {
         firstName = nameInput[0];
         lastName = '';
     }
@@ -59,7 +59,7 @@ async function addContact() {
     clearInputFields();
     slideOut('contacts-add-card');
     await loadUsersContacts();
-    renderContactHtml();    
+    renderContactHtml();
 }
 
 function clearInputFields() {
@@ -68,8 +68,10 @@ function clearInputFields() {
     document.getElementById('contact_phone').value = '';
 }
 
-function renderContactHtml(){
+function renderContactHtml() {
     clearContactList();
+    sortContacts();
+    ContactsSortHeadline();
     renderContactsHtmlCard();
 }
 
@@ -77,11 +79,14 @@ function clearContactList() {
     document.getElementById('div-contacts-list').innerHTML = '';
 }
 
-function renderContactsHtmlCard(){
+function rederContactsSortHeadline() {
+
+}
+
+function renderContactsHtmlCard() {
     for (let i = 0; i < userContacts.length; i++) {
-        
         let inizials = userContacts[i].firstName[0] + userContacts[i].lastName[0];
-        document.getElementById('div-contacts-list').innerHTML += `
+        document.getElementById('contactFirstLetter'+userContacts[i].firstName[0]).innerHTML += `
         <div class="div-contacts-list-card" onclick="openSingleContact('single-contact', ${i})">
             <div class="div-contacts-list-logo">${inizials}</div>
             <div class="div-contacts-list-data">
@@ -90,25 +95,25 @@ function renderContactsHtmlCard(){
             </div>
         </div>`;
     };
-    
+
 }
 
-async function renderSingleContact(arrayPosotion){
+async function renderSingleContact(arrayPosotion) {
     clearSingleContactContainer();
     renderSingleContactContainerHtml(arrayPosotion);
 }
 
-function clearSingleContactContainer(){
+function clearSingleContactContainer() {
     document.getElementById('single-contact-logo').innerHTML = '';
     document.getElementById('single-contact-name').innerHTML = '';
     document.getElementById('single-contact-data-mail').innerHTML = '';
     document.getElementById('single-contact-data-phone').innerHTML = '';
 }
 
-function renderSingleContactContainerHtml(arrayPosotion){
-    let inizials = userContacts[arrayPosotion].firstName[0] + userContacts[arrayPosotion].lastName[0]; 
+function renderSingleContactContainerHtml(arrayPosotion) {
+    let inizials = userContacts[arrayPosotion].firstName[0] + userContacts[arrayPosotion].lastName[0];
     document.getElementById('single-contact-logo').innerHTML = inizials;
-    document.getElementById('single-contact-name').innerHTML = userContacts[arrayPosotion].firstName +' '+ userContacts[arrayPosotion].lastName;
+    document.getElementById('single-contact-name').innerHTML = userContacts[arrayPosotion].firstName + ' ' + userContacts[arrayPosotion].lastName;
     document.getElementById('single-contact-data-mail').innerHTML = userContacts[arrayPosotion].eMail;
     document.getElementById('single-contact-data-phone').innerHTML = userContacts[arrayPosotion].phone;
     document.getElementById('single-contact-name-edit').innerHTML = `
@@ -120,7 +125,7 @@ function renderSingleContactContainerHtml(arrayPosotion){
     </div>`;
 }
 
-async function openSingleContact(target, arrayPosotion){
+async function openSingleContact(target, arrayPosotion) {
     await renderSingleContact(arrayPosotion);
     slideIn(target);
 }
@@ -128,13 +133,45 @@ async function openSingleContact(target, arrayPosotion){
 async function deleteContact(contactId) {
     await loadContactsFromBackend();
     for (let i = 0; i < allContacts.length; i++) {
-        if(allContacts[i].id == contactId){
-            allContacts.splice(i,1);
-        }     
+        if (allContacts[i].id == contactId) {
+            allContacts.splice(i, 1);
+        }
     }
     await saveContactsToBackend();
     allContacts = [];
     await loadUsersContacts();
     slideOut('single-contact');
-    renderContactHtml();    
+    renderContactHtml();
+}
+
+function sortContacts() {
+    userContacts.sort(function (a, b) {
+        let firstNameA = a.firstName.toLowerCase();
+        let firstNameB = b.firstName.toLowerCase();
+
+        if (firstNameA < firstNameB) return -1;
+        if (firstNameA > firstNameB) return 1;
+        return 0;
+    });
+}
+
+function ContactsSortHeadline() {
+    let currentLetter = '';
+    for (let i = 0; i < userContacts.length; i++) {
+        let firstLetter = userContacts[i].firstName.charAt(0).toUpperCase();
+
+        if (firstLetter !== currentLetter) {
+            renderContactsSortHeadlineHtml(firstLetter);
+            currentLetter = firstLetter;
+        }
+    }
+}
+
+function renderContactsSortHeadlineHtml(firstLetter) {
+    document.getElementById('div-contacts-list').innerHTML += `
+    <div class="div contacts-list-letter">
+        ${firstLetter}
+    </div>
+    <div class="seperator-contacts-list"></div>
+    <div id="contactFirstLetter${firstLetter}"></div>`;
 }
