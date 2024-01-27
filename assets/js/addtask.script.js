@@ -1,3 +1,5 @@
+let toggleShowAssignedTo = false;
+
 async function init() {
     await includeHTML();
     navChangeColor();
@@ -20,11 +22,11 @@ function subtaskInputDelete() {
 }
 
 function addSubtaskToArray() {
-        addSubtask.push({task:document.getElementById('subtasks').value,done:false});
-        document.getElementById('subtasks').value = '';
-        document.getElementById('subtasks-plus').classList.remove('d-none');
-        document.getElementById('subtasks-add-delete').classList.add('d-none');
-        showSubtasks();
+    addSubtask.push({ task: document.getElementById('subtasks').value, done: false });
+    document.getElementById('subtasks').value = '';
+    document.getElementById('subtasks-plus').classList.remove('d-none');
+    document.getElementById('subtasks-add-delete').classList.add('d-none');
+    showSubtasks();
 }
 
 function changeSubtasksAddImage() {
@@ -50,11 +52,67 @@ function showSubtasks() {
 
 }
 
-setTimeout(() =>{
+setTimeout(() => {
     document.getElementById('subtasks').addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
             event.preventDefault(); // Verhindert das Absenden des Formulars
             addSubtaskToArray(); // Führt die gewünschte Aktion aus
         }
     });
-},50);
+}, 50);
+
+async function addContactsToAssignedTo() {
+    await loadUsersContacts();
+
+    for (let i = 0; i < userContacts.length; i++) {
+        document.getElementById('contactsAssignedTo').innerHTML += `
+        <div class="assignedToContactsListItemContainer" id="contact${i}" onclick="selectContactForAssign(${i})">
+            <div class="assignedToContactsListItemContainerLeft">
+                <div class="assignedToContactsListInizials">
+                    SF
+                </div>
+                ${userContacts[i].firstName} ${userContacts[i].lastName}
+            </div>
+            <img id="checkbox${i}" src="assets/icons/check_box.png">
+        </div>`;
+    }
+}
+
+async function openContactsAssignedTo() {
+    let inputAssignedTo = document.getElementById('contactsAssignedTo');
+    inputAssignedTo.innerHTML = '';
+    if (!toggleShowAssignedTo) {
+        await addContactsToAssignedTo();
+        inputAssignedTo.classList.remove('d-none');
+    } else {
+        inputAssignedTo.classList.add('d-none');
+    }
+    toggleShowAssignedTo = !toggleShowAssignedTo;
+}
+
+function selectContactForAssign(i){
+    let path = document.getElementById('checkbox'+i).src;
+    let imagePath = new URL(path).pathname.split('/');
+    imagePath.shift();
+    imagePath = imagePath.join('/');
+    if (imagePath == 'assets/icons/check_box.png') {
+        document.getElementById('checkbox'+i).src = 'assets/icons/check_box_checked.png';
+        addContactsToAssignedToArray(i);
+    }
+    else{
+        document.getElementById('checkbox'+i).src = 'assets/icons/check_box.png';
+        deleteContactsToAssignedToArray(userContacts[i].id);
+    }
+}
+
+function addContactsToAssignedToArray(arrayPosition) {
+    addAssignedTo.push(userContacts[arrayPosition]);
+}
+
+function deleteContactsToAssignedToArray(userId){
+    for (let i = 0; i < addAssignedTo.length; i++) {
+        if(addAssignedTo[i].id == userId){
+            addAssignedTo.splice(i,1);
+        }        
+    }
+}

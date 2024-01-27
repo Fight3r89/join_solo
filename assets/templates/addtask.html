@@ -13,10 +13,11 @@
                     <label for="description">Description</label>
                     <textarea id="description" placeholder="Enter a Description"></textarea>
 
-                    <label for="assigned-to">Assigned to</label>
-                    <select name="assigned-to" id="assigned-to">
-                        <option value="">Select contacts to assign</option>
-                    </select>
+                    <div id="addTaskAsignedTo">
+                        <div class="addTaskAssignedToSelectDefault" onclick="openContactsAssignedTo()">Select contacts to assign</div>
+                    </div>
+                    <div id="contactsAssignedTo" class="contactsAssignedTo d-none"></div>
+
                 </div>
                 <div class="seperator-vertical-gray"></div>
                 <div class="div-addtask-input-fields-right">

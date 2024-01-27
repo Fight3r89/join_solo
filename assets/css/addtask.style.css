@@ -111,7 +111,7 @@ select {
     border-radius: 50%;
 }
 
-.subtasks-hover{
+.subtasks-hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -120,9 +120,67 @@ select {
     font-size: 16px;
     height: 32px;
 }
-.subtasks-hover:hover{
+
+.subtasks-hover:hover {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+}
+
+.contactsAssignedTo {
+    background-color: #fff;
+    max-height: 168px;
+    overflow-y: auto;
+}
+
+.addTaskAssignedToSelectDefault {
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 12px 21px;
+    border: 1px solid #d1d1d1;
+    font-size: 20px;
+    font-family: Inter, sans-serif;
+    outline: 0;
+    width: 100%;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.assignedToContactsListItemContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    padding: 0 21px;
+}
+
+.assignedToContactsListItemContainer:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.assignedToContactsListItemContainerLeft {
+    display: flex;
+    align-items: center;
+    gap: 16px
+}
+
+.assignedToContactsListItemContainerLeft img {
+    width: 20px;
+    height: 20px;
+}
+
+.assignedToContactsListInizials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    min-width: 42px;
+    height: 42px;
+    background-color: #ff7a00;
+    color: white;
+    font-size: 12px;
+    border: 3px solid #fff;
 }
 
 @media (max-width: 1170px) {

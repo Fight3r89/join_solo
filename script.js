@@ -1,10 +1,11 @@
 let tasks = [];
 let users = [];
+let allContacts = [];
 let addSubtask = [];
+let addAssignedTo = [];
 let loggedInUser = [];
 let userTasks = [];
 let userContacts = [];
-let allContacts = [];
 let amountOfTasks = 0;
 let tasksTodo = 0;
 let tasksDone = 0;
@@ -12,6 +13,7 @@ let tasksInProgress = 0;
 let tasksAwaitFeedback = 0;
 let tasksUrgent = 0;
 let selected = 'medium';
+
 
 async function includeHTML() {
     let elements = document.querySelectorAll('[w3-include-html]');
@@ -81,7 +83,7 @@ async function createNewTask(){
     newTask.autor = loggedInUser.id;
     newTask.title = document.getElementById('title').value;
     newTask.description = document.getElementById('description').value;
-    newTask.assigned_to.push(document.getElementById('assigned-to').value);
+    //newTask.assigned_to.push(document.getElementById('assigned-to').value);
     newTask.date = document.getElementById('date').value;
     newTask.prio = selected;
     newTask.category = document.getElementById('category').value;
