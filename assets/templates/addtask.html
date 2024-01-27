@@ -21,7 +21,7 @@
                 <div class="seperator-vertical-gray"></div>
                 <div class="div-addtask-input-fields-right">
                     <label for="date">Due date<span class="required-field">*</span></label>
-                    <input type="date" id="date">
+                    <input required type="date" id="date">
                     <label for="description">Prio</label>
                     <div class="div-input-prio">
                         <div class="div-prio" id="prio_urgent" onclick="choosePrio('urgent')">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <label for="category">Category<span class="required-field">*</span></label>
-                    <select name="category" id="category">
+                    <select required name="category" id="category">
                         <option value="">Select tast category</option>
                         <option value="User Story">User Story</option>
                         <option value="Technical Task">Technical Task</option>

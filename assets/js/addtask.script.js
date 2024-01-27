@@ -49,3 +49,12 @@ function showSubtasks() {
     });
 
 }
+
+setTimeout(() =>{
+    document.getElementById('subtasks').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Verhindert das Absenden des Formulars
+            addSubtaskToArray(); // Führt die gewünschte Aktion aus
+        }
+    });
+},50);
