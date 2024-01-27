@@ -83,7 +83,7 @@ async function createNewTask(){
     newTask.autor = loggedInUser.id;
     newTask.title = document.getElementById('title').value;
     newTask.description = document.getElementById('description').value;
-    //newTask.assigned_to.push(document.getElementById('assigned-to').value);
+    newTask.assigned_to = [...addAssignedTo];
     newTask.date = document.getElementById('date').value;
     newTask.prio = selected;
     newTask.category = document.getElementById('category').value;

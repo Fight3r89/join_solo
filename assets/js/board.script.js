@@ -99,17 +99,26 @@ function renderTaskCardHtml(task) {
             </div>
                 <div class="task-card-footer">
                     <div class="task-card-footer-left">
-                        <div class="task-card-footer-assigned">
-                            SF
-                        </div>
-                        <div class="task-card-footer-assigned">
-                            SF
-                        </div>
+                        ${getAssignTo(task)}
                     </div>
                     <img src="assets/icons/prio_${task.prio}.png" class="task-card-footer-prio">
                 </div>
             </div>`
 }
+
+function getAssignTo(task) {
+    let output = '';
+    task.assigned_to.forEach(at => {
+        let inizials = at.firstName[0] + at.lastName[0];
+        output += ` <div class="task-card-footer-assigned">
+                        ${inizials}
+                    </div>`;
+    });
+    return output;
+    
+}
+
+
 
 function renderSingleTaskCard(taskId) {
     clearSingleTaskCard();
@@ -152,9 +161,25 @@ function setSingleTasCardContent(taskId) {
             else {
                 document.getElementById('task-single-card-subtasks-list').innerHTML += `<p>No Subtasks avalable</p>`;
             }
+            console.log(userTasks[i].assigned_to);
+            if(userTasks[i].assigned_to.length > 0) {
+                document.getElementById('task-single-card-assignedto-list').innerHTML = '';
+                userTasks[i].assigned_to.forEach(at => {
+                    document.getElementById('task-single-card-assignedto-list').innerHTML += `
+                        <div class="task-single-card-assignedto-list-card">
+                            <div class="task-single-card-assignedto-list-logo">
+                            ${at.firstName[0]}${at.lastName[0]}
+                            </div>
+                            <p>${at.firstName} ${at.lastName}</p>
+                        </div>`;
+                });
+                
+            }
         }
     }
 }
+
+
 
 function changeSubtaskDone(taskPosition, subTaskPosition) {
     userTasks[taskPosition].subtasks[subTaskPosition].done = !userTasks[taskPosition].subtasks[subTaskPosition].done
