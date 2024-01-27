@@ -26,13 +26,19 @@ button{
     height: 100%;
     padding: 22px 52px;
     background-color: #fff;
-    overflow-y: auto;
 }
 
 .main-content {
     flex: 1;
     box-sizing: border-box;
 }
+
+.div-contacts-list{
+    display: flex;
+    flex-direction: column;
+    
+}
+
 
 .div-contacts-list-card{
     display: flex;

@@ -86,7 +86,7 @@ function rederContactsSortHeadline() {
 function renderContactsHtmlCard() {
     for (let i = 0; i < userContacts.length; i++) {
         let inizials = userContacts[i].firstName[0] + userContacts[i].lastName[0];
-        document.getElementById('contactFirstLetter'+userContacts[i].firstName[0]).innerHTML += `
+        document.getElementById('contactFirstLetter'+ userContacts[i].firstName[0].toUpperCase()).innerHTML += `
         <div class="div-contacts-list-card" onclick="openSingleContact('single-contact', ${i})">
             <div class="div-contacts-list-logo">${inizials}</div>
             <div class="div-contacts-list-data">
