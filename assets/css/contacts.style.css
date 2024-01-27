@@ -160,6 +160,11 @@ button{
     gap: 8px;
 }
 
+.single-contact-edit:hover, .single-contact-delete:hover {
+    cursor: pointer;
+    filter: invert(72%) sepia(69%) saturate(3211%) hue-rotate(165deg) brightness(89%) contrast(98%);
+}
+
 .single-contact-data{
     display: flex;
     flex-direction: column;

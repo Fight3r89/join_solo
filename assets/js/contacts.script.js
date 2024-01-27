@@ -55,7 +55,7 @@ async function addContact() {
     contact.eMail = document.getElementById('contact_email').value;
     contact.phone = document.getElementById('contact_phone').value;
     contact.assignedTo = loggedInUser.id;
-    await saveContactsToBackend(contact);
+    await createContactToSave(contact);
     clearInputFields();
     slideOut('contacts-add-card');
     await loadUsersContacts();
@@ -111,9 +111,30 @@ function renderSingleContactContainerHtml(arrayPosotion){
     document.getElementById('single-contact-name').innerHTML = userContacts[arrayPosotion].firstName +' '+ userContacts[arrayPosotion].lastName;
     document.getElementById('single-contact-data-mail').innerHTML = userContacts[arrayPosotion].eMail;
     document.getElementById('single-contact-data-phone').innerHTML = userContacts[arrayPosotion].phone;
+    document.getElementById('single-contact-name-edit').innerHTML = `
+    <div class="single-contact-edit" id="single-contact-edit">
+        <img src="assets/icons/edit.png"> Edit
+    </div>
+    <div class="single-contact-delete" onclick="deleteContact(${userContacts[arrayPosotion].id})">
+        <img src="assets/icons/delete.png"> Delete
+    </div>`;
 }
 
 async function openSingleContact(target, arrayPosotion){
     await renderSingleContact(arrayPosotion);
     slideIn(target);
+}
+
+async function deleteContact(contactId) {
+    await loadContactsFromBackend();
+    for (let i = 0; i < allContacts.length; i++) {
+        if(allContacts[i].id == contactId){
+            allContacts.splice(i,1);
+        }     
+    }
+    await saveContactsToBackend();
+    allContacts = [];
+    await loadUsersContacts();
+    slideOut('single-contact');
+    renderContactHtml();    
 }

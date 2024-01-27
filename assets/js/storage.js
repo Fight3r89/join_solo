@@ -85,11 +85,11 @@ async function loadContactsFromBackend() {
     allContacts = JSON.parse(await getItem('contacts'));
 }
 
-async function saveContactsToBackend(contact) {
+async function createContactToSave(contact) {
     await loadContactsFromBackend();
     contact.id = allContacts.length;
     allContacts.push(contact);
-    setItem('contacts', allContacts);
+    saveContactsToBackend();
     allContacts = [];
 }
 
@@ -110,4 +110,8 @@ async function loadUsersContacts() {
         }
     });
     allContacts = [];
+}
+
+async function saveContactsToBackend(){
+    setItem('contacts', allContacts);
 }
