@@ -131,7 +131,7 @@ function clearSingleTaskCard() {
     document.getElementById('task-single-card-content').innerHTML = '';
     document.getElementById('task-single-card-date').innerHTML = '';
     document.getElementById('task-single-card-prio-right').innerHTML = '';
-    //document.getElementById('').innerHTML = ''; ASSIGNED TO
+    document.getElementById('task-single-card-assignedto-list').innerHTML = '';
     document.getElementById('task-single-card-subtasks-list').innerHTML = '';
 }
 
@@ -163,7 +163,6 @@ function setSingleTasCardContent(taskId) {
             }
             console.log(userTasks[i].assigned_to);
             if(userTasks[i].assigned_to.length > 0) {
-                document.getElementById('task-single-card-assignedto-list').innerHTML = '';
                 userTasks[i].assigned_to.forEach(at => {
                     document.getElementById('task-single-card-assignedto-list').innerHTML += `
                         <div class="task-single-card-assignedto-list-card">
@@ -172,8 +171,10 @@ function setSingleTasCardContent(taskId) {
                             </div>
                             <p>${at.firstName} ${at.lastName}</p>
                         </div>`;
-                });
-                
+                });    
+            }
+            else {
+                document.getElementById('task-single-card-assignedto-list').innerHTML += `None`;
             }
         }
     }
