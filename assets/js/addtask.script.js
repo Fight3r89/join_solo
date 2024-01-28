@@ -88,6 +88,7 @@ async function addContactsToAssignedTo() {
 
 async function openContactsAssignedTo() {
     let inputAssignedTo = document.getElementById('contactsAssignedTo');
+    (document.getElementById('addTaskAssignedToSelectDefault').classList.contains('mb-0')) ? document.getElementById('addTaskAssignedToSelectDefault').classList.remove('mb-0') : document.getElementById('addTaskAssignedToSelectDefault').classList.add('mb-0')
     inputAssignedTo.innerHTML = '';
     if (!toggleShowAssignedTo) {
         await addContactsToAssignedTo();
@@ -105,16 +106,19 @@ function selectContactForAssign(i) {
     imagePath = imagePath.join('/');
     if (imagePath == 'assets/icons/check_box.png') {
         addContactsToAssignedToArray(i);
-        contactCBackgroundColor(i);
-        changeDefaultAssignedTo(userContacts[i].id);
+        changeAssignToContacts(i);
         userContacts[i].assign = true;
     }
     else {       
         deleteContactsToAssignedToArray(userContacts[i].id);
-        contactCBackgroundColor(i);
-        changeDefaultAssignedTo(userContacts[i].id);
+        changeAssignToContacts(i);
         userContacts[i].assign = false;
     }
+}
+
+function changeAssignToContacts(i){
+    contactCBackgroundColor(i);
+    changeDefaultAssignedTo();
 }
 
 function addContactsToAssignedToArray(arrayPosition) {
@@ -141,7 +145,7 @@ function contactCBackgroundColor(i) {
     }
 }
 
-function changeDefaultAssignedTo(contactId) {
+function changeDefaultAssignedTo() {
     document.getElementById('addTaskAssignedToSelectDefault').innerHTML = '';
     let i = 1;
     if (addAssignedTo.length > 0) {

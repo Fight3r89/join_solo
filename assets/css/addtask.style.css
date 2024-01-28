@@ -202,6 +202,10 @@ select {
     background-color: #091931;
 }
 
+.mb-0{
+    margin-bottom: 0 !important;
+}
+
 @media (max-width: 1170px) {
     .div-addtask-input-fields {
         flex-direction: column;
@@ -217,6 +221,10 @@ select {
     }
 
     .contactsAssignedTo {
+        margin-bottom: 32px;
+    }
+
+    .addTaskAssignedToSelectDefault {
         margin-bottom: 32px;
     }
 }
