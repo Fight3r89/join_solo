@@ -176,3 +176,7 @@ function deleteSubtask(arrayPosition) {
     addSubtask.splice([arrayPosition],1);
     showSubtasks();
 }
+
+function editSubtask(){
+    
+}

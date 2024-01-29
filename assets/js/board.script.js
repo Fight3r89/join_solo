@@ -161,7 +161,6 @@ function setSingleTasCardContent(taskId) {
             else {
                 document.getElementById('task-single-card-subtasks-list').innerHTML += `<p>No Subtasks avalable</p>`;
             }
-            console.log(userTasks[i].assigned_to);
             if(userTasks[i].assigned_to.length > 0) {
                 userTasks[i].assigned_to.forEach(at => {
                     document.getElementById('task-single-card-assignedto-list').innerHTML += `

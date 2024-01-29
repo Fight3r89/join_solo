@@ -71,14 +71,13 @@ function setTaskId() {
 
 async function saveChangesTaskChanges(taskIdFromChangedTask, taskPosition){
     await loadTasksFromBackend();
-    for (let i = 0; i < tasks.length; i++) {
-        if(tasks[i].taskId == taskIdFromChangedTask){
-            tasks.splice(tasks[i],1);
-            tasks.push(taskPosition);
+    tasks.forEach(function (task,i) {
+        if(task.taskId == taskIdFromChangedTask){
+            console.log(tasks[i]);
+            tasks.splice(i,1,taskPosition);
         }
-        setItem('tasks', tasks);
-    }
-    tasks = [];
+    });
+    await setItem('tasks', tasks);
 }
 
 async function loadContactsFromBackend() {
