@@ -46,8 +46,17 @@ function changeSubtasksAddImage() {
 
 function showSubtasks() {
     document.getElementById('showSubtasks').innerHTML = '';
-    addSubtask.forEach(ast => {
-        document.getElementById('showSubtasks').innerHTML += `<div class="subtasks-hover"><li>${ast.task}</li><div style="display:flex; gap:8px"><img src="assets/icons/delete.png"><div style="width: 1px; background: #d1d1d1;"></div><img src="assets/icons/edit.png"></div></div>`;
+    addSubtask.forEach(function (ast, i) {
+        document.getElementById('showSubtasks').innerHTML += `
+        <div class="subtasks-hover">
+            <li>${ast.task}</li>
+            <div style="display:flex; gap:8px">
+                <img src="assets/icons/delete.png" onclick="deleteSubtask(${i})">
+                <div style="width: 1px; background: #d1d1d1;">
+                </div>
+                <img src="assets/icons/edit.png">
+            </div>
+        </div>`;
     });
 
 }
@@ -161,4 +170,9 @@ function changeDefaultAssignedTo() {
     else {
         document.getElementById('addTaskAssignedToSelectDefault').innerHTML = 'Select contacts to assign';
     }
+}
+
+function deleteSubtask(arrayPosition) {
+    addSubtask.splice([arrayPosition],1);
+    showSubtasks();
 }
