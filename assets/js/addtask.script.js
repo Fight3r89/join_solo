@@ -1,5 +1,3 @@
-let toggleShowAssignedTo = false;
-
 async function init() {
     await includeHTML();
     navChangeColor();
@@ -15,7 +13,7 @@ function navChangeColor() {
     document.getElementById('mobile-nav-addtask').onclick = null;
 }
 
-function subtaskInputDelete() {
+/*function subtaskInputDelete() {
     document.getElementById('subtasks').value = '';
     document.getElementById('subtasks-plus').classList.remove('d-none');
     document.getElementById('subtasks-add-delete').classList.add('d-none');
@@ -180,4 +178,4 @@ function deleteSubtask(arrayPosition) {
 
 function editSubtask(){
 
-}
+}*/

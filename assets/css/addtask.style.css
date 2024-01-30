@@ -94,7 +94,7 @@ select {
     gap: 16px;
 }
 
-.subtasks-add-icons {
+/*.subtasks-add-icons {
     position: absolute;
     top: 12px;
     right: 20px;
@@ -204,7 +204,7 @@ select {
 
 .mb-0{
     margin-bottom: 0 !important;
-}
+}*/
 
 @media (max-width: 1170px) {
     .div-addtask-input-fields {

@@ -7,6 +7,7 @@ async function init() {
     navChangeColor();
     setAmounts();
     renderHtml();
+    changeSubtasksAddImage();
 }
 
 function navChangeColor() {
