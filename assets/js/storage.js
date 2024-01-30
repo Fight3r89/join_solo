@@ -14,6 +14,9 @@ async function getItem(key) {
         if (res.data) {
             return res.data.value;
         }
+        else {
+            console.log("error");
+        }
     });
 }
 
@@ -75,6 +78,16 @@ async function saveChangesTaskChanges(taskIdFromChangedTask, taskPosition){
         if(task.taskId == taskIdFromChangedTask){
             console.log(tasks[i]);
             tasks.splice(i,1,taskPosition);
+        }
+    });
+    await setItem('tasks', tasks);
+}
+
+async function deleteTaskFromBackend(taskId){
+    await loadTasksFromBackend();
+    tasks.forEach(function(task, i) {
+        if(task.taskId == taskId){
+            tasks.splice(i,1);
         }
     });
     await setItem('tasks', tasks);

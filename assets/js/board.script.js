@@ -123,6 +123,7 @@ function getAssignTo(task) {
 function renderSingleTaskCard(taskId) {
     clearSingleTaskCard();
     setSingleTasCardContent(taskId);
+
 }
 
 function clearSingleTaskCard() {
@@ -133,6 +134,7 @@ function clearSingleTaskCard() {
     document.getElementById('task-single-card-prio-right').innerHTML = '';
     document.getElementById('task-single-card-assignedto-list').innerHTML = '';
     document.getElementById('task-single-card-subtasks-list').innerHTML = '';
+    document.getElementById('task-single-card-footer').innerHTML = '';
 }
 
 function setSingleTasCardContent(taskId) {
@@ -175,15 +177,33 @@ function setSingleTasCardContent(taskId) {
             else {
                 document.getElementById('task-single-card-assignedto-list').innerHTML += `None`;
             }
+            renderFooterHtml(i);
         }
     }
 }
-
-
 
 function changeSubtaskDone(taskPosition, subTaskPosition) {
     userTasks[taskPosition].subtasks[subTaskPosition].done = !userTasks[taskPosition].subtasks[subTaskPosition].done
     renderSingleTaskCard(userTasks[taskPosition].taskId);
     saveChangesTaskChanges(userTasks[taskPosition].taskId, userTasks[taskPosition]); 
     renderHtml();   
+}
+
+function renderFooterHtml(i) {
+    document.getElementById('task-single-card-footer').innerHTML =
+    `<div class="task-single-card-delete" onclick="deleteTask(${i})">
+    <img src="assets/icons/delete.png"> Delete
+</div>
+<div class="task-single-card-footer-spacer"></div>
+<div class="task-single-card-edit" onclick="editTask(${i})">
+    <img src="assets/icons/edit.png"> Edit
+</div>`;
+}
+
+function deleteTask(i) {
+    deleteTaskFromBackend(userTasks[i].taskId);
+    userTasks.splice(i,1);
+    slideOut('task-card-slide');
+    setAmounts();
+    renderHtml();
 }

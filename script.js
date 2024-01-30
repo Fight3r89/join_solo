@@ -55,7 +55,7 @@ function openSite(site) {
     window.location.href = site + '.html';
 }
 
-async function loadUsers(){
+async function loadUsers() {
     let user = [];
     user = JSON.parse(await getItem('users'));
     user.forEach(e => {
@@ -69,8 +69,8 @@ async function loadUsers(){
     });
 }
 
-async function checkLoggedIn(){
-    if(loggedInUser){
+async function checkLoggedIn() {
+    if (loggedInUser) {
         return true;
     }
     else {
@@ -78,7 +78,7 @@ async function checkLoggedIn(){
     }
 }
 
-async function createNewTask(){
+async function createNewTask() {
     let newTask = new Task;
     newTask.autor = loggedInUser.id;
     newTask.title = document.getElementById('title').value;
@@ -93,7 +93,7 @@ async function createNewTask(){
     location.href = 'board.html';
 }
 
-function clearInputFields(){
+function clearInputFields() {
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
     document.getElementById('date').value = '';
@@ -106,6 +106,13 @@ function clearInputFields(){
 
 function setAmounts() {
     amountOfTasks = userTasks.length;
+    if (amountOfTasks == 0) {
+        tasksTodo = 0;
+        tasksDone = 0;
+        tasksInProgress = 0;
+        tasksAwaitFeedback = 0;
+        tasksUrgent = 0;
+    }
     for (let i = 0; i < userTasks.length; i++) {
         switch (userTasks[i].task) {
             case 'todo':
