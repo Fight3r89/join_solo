@@ -15,16 +15,45 @@ function navChangeColor() {
     document.getElementById('mobile-nav-contacts').onclick = null;
 }
 
-function slideIn(container) {
+function slideIn(container, addOrEdit, userToEdit) {
     if (container == 'single-contact' && !document.getElementById('single-contact-container').classList.contains('d-none')) {
         setTimeout(function () {
             document.getElementById('single-contact-container').classList.add('d-none');
         }, 20);
 
     }
+    document.getElementById('contact_name').value = '';
+    document.getElementById('contact_email').value = '';
+    document.getElementById('contact_phone').value = '';
+    document.getElementById('contact-add-edit-title').innerHTML = '';
+    document.getElementById('div-contacts-add-form').innerHTML = '';
+
     document.getElementById(container + '-container').classList.remove('d-none');
     document.getElementById(container).style.right = '0';
     document.getElementById(container).style.animation = 'slide_in 0.3s ease-out';
+    if (addOrEdit == 'edit') {
+        document.getElementById('contact_action').value = userToEdit;
+        document.getElementById('contact-add-edit-title').innerHTML = `
+         <p>Edit Contact</p>
+         <div class="seperator-vertical"></div>`;
+        document.getElementById('contact_name').value = userContacts[userToEdit].firstName + ' ' + userContacts[userToEdit].lastName;
+        document.getElementById('contact_email').value = userContacts[userToEdit].eMail;
+        document.getElementById('contact_phone').value = userContacts[userToEdit].phone;
+        document.getElementById('div-contacts-add-form').innerHTML = `
+        <div class="button-bordered" onclick="deleteContact(${userContacts[userToEdit].id})">Delete<img src="assets/icons/close.png"></div>
+        <button class="btn-save-contact">Save<img src="assets/icons/check.png"></button>`;
+    }
+    else {
+        document.getElementById('contact_action').value = 'add';
+        document.getElementById('contact-add-edit-title').innerHTML = `
+            <p>Add contact</p>
+            <p class="title-sub">Tasks are better with a team</p>
+            <div class="seperator-vertical"></div>`;
+        document.getElementById('div-contacts-add-form').innerHTML = `
+            <div class="button-bordered" onclick="clearInputFields()">Clear<img src="assets/icons/close.png"></div>
+            <button>Create contact<img src="assets/icons/check.png"></button>`;
+
+    }
 }
 
 function slideOut(container) {
@@ -86,7 +115,7 @@ function rederContactsSortHeadline() {
 function renderContactsHtmlCard() {
     for (let i = 0; i < userContacts.length; i++) {
         let inizials = userContacts[i].firstName[0] + userContacts[i].lastName[0];
-        document.getElementById('contactFirstLetter'+ userContacts[i].firstName[0].toUpperCase()).innerHTML += `
+        document.getElementById('contactFirstLetter' + userContacts[i].firstName[0].toUpperCase()).innerHTML += `
         <div class="div-contacts-list-card" onclick="openSingleContact('single-contact', ${i})">
             <div class="div-contacts-list-logo">${inizials}</div>
             <div class="div-contacts-list-data">
@@ -117,7 +146,7 @@ function renderSingleContactContainerHtml(arrayPosotion) {
     document.getElementById('single-contact-data-mail').innerHTML = userContacts[arrayPosotion].eMail;
     document.getElementById('single-contact-data-phone').innerHTML = userContacts[arrayPosotion].phone;
     document.getElementById('single-contact-name-edit').innerHTML = `
-    <div class="single-contact-edit" id="single-contact-edit">
+    <div class="single-contact-edit" id="single-contact-edit" onclick="editContact(${arrayPosotion});">
         <img src="assets/icons/edit.png"> Edit
     </div>
     <div class="single-contact-delete" onclick="deleteContact(${userContacts[arrayPosotion].id})">
@@ -141,6 +170,7 @@ async function deleteContact(contactId) {
     allContacts = [];
     await loadUsersContacts();
     slideOut('single-contact');
+    slideOut('contacts-add-card');
     renderContactHtml();
 }
 
@@ -148,7 +178,6 @@ function sortContacts() {
     userContacts.sort(function (a, b) {
         let firstNameA = a.firstName.toLowerCase();
         let firstNameB = b.firstName.toLowerCase();
-
         if (firstNameA < firstNameB) return -1;
         if (firstNameA > firstNameB) return 1;
         return 0;
@@ -174,4 +203,47 @@ function renderContactsSortHeadlineHtml(firstLetter) {
     </div>
     <div class="seperator-contacts-list"></div>
     <div id="contactFirstLetter${firstLetter}"></div>`;
+}
+
+function editContact(userToEdit) {
+    slideIn('contacts-add-card', 'edit', userToEdit);
+}
+
+function handleFormSubmission() {
+    if (document.getElementById('contact_action').value == 'add') {
+        addContact();
+    }
+    else {
+        let contactArrayPosition = document.getElementById('contact_action').value;
+        let firstName;
+        let lastName;
+
+        if (document.getElementById('contact_name').value.split(" ").length > 1) {
+            firstName = document.getElementById('contact_name').value.split(" ")[0];
+            lastName = document.getElementById('contact_name').value.split(" ")[1];
+        }
+        else {
+            firstName = document.getElementById('contact_name').value[0];
+            lastName = '';
+        }
+        userContacts[contactArrayPosition].firstName = firstName;
+        userContacts[contactArrayPosition].lastName = lastName;
+        userContacts[contactArrayPosition].eMail = document.getElementById('contact_email').value;
+        userContacts[contactArrayPosition].phone = document.getElementById('contact_phone').value;
+        saveContactEdit(document.getElementById('contact_action').value);
+    }
+}
+
+async function saveContactEdit(contactArrayPosition) {
+    await loadContactsFromBackend();
+    allContacts.forEach(function (ac, i) {
+        if (ac.id == userContacts[contactArrayPosition].id) {
+            allContacts.splice(i, 1, userContacts[contactArrayPosition])
+        }
+    });
+    await saveContactsToBackend();
+    await loadUsersContacts();
+    slideOut('single-contact');
+    slideOut('contacts-add-card');
+    renderContactHtml();
 }

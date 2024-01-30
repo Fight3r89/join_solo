@@ -24,11 +24,6 @@ async function getUserDataFromLocalStorage() {
     loggedInUser = JSON.parse(localStorage.getItem('user'));
 }
 
-function saveTask() {
-    localStorage.setItem('tasks', JSON.stringify(userTasks));
-
-}
-
 async function loadUserTasks() {
     userTasks = [];
     await loadTasksFromBackend();
@@ -55,7 +50,7 @@ async function saveTasksToBackend(taskToSave) {
     await loadTasksFromBackend();
     taskToSave.taskId = setTaskId();
     tasks.push(taskToSave);
-    setItem('tasks', tasks);
+    await setItem('tasks', tasks);
     tasks = [];
 }
 
@@ -101,7 +96,7 @@ async function createContactToSave(contact) {
     await loadContactsFromBackend();
     contact.id = allContacts.length;
     allContacts.push(contact);
-    saveContactsToBackend();
+    await saveContactsToBackend();
     allContacts = [];
 }
 
@@ -125,5 +120,5 @@ async function loadUsersContacts() {
 }
 
 async function saveContactsToBackend(){
-    setItem('contacts', allContacts);
+    await setItem('contacts', allContacts);
 }

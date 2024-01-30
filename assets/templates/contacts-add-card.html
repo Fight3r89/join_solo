@@ -1,23 +1,19 @@
 <div id="contacts-add-card" class="contacts-add-card">
     <div class="contacts-add-card-left">
             <img src="assets/icons/logo-white.png">
-            <div class="site-title">
-                <p>Add contact</p>
-                <p class="title-sub">Tasks are better with a team</p>
-                <div class="seperator-vertical"></div>
+            <div class="site-title" id="contact-add-edit-title">
             </div>
     </div>
     
     <div class="contacts-add-card-right">
         <img class="add-contacs-close-slider" src="./assets/icons/close.png" onclick="slideOut('contacts-add-card')">
         <img src="./assets/icons/contacts-default.png">
-        <form onsubmit="addContact(); return false">
+        <form onsubmit="handleFormSubmission(); return false">
+            <input type="hidden" id="contact_action" value="add">
             <input id="contact_name" placeholder="Name">
             <input id="contact_email" placeholder="Email">
             <input id="contact_phone" placeholder="Phone">
-            <div class="div-contacts-add-form">
-                <div class="button-bordered" onclick="clearInputFields()">Clear<img src="assets/icons/close.png"></div>
-                <button>Create contact<img src="assets/icons/check.png"></button>
+            <div class="div-contacts-add-form" id="div-contacts-add-form">
             </div>
         </form>
     </div>

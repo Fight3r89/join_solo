@@ -288,6 +288,11 @@ button{
     display: none;
 }
 
+.btn-save-contact {
+    min-width: 111px;
+    max-width: 111px !important;
+}
+
 @media (max-width:1175px){
     .site-title{
         flex-direction: column;
@@ -333,8 +338,8 @@ button{
         flex-direction: column-reverse;
     }
 
-    button{
-        display: none;
+    .btn-add-new-contact{
+        display: none !important;
     }
 
     .flex-content-main{
@@ -350,5 +355,8 @@ button{
         padding-left: 16px;
         padding-right: 16px;
     }
+}
 
+/*Add Contact Container*/
+@media (max-width:790px){
 }
