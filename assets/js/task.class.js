@@ -1,6 +1,6 @@
 class Task {
     taskId;
-    task = 'todo'
+    task;
     autor;
     title;
     description;

@@ -14,11 +14,16 @@ function navChangeColor() {
     document.getElementById('mobile-nav-board').onclick = null;
 }
 
-function slideIn(container, taskId) {
+function slideIn(container, taskIdOrTask) {
     document.getElementById(container + '-container').classList.remove('d-none');
     document.getElementById(container).style.right = '16px';
     document.getElementById(container).style.animation = 'slide_in 0.3s ease-out';
-    renderSingleTaskCard(taskId);
+    if(taskIdOrTask){
+        if(typeof taskIdOrTask === 'number') renderSingleTaskCard(taskIdOrTask);
+        else {
+            task = taskIdOrTask;
+        }
+    }
 }
 
 function slideOut(container) {
@@ -38,14 +43,14 @@ function renderHtml() {
 
 function clearTaskCardContainer() {
     document.getElementById('div-tasks-to-do').innerHTML = '';
-    document.getElementById('div-taks-in-progress').innerHTML = '';
+    document.getElementById('div-tasks-in-progress').innerHTML = '';
     document.getElementById('div-tasks-await-feedback').innerHTML = '';
     document.getElementById('div-tasks-done').innerHTML = '';
 }
 
 function noTasksToDo() {
     if (tasksTodo == 0) document.getElementById('div-tasks-to-do').innerHTML = noTasksToDoHtml();
-    if (tasksInProgress == 0) document.getElementById('div-taks-in-progress').innerHTML = noTasksToDoHtml();
+    if (tasksInProgress == 0) document.getElementById('div-tasks-in-progress').innerHTML = noTasksToDoHtml();
     if (tasksAwaitFeedback == 0) document.getElementById('div-tasks-await-feedback').innerHTML = noTasksToDoHtml();
     if (tasksDone == 0) document.getElementById('div-tasks-done').innerHTML = noTasksToDoHtml();
 }
@@ -57,6 +62,9 @@ function noTasksToDoHtml() {
 function renderTaskCards() {
     userTasks.forEach(tasks => {
         if (tasks.task == 'todo') { document.getElementById('div-tasks-to-do').innerHTML += renderTaskCardHtml(tasks) };
+        if (tasks.task == 'inprogress') { document.getElementById('div-tasks-in-progress').innerHTML += renderTaskCardHtml(tasks) };
+        if (tasks.task == 'awaitfeedback') { document.getElementById('div-tasks-await-feedback').innerHTML += renderTaskCardHtml(tasks) };
+        if (tasks.task == 'done') { document.getElementById('div-tasks-done').innerHTML += renderTaskCardHtml(tasks) };
     });
 
 

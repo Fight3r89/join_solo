@@ -7,12 +7,13 @@ let loggedInUser = [];
 let userTasks = [];
 let userContacts = [];
 let amountOfTasks = 0;
-let tasksTodo = 0;
-let tasksDone = 0;
-let tasksInProgress = 0;
-let tasksAwaitFeedback = 0;
-let tasksUrgent = 0;
+let tasksTodo;
+let tasksDone;
+let tasksInProgress;
+let tasksAwaitFeedback;
+let tasksUrgent;
 let selected = 'medium';
+let task = 'todo';
 
 
 async function includeHTML() {
@@ -88,6 +89,7 @@ async function createNewTask() {
     newTask.prio = selected;
     newTask.category = document.getElementById('category').value;
     newTask.subtasks = [...addSubtask];
+    newTask.task = task;
     await saveTasksToBackend(newTask);
     clearInputFields();
     location.href = 'board.html';
@@ -106,13 +108,12 @@ function clearInputFields() {
 
 function setAmounts() {
     amountOfTasks = userTasks.length;
-    if (amountOfTasks == 0) {
         tasksTodo = 0;
         tasksDone = 0;
         tasksInProgress = 0;
         tasksAwaitFeedback = 0;
         tasksUrgent = 0;
-    }
+    
     for (let i = 0; i < userTasks.length; i++) {
         switch (userTasks[i].task) {
             case 'todo':

@@ -204,6 +204,7 @@ select {
 .div-board-section-headline img {
     width: 24px;
     height: 24px;
+    cursor: pointer;
 }
 
 /*---- Only For Grid-layout ----*/
