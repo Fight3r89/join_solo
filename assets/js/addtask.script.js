@@ -73,6 +73,7 @@ setTimeout(() => {
 async function addContactsToAssignedTo() {
     if (userContacts.length == 0) {
         await loadUsersContacts();
+        if(userContacts.length == 0) document.getElementById('contactsAssignedTo').innerHTML += 'No Contacts Avalable';
     }
 
     for (let i = 0; i < userContacts.length; i++) {
@@ -178,5 +179,5 @@ function deleteSubtask(arrayPosition) {
 }
 
 function editSubtask(){
-    
+
 }
