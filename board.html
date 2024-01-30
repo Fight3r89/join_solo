@@ -32,7 +32,9 @@
                     <img class="board-search-bar-mobile" src="assets/icons/board_head_add.png">
                 </div>
                 <div class="main-content">
-                    <div class="div-board-section section-to-do">
+
+
+                    <div class="div-board-section section-to-do" ondragover="showDropArea('todo'); allowDrop(event);" ondrop="drop('todo'); hideDropArea('todo')" ondragleave="hideDropArea('todo')" >
                         <div class="div-board-section-headline ">
                             <p>To do</p>
                             <img src="assets/icons/plus_button.png" onclick="slideIn('addtask-card');">
@@ -40,8 +42,9 @@
                         <div id="div-tasks-to-do">
                             <!--Hier werden die Tasks reingerendert-->
                         </div>
+                        <div class="drag-area" id="todo"></div>
                     </div>
-                    <div class="div-board-section section-in-progress">
+                    <div class="div-board-section section-in-progress" ondragover="showDropArea('inprogress'); allowDrop(event);" ondrop="drop('inprogress'); hideDropArea('inprogress')" ondragleave="hideDropArea('inprogress')">
                         <div class="div-board-section-headline ">
                             <p>In progress</p>
                             <img src="assets/icons/plus_button.png" onclick="slideIn('addtask-card','inprogress');">
@@ -49,9 +52,9 @@
                         <div id="div-tasks-in-progress">
                             <!--Hier werden die Tasks reingerendert-->
                         </div>
-
+                        <div class="drag-area" id="inprogress"></div>
                     </div>
-                    <div class="div-board-section section-await-feedback">
+                    <div class="div-board-section section-await-feedback" ondragover="showDropArea('awaitfeedback'); allowDrop(event);" ondrop="drop('awaitfeedback'); hideDropArea('awaitfeedback')" ondragleave="hideDropArea('awaitfeedback')">
                         <div class="div-board-section-headline ">
                             <p>Await feedback</p>
                             <img src="assets/icons/plus_button.png" onclick="slideIn('addtask-card','awaitfeedback');">
@@ -59,15 +62,17 @@
                         <div id="div-tasks-await-feedback">
                             <!--Hier werden die Tasks reingerendert-->
                         </div>
+                        <div class="drag-area" id="awaitfeedback"></div>
 
                     </div>
-                    <div class="div-board-section section-done">
-                        <div class="div-board-section-headline ">
+                    <div class="div-board-section section-done" ondragover="showDropArea('done'); allowDrop(event);" ondrop="drop('done'); hideDropArea('done')" ondragleave="hideDropArea('done')">
+                        <div class="div-board-section-headline">
                             <p>Done</p>
                         </div>
                         <div id="div-tasks-done">
                             <!--Hier werden die Tasks reingerendert-->
                         </div>
+                        <div class="drag-area" id="done"></div>
 
                     </div>
                 </div>

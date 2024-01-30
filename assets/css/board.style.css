@@ -184,6 +184,7 @@ select {
     display: flex;
     flex-direction: column;
     min-width: 246px;
+    min-height: 159px;
 }
 
 .div-tasks-sections {
@@ -499,6 +500,18 @@ label {
 
 .fs-61 {
     font-size: 61px;
+}
+
+.drag-area {
+    width: 250px;
+    height: 159px;
+    background-color: #f6f7f8;
+    margin-top: 8px;
+}
+
+.drag-area-shown {
+    border-radius: 10px;
+    border: 1px dashed #000;
 }
 
 /*-----------------------------*/

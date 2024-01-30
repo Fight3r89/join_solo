@@ -1,3 +1,5 @@
+let currentDraggedElement;
+
 async function init() {
     await getUserDataFromLocalStorage();
     await includeHTML();
@@ -92,7 +94,7 @@ function renderSubtasks(task) {
 
 function renderTaskCardHtml(task) {
     return `
-        <div class="task-card" onclick="slideIn('task-card-slide',${task.taskId})">
+        <div class="task-card" onclick="slideIn('task-card-slide',${task.taskId})" draggable="true" ondragstart="moveTo(${task.taskId})">
             <div class="task-card-category">
                 ${task.category}
             </div>
@@ -214,4 +216,31 @@ function deleteTask(i) {
     slideOut('task-card-slide');
     setAmounts();
     renderHtml();
+}
+
+function moveTo(taskId) {
+    currentDraggedElement = taskId;
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drop(section) {
+    userTasks.forEach(ut => {
+        if(ut.taskId == currentDraggedElement){
+            ut.task = section;
+            saveChangesTaskChanges(ut.taskId, ut);
+        }
+    });
+    setAmounts();
+    renderHtml(); 
+}
+
+function showDropArea(section){
+    document.getElementById(section).classList.add('drag-area-shown');
+}
+
+function hideDropArea(section) {
+    document.getElementById(section).classList.remove('drag-area-shown');
 }
