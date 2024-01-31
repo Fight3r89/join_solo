@@ -293,6 +293,18 @@ button{
     max-width: 111px !important;
 }
 
+.contact-edit-inizials{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 47px;
+    border: 3px solid #fff;
+}
+
 @media (max-width:1175px){
     .site-title{
         flex-direction: column;
@@ -358,5 +370,41 @@ button{
 }
 
 /*Add Contact Container*/
-@media (max-width:790px){
+@media (max-width:905px){
+    .contacts-add-card {
+        flex-direction: column;
+        max-height: 760px;
+        height: 100%;
+    }
+    .add-contacs-close-slider{
+        filter: invert(83%) sepia(49%) saturate(0%) hue-rotate(6deg) brightness(115%) contrast(101%);
+    }
+    .contacts-add-card-left {
+        max-width: 100%;
+        border-radius: 0;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        align-items: center;
+        max-height: 351px;
+    }
+    .contacts-add-card-left img {
+        display: none;
+    }
+
+    .contacts-add-card-right{
+        border-radius: 0;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        max-height: 409px;
+        padding: 0 16px;
+    }
+}
+
+@media (max-width:905px){
+    .contacts-add-card-right {
+        flex-direction: column;
+    }
+    #contact-add-edit-img {
+        margin-top: -100px;
+    }
 }

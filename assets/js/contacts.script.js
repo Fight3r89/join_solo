@@ -33,11 +33,16 @@ function slideIn(container, addOrEdit, userToEdit) {
     document.getElementById('contact_phone').value = '';
     document.getElementById('contact-add-edit-title').innerHTML = '';
     document.getElementById('div-contacts-add-form').innerHTML = '';
+    document.getElementById('contact-add-edit-img').innerHTML = '';
 
     document.getElementById(container + '-container').classList.remove('d-none');
     document.getElementById(container).style.right = '0';
     document.getElementById(container).style.animation = 'slide_in 0.3s ease-out';
     if (addOrEdit == 'edit') {
+        document.getElementById('contact-add-edit-img').innerHTML = `
+        <div class="contact-edit-inizials" style="background-color: ${userContacts[userToEdit].color}">
+        ${userContacts[userToEdit].firstName.charAt(0)}${userContacts[userToEdit].lastName.charAt(0)}
+        </div>`;
         document.getElementById('contact_action').value = userToEdit;
         document.getElementById('contact-add-edit-title').innerHTML = `
          <p>Edit Contact</p>
@@ -50,6 +55,7 @@ function slideIn(container, addOrEdit, userToEdit) {
         <button class="btn-save-contact">Save<img src="assets/icons/check.png"></button>`;
     }
     else {
+        document.getElementById('contact-add-edit-img').innerHTML = '<img src="./assets/icons/contacts-default.png">';
         document.getElementById('contact_action').value = 'add';
         document.getElementById('contact-add-edit-title').innerHTML = `
             <p>Add contact</p>
@@ -113,10 +119,6 @@ function renderContactHtml() {
 
 function clearContactList() {
     document.getElementById('div-contacts-list').innerHTML = '';
-}
-
-function rederContactsSortHeadline() {
-
 }
 
 function renderContactsHtmlCard() {
