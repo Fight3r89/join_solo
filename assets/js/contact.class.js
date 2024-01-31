@@ -5,4 +5,5 @@ class Contact {
     eMail;
     phone;
     assignedTo;
+    color;
 }

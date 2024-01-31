@@ -1,11 +1,17 @@
 let toggleSingleContact = 0;
 
 async function init() {
+    await getUserDataFromLocalStorage();
+    if (await checkLoggedIn()) {
     await includeHTML();
     navChangeColor();
-    await getUserDataFromLocalStorage();
     await loadUsersContacts();
     renderContactHtml();
+    renderUserMenueInizials();
+    }
+    else {
+        location.href = 'index.html';
+    }
 }
 
 function navChangeColor() {
@@ -84,6 +90,7 @@ async function addContact() {
     contact.eMail = document.getElementById('contact_email').value;
     contact.phone = document.getElementById('contact_phone').value;
     contact.assignedTo = loggedInUser.id;
+    contact.color = generateColor();
     await createContactToSave(contact);
     clearInputFields();
     slideOut('contacts-add-card');
@@ -117,7 +124,7 @@ function renderContactsHtmlCard() {
         let inizials = userContacts[i].firstName[0] + userContacts[i].lastName[0];
         document.getElementById('contactFirstLetter' + userContacts[i].firstName[0].toUpperCase()).innerHTML += `
         <div class="div-contacts-list-card" onclick="openSingleContact('single-contact', ${i})">
-            <div class="div-contacts-list-logo">${inizials}</div>
+            <div class="div-contacts-list-logo" style="background-color: ${userContacts[i].color}">${inizials}</div>
             <div class="div-contacts-list-data">
                 <p>${userContacts[i].firstName} ${userContacts[i].lastName}</p>
                 <p>${userContacts[i].eMail}</p>
@@ -142,6 +149,7 @@ function clearSingleContactContainer() {
 function renderSingleContactContainerHtml(arrayPosotion) {
     let inizials = userContacts[arrayPosotion].firstName[0] + userContacts[arrayPosotion].lastName[0];
     document.getElementById('single-contact-logo').innerHTML = inizials;
+    document.getElementById('single-contact-logo').style.backgroundColor = userContacts[arrayPosotion].color;
     document.getElementById('single-contact-name').innerHTML = userContacts[arrayPosotion].firstName + ' ' + userContacts[arrayPosotion].lastName;
     document.getElementById('single-contact-data-mail').innerHTML = userContacts[arrayPosotion].eMail;
     document.getElementById('single-contact-data-phone').innerHTML = userContacts[arrayPosotion].phone;

@@ -113,6 +113,7 @@ async function loadUsersContacts() {
             fetchContacts.eMail = uc.eMail;
             fetchContacts.phone = uc.phone;
             fetchContacts.assignedTo = uc.assignedTo;
+            fetchContacts.color = uc.color;
             userContacts.push(fetchContacts);
         }
     });

@@ -1,8 +1,15 @@
 <div class="header-content">
     <p class="header-desktop-name">Kanban Project Management Tool</p>
     <img class="nav-logo-mobile" src="assets/icons/logo.png" alt="">
-    <div class="icons">
-        <img class="header-help" src="assets/icons/help.png" alt="">
-        <span>SF</span>
+    <div >
+        <div class="icons">
+            <img class="header-help" src="assets/icons/help.png" alt="">
+            <span id="header-user-menu" onclick="openUserMenue()"></span>
+        </div>
+        <div class="header-user-menu-dropdown d-none" id="header-user-menu-dropdown">
+            <p class="cursor-pointer">Legal Notice</p>
+            <p class="cursor-pointer">Privacy Policy</p>
+            <p class="cursor-pointer" onclick="logout()">Log out</p>
+        </div>
     </div>
 </div>

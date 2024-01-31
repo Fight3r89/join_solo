@@ -629,6 +629,33 @@ main {
     margin-bottom: 0 !important;
 }
 
+#header-user-menu:hover {
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.header-user-menu-dropdown{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    position: absolute;
+    right: 8px;
+    width: fit-content;
+    height: fit-content;
+    background-color: #2a3647;
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #fff;
+    border-radius: 20px 0 20px 20px;
+    margin-top: 17px;
+    gap: 27px;
+}
+
 @media (max-width: 905px) {
     body {
         font-size: 14px;

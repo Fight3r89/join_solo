@@ -15,6 +15,7 @@ let tasksUrgent;
 let selected = 'medium';
 let task = 'todo';
 let toggleShowAssignedTo = false;
+let colors = ['#FF7A00', '#00BEE8', '#1FD7C1', '#462F8A', '#6E52FF', '#9327FF', '#9747FF', '#FC71FF', '#FF4646', '#FFBB2B'];
 
 
 async function includeHTML() {
@@ -197,14 +198,14 @@ function showSubtasks() {
 
 }
 
-setTimeout(() => {
+/*setTimeout(() => {
     document.getElementById('subtasks').addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
             event.preventDefault(); // Verhindert das Absenden des Formulars
             addSubtaskToArray(); // Führt die gewünschte Aktion aus
         }
     });
-}, 50);
+}, 50);*/
 
 async function addContactsToAssignedTo() {
     if (userContacts.length == 0) {
@@ -330,4 +331,21 @@ function addSubtaskToArray() {
     document.getElementById('subtasks-plus').classList.remove('d-none');
     document.getElementById('subtasks-add-delete').classList.add('d-none');
     showSubtasks();
+}
+
+function renderUserMenueInizials(){
+    document.getElementById('header-user-menu').innerHTML = loggedInUser.firstName.charAt(0) + '' + loggedInUser.lastName.charAt(0);
+}
+
+function openUserMenue(){
+    document.getElementById('header-user-menu-dropdown').classList.toggle('d-none');
+}
+
+function logout(){
+    localStorage.removeItem('user');
+    window.location.href = 'index.html';
+}
+
+function generateColor(){
+    return colors[colorArrayPosition = Math.floor(Math.random() * 10)];
 }

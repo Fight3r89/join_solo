@@ -5,6 +5,7 @@ async function init() {
         await loadUserTasks();
         navChangeColor();
         renderHtml();
+        renderUserMenueInizials();
     }
     else {
         location.href = 'index.html';

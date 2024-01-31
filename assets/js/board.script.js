@@ -2,12 +2,18 @@ let currentDraggedElement;
 
 async function init() {
     await getUserDataFromLocalStorage();
-    await includeHTML();
-    await loadUserTasks();
-    navChangeColor();
-    setAmounts();
-    renderHtml();
-    changeSubtasksAddImage();
+    if (await checkLoggedIn()) {
+        await includeHTML();
+        await loadUserTasks();
+        navChangeColor();
+        setAmounts();
+        renderHtml();
+        changeSubtasksAddImage();
+        renderUserMenueInizials();
+    }
+    else {
+        location.href = 'index.html';
+    }
 }
 
 function navChangeColor() {
@@ -21,8 +27,8 @@ function slideIn(container, taskIdOrTask) {
     document.getElementById(container + '-container').classList.remove('d-none');
     document.getElementById(container).style.right = '16px';
     document.getElementById(container).style.animation = 'slide_in 0.3s ease-out';
-    if(taskIdOrTask){
-        if(typeof taskIdOrTask === 'number') renderSingleTaskCard(taskIdOrTask);
+    if (taskIdOrTask) {
+        if (typeof taskIdOrTask === 'number') renderSingleTaskCard(taskIdOrTask);
         else {
             task = taskIdOrTask;
         }
@@ -126,7 +132,7 @@ function getAssignTo(task) {
                     </div>`;
     });
     return output;
-    
+
 }
 
 
@@ -174,7 +180,7 @@ function setSingleTasCardContent(taskId) {
             else {
                 document.getElementById('task-single-card-subtasks-list').innerHTML += `<p>No Subtasks avalable</p>`;
             }
-            if(userTasks[i].assigned_to.length > 0) {
+            if (userTasks[i].assigned_to.length > 0) {
                 userTasks[i].assigned_to.forEach(at => {
                     document.getElementById('task-single-card-assignedto-list').innerHTML += `
                         <div class="task-single-card-assignedto-list-card">
@@ -183,7 +189,7 @@ function setSingleTasCardContent(taskId) {
                             </div>
                             <p>${at.firstName} ${at.lastName}</p>
                         </div>`;
-                });    
+                });
             }
             else {
                 document.getElementById('task-single-card-assignedto-list').innerHTML += `None`;
@@ -196,13 +202,13 @@ function setSingleTasCardContent(taskId) {
 function changeSubtaskDone(taskPosition, subTaskPosition) {
     userTasks[taskPosition].subtasks[subTaskPosition].done = !userTasks[taskPosition].subtasks[subTaskPosition].done
     renderSingleTaskCard(userTasks[taskPosition].taskId);
-    saveChangesTaskChanges(userTasks[taskPosition].taskId, userTasks[taskPosition]); 
-    renderHtml();   
+    saveChangesTaskChanges(userTasks[taskPosition].taskId, userTasks[taskPosition]);
+    renderHtml();
 }
 
 function renderFooterHtml(i) {
     document.getElementById('task-single-card-footer').innerHTML =
-    `<div class="task-single-card-delete" onclick="deleteTask(${i})">
+        `<div class="task-single-card-delete" onclick="deleteTask(${i})">
     <img src="assets/icons/delete.png"> Delete
 </div>
 <div class="task-single-card-footer-spacer"></div>
@@ -213,7 +219,7 @@ function renderFooterHtml(i) {
 
 function deleteTask(i) {
     deleteTaskFromBackend(userTasks[i].taskId);
-    userTasks.splice(i,1);
+    userTasks.splice(i, 1);
     slideOut('task-card-slide');
     setAmounts();
     renderHtml();
@@ -229,16 +235,16 @@ function allowDrop(ev) {
 
 function drop(section) {
     userTasks.forEach(ut => {
-        if(ut.taskId == currentDraggedElement){
+        if (ut.taskId == currentDraggedElement) {
             ut.task = section;
             saveChangesTaskChanges(ut.taskId, ut);
         }
     });
     setAmounts();
-    renderHtml(); 
+    renderHtml();
 }
 
-function showDropArea(section){
+function showDropArea(section) {
     document.getElementById(section).classList.add('drag-area-shown');
 }
 

@@ -4,4 +4,5 @@ class User{
     lastName;
     eMail;
     password;
+    color;
 }

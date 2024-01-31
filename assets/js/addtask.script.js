@@ -1,9 +1,15 @@
 async function init() {
-    await includeHTML();
-    navChangeColor();
     await getUserDataFromLocalStorage();
-    addSelection(selected);
-    changeSubtasksAddImage();
+    if (await checkLoggedIn()) {
+        await includeHTML();
+        navChangeColor();
+        addSelection(selected);
+        changeSubtasksAddImage();
+        renderUserMenueInizials();
+    }
+    else {
+        location.href = 'index.html';
+    }
 }
 
 function navChangeColor() {
