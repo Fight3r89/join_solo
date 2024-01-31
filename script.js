@@ -349,3 +349,17 @@ function logout(){
 function generateColor(){
     return colors[colorArrayPosition = Math.floor(Math.random() * 10)];
 }
+
+async function completeBackendReset(){
+    userContacts = [];
+    userTasks = [];
+    users = [];
+
+    await setItem('tasks', tasks);
+    await setItem('contacts', contacts);
+    await setItem('users', users);
+
+    await setItem('users', {"id": 0, "firstName": "Guest", "eMail": "guest@test.de", "password": ""});
+    //await setItem('tasks', );
+    //await setItem('contacts', );
+}
