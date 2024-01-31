@@ -360,6 +360,6 @@ async function completeBackendReset(){
     await setItem('users', users);
 
     await setItem('users', {"id": 0, "firstName": "Guest", "eMail": "guest@test.de", "password": ""});
-    //await setItem('tasks', );
+    //await setItem('tasks', [{"taskId": 1, "task": "inprogress", "autor": 0, "title": "Kochwelt Page & Recipe Recommander", "description": "Build start page with recipe recommendation.", "assigned_to": [], "date": "2023-05-10", "prio": "medium", "category": "User Story", "subtasks": [{"task": "Implement Recipe Recommendation", "done": true}, {"task": "Start Page Layout", "done": false}]}]);
     //await setItem('contacts', );
 }
