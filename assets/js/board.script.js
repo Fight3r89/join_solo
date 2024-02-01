@@ -10,6 +10,7 @@ async function init() {
         renderHtml();
         changeSubtasksAddImage();
         renderUserMenueInizials();
+        seachEventListener();
     }
     else {
         location.href = 'index.html';
@@ -68,15 +69,24 @@ function noTasksToDoHtml() {
     return '<div class="no-tasks">No tasks To do</div>';
 }
 
-function renderTaskCards() {
-    userTasks.forEach(tasks => {
-        if (tasks.task == 'todo') { document.getElementById('div-tasks-to-do').innerHTML += renderTaskCardHtml(tasks) };
-        if (tasks.task == 'inprogress') { document.getElementById('div-tasks-in-progress').innerHTML += renderTaskCardHtml(tasks) };
-        if (tasks.task == 'awaitfeedback') { document.getElementById('div-tasks-await-feedback').innerHTML += renderTaskCardHtml(tasks) };
-        if (tasks.task == 'done') { document.getElementById('div-tasks-done').innerHTML += renderTaskCardHtml(tasks) };
-    });
+function renderTaskCards(inputSearch) {
+    if (inputSearch) {
+        inputSearch.forEach(tasks => {
+            renderTasksInCategory(tasks)
+        });
+    }
+    else {
+        userTasks.forEach(tasks => {
+            renderTasksInCategory(tasks)
+        });
+    }
+}
 
-
+function renderTasksInCategory(tasks){
+    if (tasks.task == 'todo') { document.getElementById('div-tasks-to-do').innerHTML += renderTaskCardHtml(tasks) };
+    if (tasks.task == 'inprogress') { document.getElementById('div-tasks-in-progress').innerHTML += renderTaskCardHtml(tasks) };
+    if (tasks.task == 'awaitfeedback') { document.getElementById('div-tasks-await-feedback').innerHTML += renderTaskCardHtml(tasks) };
+    if (tasks.task == 'done') { document.getElementById('div-tasks-done').innerHTML += renderTaskCardHtml(tasks) };
 }
 
 function renderSubtasks(task) {
@@ -250,4 +260,18 @@ function showDropArea(section) {
 
 function hideDropArea(section) {
     document.getElementById(section).classList.remove('drag-area-shown');
+}
+
+function seachEventListener() {
+    document.getElementById('input-boad-search').addEventListener('input', function () {
+        let inputSearch = document.getElementById('input-boad-search').value.toLowerCase();
+        let filteredTasks = filterTasksByTitle(inputSearch);
+        //console.log(filteredTasks);
+        clearTaskCardContainer();
+        renderTaskCards(filteredTasks);
+    });
+}
+
+function filterTasksByTitle(inputSearch) {
+    return userTasks.filter(userTasks => userTasks.title.toLowerCase().includes(inputSearch));
 }
