@@ -33,8 +33,6 @@
                     <img class="board-search-bar-mobile" src="assets/icons/board_head_add.png" onclick="location.href='addtask.html'">
                 </div>
                 <div class="main-content">
-
-
                     <div class="div-board-section section-to-do" ondragover="showDropArea('todo'); allowDrop(event);" ondrop="drop('todo'); hideDropArea('todo')" ondragleave="hideDropArea('todo')" >
                         <div class="div-board-section-headline ">
                             <p>To do</p>
@@ -64,7 +62,6 @@
                             <!--Hier werden die Tasks reingerendert-->
                         </div>
                         <div class="drag-area" id="awaitfeedback"></div>
-
                     </div>
                     <div class="div-board-section section-done" ondragover="showDropArea('done'); allowDrop(event);" ondrop="drop('done'); hideDropArea('done')" ondragleave="hideDropArea('done')">
                         <div class="div-board-section-headline">
@@ -85,8 +82,8 @@
     <div id="addtask-card-container" class="slide-container d-none" w3-include-html="assets/templates/addtask.html">
     </div>
 
-    <div id="task-card-slide-container" class="slide-container d-none"
-        w3-include-html="assets/templates/task-card-slide.html"></div>
+    <div id="task-card-slide-container" class="slide-container d-none" w3-include-html="assets/templates/task-card-slide.html"></div>
+    <div id="task-card-slide-edit-container" class="slide-container d-none" w3-include-html="assets/templates/edittask.html"></div>
 
 </body>
 

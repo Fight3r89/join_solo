@@ -502,6 +502,10 @@ label {
     font-size: 61px;
 }
 
+.d-block{
+    display: block;
+}
+
 .drag-area {
     width: 250px;
     height: 159px;
@@ -512,6 +516,10 @@ label {
 .drag-area-shown {
     border-radius: 10px;
     border: 1px dashed #000;
+}
+
+.edit-task-headlines{
+    margin-bottom: 16px;
 }
 
 /*-----------------------------*/

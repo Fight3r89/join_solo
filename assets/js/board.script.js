@@ -42,6 +42,7 @@ function slideOut(container) {
         document.getElementById(container + '-container').classList.add('d-none');
         document.getElementById(container).style.right = '-150%';
     }, 280);
+    addSubtask = [];
 }
 
 function renderHtml() {
@@ -154,10 +155,11 @@ function renderSingleTaskCard(taskId) {
 }
 
 function clearSingleTaskCard() {
-    document.getElementById('ask-single-card-category').innerHTML = '';
+    document.getElementById('task-single-card-category').innerHTML = '';
+    document.getElementById('task-single-card-category').classList.remove('d-none');
     document.getElementById('task-single-card-headline').innerHTML = '';
     document.getElementById('task-single-card-content').innerHTML = '';
-    document.getElementById('task-single-card-date').innerHTML = '';
+    document.getElementById('task-single-card-date-container').innerHTML = '';
     document.getElementById('task-single-card-prio-right').innerHTML = '';
     document.getElementById('task-single-card-assignedto-list').innerHTML = '';
     document.getElementById('task-single-card-subtasks-list').innerHTML = '';
@@ -170,10 +172,10 @@ function setSingleTasCardContent(taskId) {
             let dateSplit = userTasks[i].date.split('-');
             let dateOutput = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0];
 
-            document.getElementById('ask-single-card-category').innerHTML = userTasks[i].category;
+            document.getElementById('task-single-card-category').innerHTML = userTasks[i].category;
             document.getElementById('task-single-card-headline').innerHTML = userTasks[i].title;
             document.getElementById('task-single-card-content').innerHTML = userTasks[i].description;
-            document.getElementById('task-single-card-date').innerHTML = dateOutput;
+            document.getElementById('task-single-card-date-container').innerHTML = dateOutput;
             document.getElementById('task-single-card-prio-right').innerHTML = `${userTasks[i].prio[0].toUpperCase() + userTasks[i].prio.slice(1)}
             <img src="assets/icons/prio_${userTasks[i].prio}.png" class="task-card-footer-prio">`;
             if (userTasks[i].subtasks.length > 0) {
@@ -266,12 +268,25 @@ function seachEventListener() {
     document.getElementById('input-boad-search').addEventListener('input', function () {
         let inputSearch = document.getElementById('input-boad-search').value.toLowerCase();
         let filteredTasks = filterTasksByTitle(inputSearch);
-        //console.log(filteredTasks);
-        clearTaskCardContainer();
         renderTaskCards(filteredTasks);
     });
 }
 
 function filterTasksByTitle(inputSearch) {
     return userTasks.filter(userTasks => userTasks.title.toLowerCase().includes(inputSearch));
+}
+
+function editTask(taskPositionInArray){
+    document.getElementById('editShowSubtasks').innerHTML = '';
+    slideOut('task-card-slide');
+    slideIn('task-card-slide-edit');
+    userTasks[taskPositionInArray].subtasks.forEach(subtask => {
+        addSubtask.push(subtask);
+    });
+    removeSelection(selected, true);
+    selected = userTasks[taskPositionInArray].prio;
+    addSelection(userTasks[taskPositionInArray].prio, true);
+    document.getElementById('editTaskTitle').value = userTasks[taskPositionInArray].title;
+    document.getElementById('editTaskDescription').value = userTasks[taskPositionInArray].description;
+    showSubtasks(true);
 }
