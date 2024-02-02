@@ -130,7 +130,6 @@ select {
 }
 
 .task-card-subtasks-progressbar-background {
-    position: relative;
     background-color: #f4f4f4;
     flex: 1;
     height: 8px;

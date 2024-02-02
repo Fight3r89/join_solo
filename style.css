@@ -517,11 +517,11 @@ main {
     filter: brightness(0%) invert(100%);
 }
 
-.subtasks-add-icons {
+/* .subtasks-add-icons {
     position: absolute;
     top: 12px;
     right: 20px;
-}
+} */
 
 .subtasks-add-delete {
     display: flex;
@@ -608,7 +608,16 @@ main {
 }
 
 #subtasks {
-    padding-right: 80px;
+    border: none;
+    margin-bottom: 0;
+}
+
+.div-add-new-subtask{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
 }
 
 .contactSelected {

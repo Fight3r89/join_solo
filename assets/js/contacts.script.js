@@ -1,7 +1,7 @@
 let toggleSingleContact = 0;
 
 async function init() {
-    await getUserDataFromLocalStorage();
+    await getUserDataFromSessionStorage();
     if (await checkLoggedIn()) {
     await includeHTML();
     navChangeColor();

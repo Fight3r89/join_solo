@@ -8,7 +8,7 @@ async function login() {
     users.forEach(e => {
         if (e.eMail == email.value) {
             if (e.password == pswd.value) {
-                localStorage.setItem('user', JSON.stringify(e));
+                sessionStorage.setItem('user', JSON.stringify(e));
                 document.getElementById('login_error').classList.add('d-none');
                 email.value = '';
                 pswd.value = '';
@@ -29,7 +29,7 @@ async function login() {
 
 function loginGuest() {
 
-    localStorage.setItem('user', JSON.stringify(
+    sessionStorage.setItem('user', JSON.stringify(
         { 'id': 0, 'firstName': 'Guest', 'lastName': '', 'eMail': '' }
     ));
     location.href = 'summary.html';

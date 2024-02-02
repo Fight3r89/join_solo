@@ -20,8 +20,8 @@ async function getItem(key) {
     });
 }
 
-async function getUserDataFromLocalStorage() {
-    loggedInUser = JSON.parse(localStorage.getItem('user'));
+async function getUserDataFromSessionStorage() {
+    loggedInUser = JSON.parse(sessionStorage.getItem('user'));
 }
 
 async function loadUserTasks() {

@@ -1,5 +1,5 @@
 async function init() {
-    await getUserDataFromLocalStorage();
+    await getUserDataFromSessionStorage();
     if (await checkLoggedIn()) {
         await includeHTML();
         await loadUserTasks();

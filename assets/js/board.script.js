@@ -1,7 +1,7 @@
 let currentDraggedElement;
 
 async function init() {
-    await getUserDataFromLocalStorage();
+    await getUserDataFromSessionStorage();
     if (await checkLoggedIn()) {
         await includeHTML();
         await loadUserTasks();
@@ -266,6 +266,7 @@ function hideDropArea(section) {
 
 function seachEventListener() {
     document.getElementById('input-boad-search').addEventListener('input', function () {
+        clearTaskCardContainer();
         let inputSearch = document.getElementById('input-boad-search').value.toLowerCase();
         let filteredTasks = filterTasksByTitle(inputSearch);
         renderTaskCards(filteredTasks);

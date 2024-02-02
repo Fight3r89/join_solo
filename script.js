@@ -192,21 +192,23 @@ function changeSubtasksAddImage() {
             document.getElementById('subtasks-add-delete').classList.add('d-none');
         }
     });
-    editSubtasksInput.addEventListener('input', function () {
-        if (editSubtasksInput.value) {
-            document.getElementById('editSubtasks-plus').classList.add('d-none');
-            document.getElementById('editSubtasks-add-delete').classList.remove('d-none');
-        }
-        else if (!editSubtasksInput.value) {
-            document.getElementById('editSubtasks-plus').classList.remove('d-none');
-            document.getElementById('editSubtasks-add-delete').classList.add('d-none');
-        }
-    });
+    if (editSubtasksInput) {
+        editSubtasksInput.addEventListener('input', function () {
+            if (editSubtasksInput.value) {
+                document.getElementById('editSubtasks-plus').classList.add('d-none');
+                document.getElementById('editSubtasks-add-delete').classList.remove('d-none');
+            }
+            else if (!editSubtasksInput.value) {
+                document.getElementById('editSubtasks-plus').classList.remove('d-none');
+                document.getElementById('editSubtasks-add-delete').classList.add('d-none');
+            }
+        });
+    }
 }
 
 function showSubtasks(edit) {
     let container;
-    if(edit) {
+    if (edit) {
         container = 'editShowSubtasks';
     }
     else {
@@ -230,7 +232,7 @@ function showSubtasks(edit) {
 
 async function addContactsToAssignedTo(edit) {
     let container;
-    if(edit) {
+    if (edit) {
         container = document.getElementById('editContactsAssignedTo');
     }
     else {
@@ -264,7 +266,7 @@ async function addContactsToAssignedTo(edit) {
 async function openContactsAssignedTo(edit) {
     let inputAssignedTo;
     let container;
-    if(edit){
+    if (edit) {
         inputAssignedTo = document.getElementById('editContactsAssignedTo');
         container = document.getElementById('editAddTaskAssignedToSelectDefault');
     }
@@ -354,20 +356,20 @@ function deleteSubtask(arrayPosition, edit) {
 
 function subtaskInputDelete(edit) {
     let container;
-    if(edit){
+    if (edit) {
         container = 'editSubtasks'
     }
     else {
         container = 'subtasks';
     }
     document.getElementById(container).value = '';
-    document.getElementById(container+'-plus').classList.remove('d-none');
-    document.getElementById(container+'-add-delete').classList.add('d-none');
+    document.getElementById(container + '-plus').classList.remove('d-none');
+    document.getElementById(container + '-add-delete').classList.add('d-none');
 }
 
 function addSubtaskToArray(edit) {
     let container;
-    if(edit){
+    if (edit) {
         container = 'editSubtasks'
     }
     else {
@@ -375,8 +377,8 @@ function addSubtaskToArray(edit) {
     }
     addSubtask.push({ task: document.getElementById(container).value, done: false });
     document.getElementById(container).value = '';
-    document.getElementById(container+'-plus').classList.remove('d-none');
-    document.getElementById(container+'-add-delete').classList.add('d-none');
+    document.getElementById(container + '-plus').classList.remove('d-none');
+    document.getElementById(container + '-add-delete').classList.add('d-none');
     showSubtasks(edit);
 }
 
@@ -389,7 +391,7 @@ function openUserMenue() {
 }
 
 function logout() {
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
     window.location.href = 'index.html';
 }
 
