@@ -611,6 +611,10 @@ main {
     border: none;
     margin-bottom: 0;
 }
+#editSubtasks {
+    border: none;
+    margin-bottom: 0;
+}
 
 .div-add-new-subtask{
     display: flex;

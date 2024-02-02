@@ -248,7 +248,7 @@ async function addContactsToAssignedTo(edit) {
             userContacts[i].assign = false;
         }
         container.innerHTML += `
-        <div class="assignedToContactsListItemContainer" id="contact${i}" onclick="selectContactForAssign(${i})">
+        <div class="assignedToContactsListItemContainer" id="contact${i}" onclick="selectContactForAssign(${i},${edit})">
             <div class="assignedToContactsListItemContainerLeft">
                 <div class="assignedToContactsListInizials">
                     SF
@@ -274,7 +274,7 @@ async function openContactsAssignedTo(edit) {
         inputAssignedTo = document.getElementById('contactsAssignedTo');
         container = document.getElementById('addTaskAssignedToSelectDefault');
     }
-    (container.classList.contains('mb-0')) ? document.getElementById('addTaskAssignedToSelectDefault').classList.remove('mb-0') : document.getElementById('addTaskAssignedToSelectDefault').classList.add('mb-0')
+    (container.classList.contains('mb-0')) ? container.classList.remove('mb-0') : container.classList.add('mb-0')
     inputAssignedTo.innerHTML = '';
     if (!toggleShowAssignedTo) {
         await addContactsToAssignedTo(edit);
@@ -285,26 +285,26 @@ async function openContactsAssignedTo(edit) {
     toggleShowAssignedTo = !toggleShowAssignedTo;
 }
 
-function selectContactForAssign(i) {
+function selectContactForAssign(i, edit) {
     let path = document.getElementById('checkbox' + i).src;
     let imagePath = new URL(path).pathname.split('/');
     imagePath.shift();
     imagePath = imagePath.join('/');
     if (imagePath == 'assets/icons/check_box.png') {
         addContactsToAssignedToArray(i);
-        changeAssignToContacts(i);
+        changeAssignToContacts(i, edit);
         userContacts[i].assign = true;
     }
     else {
         deleteContactsToAssignedToArray(userContacts[i].id);
-        changeAssignToContacts(i);
+        changeAssignToContacts(i, edit);
         userContacts[i].assign = false;
     }
 }
 
-function changeAssignToContacts(i) {
-    contactCBackgroundColor(i);
-    changeDefaultAssignedTo();
+function changeAssignToContacts(i, edit) {
+    contactCBackgroundColor(i, edit);
+    changeDefaultAssignedTo(edit);
 }
 
 function addContactsToAssignedToArray(arrayPosition) {
@@ -319,7 +319,7 @@ function deleteContactsToAssignedToArray(userId) {
     }
 }
 
-function contactCBackgroundColor(i) {
+function contactCBackgroundColor(i, edit) {
     if (document.getElementById('contact' + i).classList.contains('contactSelected')) {
         document.getElementById('contact' + i).classList.remove('contactSelected');
         document.getElementById('checkbox' + i).src = 'assets/icons/check_box.png';
@@ -331,21 +331,28 @@ function contactCBackgroundColor(i) {
     }
 }
 
-function changeDefaultAssignedTo() {
-    document.getElementById('addTaskAssignedToSelectDefault').innerHTML = '';
+function changeDefaultAssignedTo(edit) {
+    let container;
+    if (edit) {
+        container = document.getElementById('editAddTaskAssignedToSelectDefault');
+    }
+    else {
+        container = document.getElementById('addTaskAssignedToSelectDefault');
+    }
+    container.innerHTML = '';
     let i = 1;
     if (addAssignedTo.length > 0) {
         addAssignedTo.forEach(ucid => {
-            document.getElementById('addTaskAssignedToSelectDefault').innerHTML += `
+            container.innerHTML += `
                 ${ucid.firstName} ${ucid.lastName}`;
             if (addAssignedTo.length > 1 && i < addAssignedTo.length) {
-                document.getElementById('addTaskAssignedToSelectDefault').innerHTML += `,`;
+                container.innerHTML += `,`;
             }
             i++;
         });
     }
     else {
-        document.getElementById('addTaskAssignedToSelectDefault').innerHTML = 'Select contacts to assign';
+        container.innerHTML = 'Select contacts to assign';
     }
 }
 
