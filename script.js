@@ -251,8 +251,8 @@ async function addContactsToAssignedTo(edit) {
         container.innerHTML += `
         <div class="assignedToContactsListItemContainer" id="contact${i}" onclick="selectContactForAssign(${i},${edit})">
             <div class="assignedToContactsListItemContainerLeft">
-                <div class="assignedToContactsListInizials">
-                    SF
+                <div class="assignedToContactsListInizials" id="assignedToContactsListInizials${i}">
+                ${userContacts[i].firstName.charAt(0)}${userContacts[i].lastName.charAt(0)}
                 </div>
                 ${userContacts[i].firstName} ${userContacts[i].lastName}
             </div>
@@ -261,6 +261,7 @@ async function addContactsToAssignedTo(edit) {
         if (userContacts[i].assign) {
             contactCBackgroundColor(i);
         }
+        document.getElementById('assignedToContactsListInizials'+i).style.backgroundColor = userContacts[i].color;
     }
 }
 

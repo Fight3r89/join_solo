@@ -242,7 +242,8 @@ select {
     right: -150%;
     margin: auto;
     max-width: 525px;
-    max-height: 931px;
+    /* max-height: 931px; */
+    max-height: fit-content;
     padding: 48px 40px;
     border-radius: 30px;
     gap: 24px;
