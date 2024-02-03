@@ -1,12 +1,13 @@
 <div class="task-card-slide" id="task-card-slide-edit">
     <img class="close-slider" src="./assets/icons/close.png" onclick="slideOut('task-card-slide-edit')">
+
     <div>
         <p class="edit-task-headlines">Title:</p>
         <input type="text" id="editTaskTitle">
     </div>
     <div>
         <p class="edit-task-headlines">Description:</p>
-       <textarea id="editTaskDescription"></textarea>
+        <textarea id="editTaskDescription"></textarea>
     </div>
     <div>
         <p class="edit-task-headlines">Prioriy:</p>
@@ -20,7 +21,7 @@
                 <img src="assets/icons/prio_medium.png">
             </div>
             <div class="div-prio" id="edit_prio_low" onclick="choosePrio('low', true)">
-            Low
+                Low
                 <img src="assets/icons/prio_low.png">
             </div>
         </div>
@@ -29,7 +30,8 @@
         <p class="edit-task-headlines">Assigned To:</p>
         <div>
             <div id="addTaskAsignedTo">
-                <div class="addTaskAssignedToSelectDefault" id="editAddTaskAssignedToSelectDefault" onclick="openContactsAssignedTo(true)">Select contacts to assign</div>
+                <div class="addTaskAssignedToSelectDefault" id="editAddTaskAssignedToSelectDefault"
+                    onclick="openContactsAssignedTo(true)">Select contacts to assign</div>
             </div>
             <div id="editContactsAssignedTo" class="contactsAssignedTo d-none"></div>
         </div>
@@ -42,11 +44,12 @@
             <div id="editSubtasks-add-delete" class="subtasks-add-icons subtasks-add-delete d-none">
                 <img src="assets/icons/close.png" class="subtasks-img-hover" onclick="subtaskInputDelete(true)">
                 <div style="width: 1px; background: #d1d1d1;"></div>
-                <img src="assets/icons/check_blue.png" class="subtasks-img-hover"
-                    onclick="addSubtaskToArray(true)">
+                <img src="assets/icons/check_blue.png" class="subtasks-img-hover" onclick="addSubtaskToArray(true)">
             </div>
         </div>
         <div style="height: 100px; overflow-y: auto;" id="editShowSubtasks">
         </div>
     </div>
+
+    <button class="btn-edit-ok">OK</button>
 </div>

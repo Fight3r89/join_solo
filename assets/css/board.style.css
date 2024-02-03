@@ -232,7 +232,7 @@ select {
 
 .task-card-slide {
     box-sizing: border-box;
-    display: flex;
+    display: grid;
     flex-direction: column;
     background-color: white;
     position: absolute;
@@ -520,6 +520,11 @@ label {
 
 .edit-task-headlines{
     margin-bottom: 16px;
+}
+
+.btn-edit-ok {
+    justify-self: end;
+    width: 100px;
 }
 
 /*-----------------------------*/
