@@ -101,6 +101,42 @@ select {
 
 /*Index*/
 
+.register-successfully{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #2a3647;
+    padding: 0 25px;
+    border-radius: 20px;
+    width: fit-content;
+    height: 74px;
+    opacity: 0;
+}
+
+.reg-animation{
+    animation-name: signUp;
+    animation-duration: 3000ms;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes signUp{
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 .content-index {
     display: flex;
     grid-area: content;

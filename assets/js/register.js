@@ -20,13 +20,14 @@ async function register() {
         newUser.eMail = email.value;
         newUser.password = document.getElementById('passwrd').value;
         users.push(newUser);
-        saveUser();
+        //saveUser();
         document.getElementById('name').value = '';
         document.getElementById('email').value = '';
         document.getElementById('passwrd').value = '';
         document.getElementById('passwrdConf').value = '';
 
         console.log("user wird erstellt");
+        location.href = 'index.html';
     }
     users = [];
 }

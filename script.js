@@ -40,6 +40,7 @@ function firstLoad() {
         document.getElementById('div-index-register').classList.remove('d-none');
         //document.getElementById('footer').classList.remove('d-none');
     }, 500);
+    
 }
 
 function openSignUp() {
