@@ -203,9 +203,11 @@ function changeSubtasksAddImage() {
                 document.getElementById('editSubtasks-plus').classList.remove('d-none');
                 document.getElementById('editSubtasks-add-delete').classList.add('d-none');
             }
-        });
+        }); 
     }
 }
+
+//(test)?? x==1;
 
 function showSubtasks(edit) {
     let container;

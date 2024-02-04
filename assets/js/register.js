@@ -26,7 +26,6 @@ async function register() {
         document.getElementById('passwrd').value = '';
         document.getElementById('passwrdConf').value = '';
 
-        console.log("user wird erstellt");
         document.getElementById('content-register').classList.add('d-none');
         document.getElementById('content-login').classList.remove('d-none');
         document.getElementById('register-successfully').classList.add('reg-animation');

@@ -112,7 +112,7 @@ function renderSubtasks(task) {
 
 function renderTaskCardHtml(task) {
     return `
-        <div class="task-card" onclick="slideIn('task-card-slide',${task.taskId})" draggable="true" ondragstart="moveTo(${task.taskId})">
+        <div class="task-card" id="task-card${task.taskId}" onclick="slideIn('task-card-slide',${task.taskId})" draggable="true" ondragstart="moveTo(${task.taskId})">
             <div class="task-card-category">
                 ${task.category}
             </div>
@@ -290,4 +290,24 @@ function editTask(taskPositionInArray){
     document.getElementById('editTaskTitle').value = userTasks[taskPositionInArray].title;
     document.getElementById('editTaskDescription').value = userTasks[taskPositionInArray].description;
     showSubtasks(true);
+    document.getElementById('editTaskOkButton').innerHTML = `<button onclick="saveEditTask(${taskPositionInArray})" class="btn-edit-ok">OK<img src="./assets/icons/check.png"></button>`;
+    
+}
+
+async function saveEditTask(taskArrayPosition) {
+    let uploadTask = userTasks[taskArrayPosition];
+    uploadTask.title = document.getElementById('editTaskTitle').value;
+    uploadTask.description = document.getElementById('editTaskDescription').value;
+    uploadTask.prio = selected;
+    uploadTask.assigned_to = [...addAssignedTo];
+    uploadTask.subtasks = [...addSubtask];
+    await loadTasksFromBackend();
+    tasks.forEach(function(task,i) {
+        if(task.taskId == uploadTask.taskId) {
+            tasks.splice(i,1,uploadTask);
+        }
+    });
+    await setItem('tasks', tasks);
+    slideOut('task-card-slide-edit');
+    renderHtml();
 }
