@@ -27,7 +27,10 @@ async function register() {
         document.getElementById('passwrdConf').value = '';
 
         console.log("user wird erstellt");
-        location.href = 'index.html';
+        document.getElementById('content-register').classList.add('d-none');
+        document.getElementById('content-login').classList.remove('d-none');
+        document.getElementById('register-successfully').classList.add('reg-animation');
+       
     }
     users = [];
 }
