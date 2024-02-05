@@ -31,6 +31,7 @@ async function register() {
 
         document.getElementById('content-register').classList.add('d-none');
         document.getElementById('content-login').classList.remove('d-none');
+        document.getElementById('div-index-register').classList.remove('d-none');
         document.getElementById('register-successfully').classList.add('reg-animation');
        
     }

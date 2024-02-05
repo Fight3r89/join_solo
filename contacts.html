@@ -35,13 +35,17 @@
                     <p class="title-sub">Better with a team</p>
                     <div class="seperator-vertical"></div>
                 </div>
-                <div class="main-content">
+                <div id="main-content" class="main-content d-none" onclick="closeSingleContact()">
+                    <div class="main-content-close">
+                        <img src="assets/icons/close.png">
+                    </div>
                     <div id="single-contact-container" class="single-contact-container d-none"
                         w3-include-html="assets/templates/single-contact.html"></div>
                 </div>
             </div>
         </main>
     </div>
+    <div id="div-background-main-content" class="div-background-main-content d-none"></div>
 
     <div id="contacts-add-card-container" class="contacts-add-card-container d-none"
         w3-include-html="assets/templates/contacts-add-card.html"></div>

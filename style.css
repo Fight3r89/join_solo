@@ -11,6 +11,18 @@ body {
     background-color: #F6F7F8;
 }
 
+::-webkit-scrollbar {
+    width: 8px; /* Breite der Scrollbar */
+}
+::-webkit-scrollbar-thumb {
+    background-color: #aabbcc; /* Farbe des Scrollbalken-Griffs */
+    border-radius: 6px; /* Abrundung des Scrollbalken-Griffs */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ddeeff; /* Farbe des Scrollbalken-Hintergrunds */
+}
+
 p {
     margin: 0;
 }

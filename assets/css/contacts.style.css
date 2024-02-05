@@ -305,6 +305,10 @@ button{
     border: 3px solid #fff;
 }
 
+.main-content-close{
+    display: none;
+}
+
 @media (max-width:1175px){
     .site-title{
         flex-direction: column;
@@ -349,17 +353,43 @@ button{
     main{
         flex-direction: column-reverse;
     }
-
     .btn-add-new-contact{
         display: none !important;
     }
 
-    .flex-content-main{
-        display: none;
+    .div-background-main-content{
+        display: flex;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.2);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
+    .main-content {
+        background-color: #fff;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        min-width: 320px;
+        max-width: 500px;
+        height: fit-content;
+        padding: 48px 32px;
+        border-radius: 20px;
     }
 
-    .main-content{
-        display: none;
+    .main-content-close{
+        display: flex;
+        position: absolute;
+        right: 50px;
+    }
+    .main-content-close:hover{
+        cursor: pointer;
     }
 
     .div-contacts{
