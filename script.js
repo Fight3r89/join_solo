@@ -235,8 +235,10 @@ function showSubtasks(edit) {
 
 async function addContactsToAssignedTo(edit, taskArrayPosition) {
     let container;
+    let addon = '';
     if (edit) {
         container = document.getElementById('editContactsAssignedTo');
+        addon = 'edit';
     }
     else {
         container = document.getElementById('contactsAssignedTo');
@@ -256,17 +258,17 @@ async function addContactsToAssignedTo(edit, taskArrayPosition) {
             });
         }
         container.innerHTML += `
-        <div class="assignedToContactsListItemContainer" id="contact${i}" onclick="selectContactForAssign(${i},${edit})">
+        <div class="assignedToContactsListItemContainer" id="${addon}contact${i}" onclick="selectContactForAssign(${i},${edit})">
             <div class="assignedToContactsListItemContainerLeft">
                 <div class="assignedToContactsListInizials" id="assignedToContactsListInizials${i}">
                 ${userContacts[i].inizials}
                 </div>
                 ${userContacts[i].firstName} ${userContacts[i].lastName}
             </div>
-            <img id="checkbox${i}" src="assets/icons/check_box.png">
+            <img id="${addon}checkbox${i}" src="assets/icons/check_box.png">
         </div>`;
         if (userContacts[i].assign) {
-            contactCBackgroundColor(i);
+            contactCBackgroundColor(i,edit);
         }
         document.getElementById('assignedToContactsListInizials' + i).style.backgroundColor = userContacts[i].color;
     }
@@ -295,7 +297,12 @@ async function openContactsAssignedTo(edit, taskArrayPosition) {
 }
 
 function selectContactForAssign(i, edit) {
-    let path = document.getElementById('checkbox' + i).src;
+    let addon;
+    if(edit){
+        addon = 'edit';
+    }
+    //debugger;
+    let path = document.getElementById(addon+'checkbox' + i).src;
     let imagePath = new URL(path).pathname.split('/');
     imagePath.shift();
     imagePath = imagePath.join('/');
@@ -328,15 +335,19 @@ function deleteContactsToAssignedToArray(userId) {
     }
 }
 
-function contactCBackgroundColor(i) {
-    if (document.getElementById('contact' + i).classList.contains('contactSelected')) {
-        document.getElementById('contact' + i).classList.remove('contactSelected');
-        document.getElementById('checkbox' + i).src = 'assets/icons/check_box.png';
+function contactCBackgroundColor(i,edit) {
+    let container;
+    if(edit){
+        container = 'edit';
+    }
+    if (document.getElementById(container+'contact' + i).classList.contains('contactSelected')) {
+        document.getElementById(container+'contact' + i).classList.remove('contactSelected');
+        document.getElementById(container+'checkbox' + i).src = 'assets/icons/check_box.png';
 
     }
     else {
-        document.getElementById('contact' + i).classList.add('contactSelected');
-        document.getElementById('checkbox' + i).src = 'assets/icons/check_box_checked.png';
+        document.getElementById(container+'contact' + i).classList.add('contactSelected');
+        document.getElementById(container+'checkbox' + i).src = 'assets/icons/check_box_checked.png';
     }
 }
 

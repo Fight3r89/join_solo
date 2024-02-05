@@ -48,6 +48,7 @@ function slideOut(container) {
     toggleShowAssignedTo = false;
     userContacts = [];
     document.getElementById('editContactsAssignedTo').classList.add('d-none');
+    document.getElementById('contactsAssignedTo').classList.add('d-none');
 }
 
 function renderHtml() {
