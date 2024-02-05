@@ -201,7 +201,7 @@ function setSingleTasCardContent(taskId) {
                 userTasks[i].assigned_to.forEach(at => {
                     document.getElementById('task-single-card-assignedto-list').innerHTML += `
                         <div class="task-single-card-assignedto-list-card">
-                            <div class="task-single-card-assignedto-list-logo">
+                            <div class="task-single-card-assignedto-list-logo" style="background-color:${at.color};">
                             ${at.firstName[0]}${at.lastName[0]}
                             </div>
                             <p>${at.firstName} ${at.lastName}</p>
