@@ -79,14 +79,23 @@ async function createNewTask() {
 }
 
 function clearInputFields() {
+    addSubtask = [];
+    addAssignedTo = [];
+    userContacts = [];
+    toggleShowAssignedTo = false;
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
     document.getElementById('date').value = '';
-    //document.getElementById('assigned-to').value = '';
-    //document.getElementById('category').value = '';
+    document.getElementById('addTaskAsignedTo').innerHTML = `
+    <div class="addTaskAssignedToSelectDefault" id="addTaskAssignedToSelectDefault"
+    onclick="openContactsAssignedTo()">Select contacts to assign</div>`;
+    document.getElementById('contactsAssignedTo').classList.add('d-none');
+    document.getElementById('addTaskAsignedTo').classList.remove('mb-0');
+    document.getElementById('category').value = '';
     document.getElementById('subtasks').value = '';
     document.getElementById('showSubtasks').innerHTML = '';
-    addSubtask = [];
+    if(selected != 'medium'){choosePrio('medium')};
+   
 }
 
 function setAmounts() {
