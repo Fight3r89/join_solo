@@ -49,6 +49,7 @@ function slideOut(container) {
     userContacts = [];
     document.getElementById('editContactsAssignedTo').classList.add('d-none');
     document.getElementById('contactsAssignedTo').classList.add('d-none');
+    document.getElementById('addTaskAssignedToSelectDefault').innerHTML = 'Select contacts to assign';
 }
 
 function renderHtml() {

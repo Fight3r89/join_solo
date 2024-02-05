@@ -309,6 +309,10 @@ button{
     display: none;
 }
 
+.input-form-contacts{
+    gap: 32px;
+}
+
 @media (max-width:1175px){
     .site-title{
         flex-direction: column;
@@ -403,7 +407,7 @@ button{
 @media (max-width:905px){
     .contacts-add-card {
         flex-direction: column;
-        max-height: 760px;
+        max-height: 880px;
         height: 100%;
     }
     .add-contacs-close-slider{
@@ -425,7 +429,7 @@ button{
         border-radius: 0;
         border-bottom-left-radius: 30px;
         border-bottom-right-radius: 30px;
-        max-height: 409px;
+        max-height: 530px;
         padding: 0 16px;
     }
 }
@@ -435,6 +439,6 @@ button{
         flex-direction: column;
     }
     #contact-add-edit-img {
-        margin-top: -100px;
+        margin-top: -130px;
     }
 }

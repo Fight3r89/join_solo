@@ -19,7 +19,9 @@ function firstLoad() {
         document.getElementById('content-login').classList.remove('d-none');
         document.getElementById('div-index-register').classList.remove('d-none');
         //document.getElementById('footer').classList.remove('d-none');
+        eventListeners();
     }, 500);
+    
 }
 
 function openSignUp() {
@@ -39,9 +41,10 @@ function openSite(site) {
 }
 
 async function loadUsers() {
-    let user = [];
-    user = JSON.parse(await getItem('users'));
-    user.forEach(e => {
+    users = [];
+    users = JSON.parse(await getItem('users'));
+    console.log(users);
+    users.forEach(e => {
         let loadUser = new User();
         loadUser.id = e.id;
         loadUser.firstName = e.firstName;
@@ -64,6 +67,10 @@ async function checkLoggedIn() {
 
 async function createNewTask() {
     let newTask = new Task;
+    if(selected == null){
+        selected = 'medium';
+    }
+    console.log(selected);
     newTask.autor = loggedInUser.id;
     newTask.title = document.getElementById('title').value;
     newTask.description = document.getElementById('description').value;
@@ -416,16 +423,51 @@ function getMinDate() {
     document.getElementById('date').min = new Date().toISOString().split('T')[0];
 }
 
+function eventListeners() {
+    document.getElementById('passwrd').addEventListener('input', function () {
+        changeLockIcon('passwrd');
+        
+    });
+    document.getElementById('passwrdConf').addEventListener('input', function () {
+        changeLockIcon('passwrdConf');
+    });
+    document.getElementById('pass').addEventListener('input', function () {
+        changeLockIcon('pass');
+    });
+}
+
+function changeLockIcon(iconTarget){
+    if(document.getElementById(iconTarget).value != "") {
+        document.getElementById(iconTarget+'Icon').src = 'assets/icons/visibility_off.png';
+        document.getElementById(iconTarget+'Icon').classList.add('cursor-pointer');
+        document.getElementById(iconTarget+'Icon').addEventListener('click', function(){
+            if(new URL(document.getElementById(iconTarget+'Icon').src).pathname == '/assets/icons/visibility_off.png'){
+                document.getElementById(iconTarget+'Icon').src = 'assets/icons/visibility.png';
+                document.getElementById(iconTarget).type = "text";
+            }
+            else{
+                document.getElementById(iconTarget+'Icon').src = 'assets/icons/visibility_off.png';
+                document.getElementById(iconTarget).type = "password";
+            }
+        });
+    }
+    else{
+        document.getElementById(iconTarget+'Icon').src = 'assets/icons/lock.png';
+        document.getElementById(iconTarget+'Icon').classList.remove('cursor-pointer');
+    }
+}
+
+
 async function completeBackendReset() {
     userContacts = [];
     userTasks = [];
     users = [];
 
     await setItem('tasks', tasks);
-    await setItem('contacts', contacts);
+    await setItem('contacts', userContacts);
     await setItem('users', users);
 
-    await setItem('users', { "id": 0, "firstName": "Guest", "eMail": "guest@test.de", "password": "" });
-    //await setItem('tasks', [{"taskId": 1, "task": "inprogress", "autor": 0, "title": "Kochwelt Page & Recipe Recommander", "description": "Build start page with recipe recommendation.", "assigned_to": [], "date": "2023-05-10", "prio": "medium", "category": "User Story", "subtasks": [{"task": "Implement Recipe Recommendation", "done": true}, {"task": "Start Page Layout", "done": false}]}]);
-    //await setItem('contacts', [{"id": 0, "firstName": "Benedikt", "lastName": "Ziegler", "eMail": "benedikt@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#9747FF"}, {"id": 1, "firstName": "David", "lastName": "Eisenberg", "eMail": "davidberg@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#1FD7C1"}, {"id": 2, "firstName": "Eva", "lastName": "Fischer", "eMail": "eva@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#6E52FF"}, {"id": 3, "firstName": "Emmanuel", "lastName": "Mauer", "eMail": "emmanuelma@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#9747FF"}, {"id": 4, "firstName": "Marcel", "lastName": "Bauer", "eMail": "bauer@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#FF4646"}, {"id": 5, "firstName": "Tanja", "lastName": "Wolf", "eMail": "wolf@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#FF4646"}, {"id": 6, "firstName": "Anton", "lastName": "Mayer", "eMail": "antonm@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#00BEE8"}, {"id": 7, "firstName": "Anja", "lastName": "Schulz", "eMail": "schulz@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#6E52FF"}]);
+    await setItem('users', [{ "id": 0, "firstName": "Guest", "eMail": "guest@test.de", "password": "", "lastName": "", "inizials": "G" }]);
+    await setItem('tasks', [{"taskId": 1, "task": "inprogress", "autor": 0, "title": "Kochwelt Page & Recipe Recommander", "description": "Build start page with recipe recommendation.", "assigned_to": [], "date": "2023-05-10", "prio": "medium", "category": "User Story", "subtasks": [{"task": "Implement Recipe Recommendation", "done": true}, {"task": "Start Page Layout", "done": false}]}]);
+    await setItem('contacts', [{"id": 0, "firstName": "Benedikt", "lastName": "Ziegler", "eMail": "benedikt@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#9747FF", "inizials": "BZ"}, {"id": 1, "firstName": "David", "lastName": "Eisenberg", "eMail": "davidberg@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#1FD7C1", "inizials": "DE"}, {"id": 2, "firstName": "Eva", "lastName": "Fischer", "eMail": "eva@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#6E52FF", "inizials": "EF"}, {"id": 3, "firstName": "Emmanuel", "lastName": "Mauer", "eMail": "emmanuelma@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#9747FF", "inizials": "EM"}, {"id": 4, "firstName": "Marcel", "lastName": "Bauer", "eMail": "bauer@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#FF4646", "inizials": "MB"}, {"id": 5, "firstName": "Tanja", "lastName": "Wolf", "eMail": "wolf@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#FF4646", "inizials": "TW"}, {"id": 6, "firstName": "Anton", "lastName": "Mayer", "eMail": "antonm@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#00BEE8", "inizials": "AM"}, {"id": 7, "firstName": "Anja", "lastName": "Schulz", "eMail": "schulz@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#6E52FF", "inizials": "AS"}]);
 }

@@ -31,7 +31,7 @@ async function login() {
 function loginGuest() {
 
     sessionStorage.setItem('user', JSON.stringify(
-        { 'id': 0, 'firstName': 'Guest', 'lastName': '', 'eMail': '' }
+        { 'id': 0, 'firstName': 'Guest', 'lastName': '', 'eMail': '', 'inizials': 'G' }
     ));
     location.href = 'summary.html';
 }

@@ -9,7 +9,7 @@
         <img class="add-contacs-close-slider" src="./assets/icons/close.png" onclick="slideOut('contacts-add-card')">
         <div id="contact-add-edit-img">
         </div>
-        <form onsubmit="handleFormSubmission(); return false">
+        <form class="input-form-contacts" onsubmit="handleFormSubmission(); return false">
             <input type="hidden" id="contact_action" value="add">
             <input id="contact_name" placeholder="Name">
             <input id="contact_email" placeholder="Email" pattern=".*@.*\..*" title="An @ is required">
