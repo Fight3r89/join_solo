@@ -232,7 +232,7 @@ async function addContactsToAssignedTo(edit, taskArrayPosition) {
     }
     if (userContacts.length == 0) {
         await loadUsersContacts();
-        if (userContacts.length == 0) container.innerHTML += 'No Contacts Avalable';
+        if (userContacts.length == 0) container.innerHTML += 'No Contacts Available';
     }
 
     for (let i = 0; i < userContacts.length; i++) {

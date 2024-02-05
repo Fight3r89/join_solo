@@ -195,7 +195,7 @@ function setSingleTasCardContent(taskId) {
                 };
             }
             else {
-                document.getElementById('task-single-card-subtasks-list').innerHTML += `<p>No Subtasks avalable</p>`;
+                document.getElementById('task-single-card-subtasks-list').innerHTML += `<p>No Subtasks available</p>`;
             }
             if (userTasks[i].assigned_to.length > 0) {
                 userTasks[i].assigned_to.forEach(at => {
