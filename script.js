@@ -297,7 +297,7 @@ async function openContactsAssignedTo(edit, taskArrayPosition) {
 }
 
 function selectContactForAssign(i, edit) {
-    let addon;
+    let addon = '';
     if(edit){
         addon = 'edit';
     }
@@ -336,18 +336,18 @@ function deleteContactsToAssignedToArray(userId) {
 }
 
 function contactCBackgroundColor(i,edit) {
-    let container;
+    let addon = '';
     if(edit){
-        container = 'edit';
+        addon = 'edit';
     }
-    if (document.getElementById(container+'contact' + i).classList.contains('contactSelected')) {
-        document.getElementById(container+'contact' + i).classList.remove('contactSelected');
-        document.getElementById(container+'checkbox' + i).src = 'assets/icons/check_box.png';
+    if (document.getElementById(addon+'contact' + i).classList.contains('contactSelected')) {
+        document.getElementById(addon+'contact' + i).classList.remove('contactSelected');
+        document.getElementById(addon+'checkbox' + i).src = 'assets/icons/check_box.png';
 
     }
     else {
-        document.getElementById(container+'contact' + i).classList.add('contactSelected');
-        document.getElementById(container+'checkbox' + i).src = 'assets/icons/check_box_checked.png';
+        document.getElementById(addon+'contact' + i).classList.add('contactSelected');
+        document.getElementById(addon+'checkbox' + i).src = 'assets/icons/check_box_checked.png';
     }
 }
 
