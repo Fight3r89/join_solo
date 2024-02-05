@@ -41,7 +41,7 @@ function slideIn(container, addOrEdit, userToEdit) {
     if (addOrEdit == 'edit') {
         document.getElementById('contact-add-edit-img').innerHTML = `
         <div class="contact-edit-inizials" style="background-color: ${userContacts[userToEdit].color}">
-        ${userContacts[userToEdit].firstName.charAt(0)}${userContacts[userToEdit].lastName.charAt(0)}
+        ${userContacts[userToEdit].inizials}
         </div>`;
         document.getElementById('contact_action').value = userToEdit;
         document.getElementById('contact-add-edit-title').innerHTML = `
@@ -77,19 +77,12 @@ function slideOut(container) {
 }
 
 async function addContact() {
-    let nameInput = document.getElementById('contact_name').value;
+    let nameInput = document.getElementById('contact_name').value.split(" ");
     let contact = new Contact;
-    let firstName;
+    let firstName = nameInput[0];
     let lastName;
-
-    if (nameInput.split(" ").length > 1) {
-        firstName = nameInput.split(" ")[0];
-        lastName = nameInput.split(" ")[1];
-    }
-    else {
-        firstName = nameInput[0];
-        lastName = '';
-    }
+    let inizials = nameInput[0][0] + nameInput[nameInput.length - 1][0];
+    (nameInput.length > 1) ? lastName = nameInput[nameInput.length - 1] : lastName = '';
 
     contact.firstName = firstName;
     contact.lastName = lastName;
@@ -97,6 +90,7 @@ async function addContact() {
     contact.phone = document.getElementById('contact_phone').value;
     contact.assignedTo = loggedInUser.id;
     contact.color = generateColor();
+    contact.inizials = inizials;
     await createContactToSave(contact);
     clearInputFields();
     slideOut('contacts-add-card');
@@ -123,10 +117,9 @@ function clearContactList() {
 
 function renderContactsHtmlCard() {
     for (let i = 0; i < userContacts.length; i++) {
-        let inizials = userContacts[i].firstName[0] + userContacts[i].lastName[0];
         document.getElementById('contactFirstLetter' + userContacts[i].firstName[0].toUpperCase()).innerHTML += `
         <div class="div-contacts-list-card" onclick="openSingleContact('single-contact', ${i})">
-            <div class="div-contacts-list-logo" style="background-color: ${userContacts[i].color}">${inizials}</div>
+            <div class="div-contacts-list-logo" style="background-color: ${userContacts[i].color}">${userContacts[i].inizials}</div>
             <div class="div-contacts-list-data">
                 <p>${userContacts[i].firstName} ${userContacts[i].lastName}</p>
                 <p>${userContacts[i].eMail}</p>
@@ -149,8 +142,7 @@ function clearSingleContactContainer() {
 }
 
 function renderSingleContactContainerHtml(arrayPosotion) {
-    let inizials = userContacts[arrayPosotion].firstName[0] + userContacts[arrayPosotion].lastName[0];
-    document.getElementById('single-contact-logo').innerHTML = inizials;
+    document.getElementById('single-contact-logo').innerHTML = userContacts[arrayPosotion].inizials;
     document.getElementById('single-contact-logo').style.backgroundColor = userContacts[arrayPosotion].color;
     document.getElementById('single-contact-name').innerHTML = userContacts[arrayPosotion].firstName + ' ' + userContacts[arrayPosotion].lastName;
     document.getElementById('single-contact-data-mail').innerHTML = userContacts[arrayPosotion].eMail;

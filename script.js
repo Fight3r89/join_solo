@@ -68,6 +68,7 @@ async function loadUsers() {
         loadUser.lastName = e.lastName;
         loadUser.eMail = e.eMail;
         loadUser.password = e.password;
+        loadUser.inizials = e.inizials;
         users.push(loadUser);
     });
 }
@@ -258,7 +259,7 @@ async function addContactsToAssignedTo(edit, taskArrayPosition) {
         <div class="assignedToContactsListItemContainer" id="contact${i}" onclick="selectContactForAssign(${i},${edit})">
             <div class="assignedToContactsListItemContainerLeft">
                 <div class="assignedToContactsListInizials" id="assignedToContactsListInizials${i}">
-                ${userContacts[i].firstName.charAt(0)}${userContacts[i].lastName.charAt(0)}
+                ${userContacts[i].inizials}
                 </div>
                 ${userContacts[i].firstName} ${userContacts[i].lastName}
             </div>
@@ -398,7 +399,7 @@ function addSubtaskToArray(edit) {
 }
 
 function renderUserMenueInizials() {
-    document.getElementById('header-user-menu').innerHTML = loggedInUser.firstName.charAt(0) + '' + loggedInUser.lastName.charAt(0);
+    document.getElementById('header-user-menu').innerHTML = loggedInUser.inizials;
 }
 
 function openUserMenue() {

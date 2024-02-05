@@ -8,6 +8,7 @@ async function login() {
     users.forEach(e => {
         if (e.eMail == email.value) {
             if (e.password == pswd.value) {
+                console.log(e);
                 sessionStorage.setItem('user', JSON.stringify(e));
                 document.getElementById('login_error').classList.add('d-none');
                 email.value = '';

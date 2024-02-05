@@ -142,9 +142,8 @@ function renderTaskCardHtml(task) {
 function getAssignTo(task) {
     let output = '';
     task.assigned_to.forEach(at => {
-        let inizials = at.firstName[0] + at.lastName[0];
         output += ` <div class="task-card-footer-assigned" style="background-color:${at.color};">
-                        ${inizials}
+                        ${at.inizials}
                     </div>`;
     });
     return output;
@@ -202,7 +201,7 @@ function setSingleTasCardContent(taskId) {
                     document.getElementById('task-single-card-assignedto-list').innerHTML += `
                         <div class="task-single-card-assignedto-list-card">
                             <div class="task-single-card-assignedto-list-logo" style="background-color:${at.color};">
-                            ${at.firstName[0]}${at.lastName[0]}
+                            ${at.inizials}
                             </div>
                             <p>${at.firstName} ${at.lastName}</p>
                         </div>`;

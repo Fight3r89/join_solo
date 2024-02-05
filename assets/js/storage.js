@@ -114,6 +114,7 @@ async function loadUsersContacts() {
             fetchContacts.phone = uc.phone;
             fetchContacts.assignedTo = uc.assignedTo;
             fetchContacts.color = uc.color;
+            fetchContacts.inizials = uc.inizials;
             userContacts.push(fetchContacts);
         }
     });

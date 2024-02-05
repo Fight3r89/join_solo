@@ -23,7 +23,7 @@ async function register() {
         newUser.password = document.getElementById('passwrd').value;
         newUser.inizials = inizials;
         users.push(newUser);
-        //saveUser();
+        saveUser();
         document.getElementById('name').value = '';
         document.getElementById('email').value = '';
         document.getElementById('passwrd').value = '';
