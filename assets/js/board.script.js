@@ -322,6 +322,7 @@ async function saveEditTask(taskArrayPosition) {
     await setItem('tasks', tasks);
     addAssignedTo = [];
     selected = 'medium';
+    tasks = [];
     slideOut('task-card-slide-edit');
     renderHtml();
 }
