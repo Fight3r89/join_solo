@@ -12,8 +12,8 @@
         <form onsubmit="handleFormSubmission(); return false">
             <input type="hidden" id="contact_action" value="add">
             <input id="contact_name" placeholder="Name">
-            <input id="contact_email" placeholder="Email">
-            <input id="contact_phone" placeholder="Phone">
+            <input id="contact_email" placeholder="Email" pattern=".*@.*\..*" title="An @ is required">
+            <input id="contact_phone" placeholder="Phone" pattern="\d*" title="Only numbers allowed">
             <div class="div-contacts-add-form" id="div-contacts-add-form">
             </div>
         </form>
