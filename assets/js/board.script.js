@@ -117,9 +117,11 @@ function renderSubtasks(task) {
 }
 
 function renderTaskCardHtml(task) {
+    let backgroundColor;
+    (task.category == 'User Story')? backgroundColor = '#0038ff' : backgroundColor = '#1FD7C1';
     return `
         <div class="task-card" id="task-card${task.taskId}" onclick="slideIn('task-card-slide',${task.taskId})" draggable="true" ondragstart="moveTo(${task.taskId})">
-            <div class="task-card-category">
+            <div class="task-card-category" style="background-color:${backgroundColor};">
                 ${task.category}
             </div>
             <div class="task-card-headline">
@@ -176,8 +178,12 @@ function setSingleTasCardContent(taskId) {
         if (userTasks[i].taskId == taskId) {
             let dateSplit = userTasks[i].date.split('-');
             let dateOutput = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0];
+            let backgroundColor;
+            (userTasks[i].category == 'User Story')? backgroundColor = '#0038ff' : backgroundColor = '#1FD7C1';
+            console.log(backgroundColor);
 
             document.getElementById('task-single-card-category').innerHTML = userTasks[i].category;
+            document.getElementById('task-single-card-category').style.backgroundColor = backgroundColor;
             document.getElementById('task-single-card-headline').innerHTML = userTasks[i].title;
             document.getElementById('task-single-card-content').innerHTML = userTasks[i].description;
             document.getElementById('task-single-card-date-container').innerHTML = dateOutput;
