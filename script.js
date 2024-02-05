@@ -1,6 +1,3 @@
-
-
-
 async function includeHTML() {
     let elements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < elements.length; i++) {
@@ -190,8 +187,6 @@ function changeSubtasksAddImage() {
     }
 }
 
-//(test)?? x==1;
-
 function showSubtasks(edit) {
     let container;
     if (edit) {
@@ -284,7 +279,6 @@ function selectContactForAssign(i, edit) {
     if(edit){
         addon = 'edit';
     }
-    //debugger;
     let path = document.getElementById(addon+'checkbox' + i).src;
     let imagePath = new URL(path).pathname.split('/');
     imagePath.shift();
