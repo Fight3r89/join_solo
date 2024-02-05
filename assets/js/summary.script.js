@@ -26,10 +26,12 @@ function renderHtml() {
 }
 
 function renderGreeting() {
+    let lastName = '';
+    if (loggedInUser.lastName){lastName = loggedInUser.lastName;};
     document.getElementById('greeting-user-name').innerHTML = '';
     document.getElementById('greeting-time').innerHTML = '';
     document.getElementById('greeting-time').innerHTML = greetingTime();
-    document.getElementById('greeting-user-name').innerHTML = loggedInUser.firstName + ' ' + loggedInUser.lastName;
+    document.getElementById('greeting-user-name').innerHTML = loggedInUser.firstName + ' ' + lastName;
 }
 
 function renderAmounts() {
