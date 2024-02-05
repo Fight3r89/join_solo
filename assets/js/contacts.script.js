@@ -176,6 +176,7 @@ async function deleteContact(contactId) {
             allContacts.splice(i, 1);
         }
     }
+    deleteUserTaskFromAssignTo(contactId);
     await saveContactsToBackend();
     allContacts = [];
     await loadUsersContacts();
@@ -256,4 +257,17 @@ async function saveContactEdit(contactArrayPosition) {
     slideOut('single-contact');
     slideOut('contacts-add-card');
     renderContactHtml();
+}
+
+async function deleteUserTaskFromAssignTo(contactId){
+    await loadTasksFromBackend();
+    tasks.forEach(task => {
+        task.assigned_to.forEach(function(taskat, i) {
+            if(taskat.id == contactId) {
+                task.assigned_to.splice(i, 1);
+            }
+        });
+    });
+    await setItem('tasks',tasks);
+    tasks = [];
 }
