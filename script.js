@@ -40,7 +40,6 @@ function firstLoad() {
         document.getElementById('div-index-register').classList.remove('d-none');
         //document.getElementById('footer').classList.remove('d-none');
     }, 500);
-    
 }
 
 function openSignUp() {
@@ -203,7 +202,7 @@ function changeSubtasksAddImage() {
                 document.getElementById('editSubtasks-plus').classList.remove('d-none');
                 document.getElementById('editSubtasks-add-delete').classList.add('d-none');
             }
-        }); 
+        });
     }
 }
 
@@ -233,7 +232,7 @@ function showSubtasks(edit) {
 
 }
 
-async function addContactsToAssignedTo(edit) {
+async function addContactsToAssignedTo(edit, taskArrayPosition) {
     let container;
     if (edit) {
         container = document.getElementById('editContactsAssignedTo');
@@ -250,6 +249,11 @@ async function addContactsToAssignedTo(edit) {
         if (!userContacts[i].assign) {
             userContacts[i].assign = false;
         }
+        if (edit) {
+            userTasks[taskArrayPosition].assigned_to.forEach(element => {
+                if (element.id == userContacts[i].id) userContacts[i].assign = true;
+            });
+        }
         container.innerHTML += `
         <div class="assignedToContactsListItemContainer" id="contact${i}" onclick="selectContactForAssign(${i},${edit})">
             <div class="assignedToContactsListItemContainerLeft">
@@ -263,11 +267,11 @@ async function addContactsToAssignedTo(edit) {
         if (userContacts[i].assign) {
             contactCBackgroundColor(i);
         }
-        document.getElementById('assignedToContactsListInizials'+i).style.backgroundColor = userContacts[i].color;
+        document.getElementById('assignedToContactsListInizials' + i).style.backgroundColor = userContacts[i].color;
     }
 }
 
-async function openContactsAssignedTo(edit) {
+async function openContactsAssignedTo(edit, taskArrayPosition) {
     let inputAssignedTo;
     let container;
     if (edit) {
@@ -281,7 +285,7 @@ async function openContactsAssignedTo(edit) {
     (container.classList.contains('mb-0')) ? container.classList.remove('mb-0') : container.classList.add('mb-0')
     inputAssignedTo.innerHTML = '';
     if (!toggleShowAssignedTo) {
-        await addContactsToAssignedTo(edit);
+        await addContactsToAssignedTo(edit, taskArrayPosition);
         inputAssignedTo.classList.remove('d-none');
     } else {
         inputAssignedTo.classList.add('d-none');
@@ -323,7 +327,7 @@ function deleteContactsToAssignedToArray(userId) {
     }
 }
 
-function contactCBackgroundColor(i, edit) {
+function contactCBackgroundColor(i) {
     if (document.getElementById('contact' + i).classList.contains('contactSelected')) {
         document.getElementById('contact' + i).classList.remove('contactSelected');
         document.getElementById('checkbox' + i).src = 'assets/icons/check_box.png';
@@ -410,6 +414,10 @@ function generateColor() {
     return colors[colorArrayPosition = Math.floor(Math.random() * 10)];
 }
 
+function getMinDate() {
+    document.getElementById('date').min = new Date().toISOString().split('T')[0];
+}
+
 async function completeBackendReset() {
     userContacts = [];
     userTasks = [];
@@ -423,4 +431,4 @@ async function completeBackendReset() {
     //await setItem('tasks', [{"taskId": 1, "task": "inprogress", "autor": 0, "title": "Kochwelt Page & Recipe Recommander", "description": "Build start page with recipe recommendation.", "assigned_to": [], "date": "2023-05-10", "prio": "medium", "category": "User Story", "subtasks": [{"task": "Implement Recipe Recommendation", "done": true}, {"task": "Start Page Layout", "done": false}]}]);
     //await setItem('contacts', [{"id": 0, "firstName": "Benedikt", "lastName": "Ziegler", "eMail": "benedikt@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#9747FF"}, {"id": 1, "firstName": "David", "lastName": "Eisenberg", "eMail": "davidberg@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#1FD7C1"}, {"id": 2, "firstName": "Eva", "lastName": "Fischer", "eMail": "eva@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#6E52FF"}, {"id": 3, "firstName": "Emmanuel", "lastName": "Mauer", "eMail": "emmanuelma@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#9747FF"}, {"id": 4, "firstName": "Marcel", "lastName": "Bauer", "eMail": "bauer@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#FF4646"}, {"id": 5, "firstName": "Tanja", "lastName": "Wolf", "eMail": "wolf@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#FF4646"}, {"id": 6, "firstName": "Anton", "lastName": "Mayer", "eMail": "antonm@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#00BEE8"}, {"id": 7, "firstName": "Anja", "lastName": "Schulz", "eMail": "schulz@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#6E52FF"}]);
 }
-    
+

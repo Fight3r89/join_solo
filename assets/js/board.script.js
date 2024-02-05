@@ -11,6 +11,7 @@ async function init() {
         changeSubtasksAddImage();
         renderUserMenueInizials();
         seachEventListener();
+        getMinDate();
     }
     else {
         location.href = 'index.html';
@@ -43,6 +44,10 @@ function slideOut(container) {
         document.getElementById(container).style.right = '-150%';
     }, 280);
     addSubtask = [];
+    addAssignedTo = [];
+    toggleShowAssignedTo = false;
+    userContacts = [];
+    document.getElementById('editContactsAssignedTo').classList.add('d-none');
 }
 
 function renderHtml() {
@@ -138,7 +143,7 @@ function getAssignTo(task) {
     let output = '';
     task.assigned_to.forEach(at => {
         let inizials = at.firstName[0] + at.lastName[0];
-        output += ` <div class="task-card-footer-assigned">
+        output += ` <div class="task-card-footer-assigned" style="background-color:${at.color};">
                         ${inizials}
                     </div>`;
     });
@@ -284,6 +289,13 @@ function editTask(taskPositionInArray){
     userTasks[taskPositionInArray].subtasks.forEach(subtask => {
         addSubtask.push(subtask);
     });
+    userTasks[taskPositionInArray].assigned_to.forEach(function(assignedTo,i) {
+        addAssignedTo.push(assignedTo);
+    });
+    document.getElementById('editAddTaskAsignedTo').innerHTML = `
+    <div class="addTaskAssignedToSelectDefault" id="editAddTaskAssignedToSelectDefault"
+    onclick="openContactsAssignedTo(true,${taskPositionInArray})">Select contacts to assign</div>`;
+    changeDefaultAssignedTo(true);
     removeSelection(selected, true);
     selected = userTasks[taskPositionInArray].prio;
     addSelection(userTasks[taskPositionInArray].prio, true);
@@ -308,6 +320,8 @@ async function saveEditTask(taskArrayPosition) {
         }
     });
     await setItem('tasks', tasks);
+    addAssignedTo = [];
+    selected = 'medium';
     slideOut('task-card-slide-edit');
     renderHtml();
 }

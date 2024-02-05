@@ -6,6 +6,7 @@ async function init() {
         addSelection(selected);
         changeSubtasksAddImage();
         renderUserMenueInizials();
+        getMinDate();
     }
     else {
         location.href = 'index.html';
