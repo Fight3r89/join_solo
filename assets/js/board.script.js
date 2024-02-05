@@ -298,6 +298,8 @@ function editTask(taskPositionInArray){
     userTasks[taskPositionInArray].assigned_to.forEach(function(assignedTo,i) {
         addAssignedTo.push(assignedTo);
     });
+    document.getElementById('editTaskDate').min = new Date().toISOString().split('T')[0];
+    document.getElementById('editTaskDate').value = userTasks[taskPositionInArray].date;
     document.getElementById('editAddTaskAsignedTo').innerHTML = `
     <div class="addTaskAssignedToSelectDefault" id="editAddTaskAssignedToSelectDefault"
     onclick="openContactsAssignedTo(true,${taskPositionInArray})">Select contacts to assign</div>`;
@@ -317,6 +319,7 @@ async function saveEditTask(taskArrayPosition) {
     uploadTask.title = document.getElementById('editTaskTitle').value;
     uploadTask.description = document.getElementById('editTaskDescription').value;
     uploadTask.prio = selected;
+    uploadTask.date = document.getElementById('editTaskDate').value;
     uploadTask.assigned_to = [...addAssignedTo];
     uploadTask.subtasks = [...addSubtask];
     await loadTasksFromBackend();

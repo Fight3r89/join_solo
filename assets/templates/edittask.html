@@ -1,15 +1,19 @@
 <div class="task-card-slide" id="task-card-slide-edit">
     <img class="close-slider" src="./assets/icons/close.png" onclick="slideOut('task-card-slide-edit')">
     <div>
-        <p class="edit-task-headlines">Title:</p>
+        <p class="edit-task-headlines">Title</p>
         <input type="text" id="editTaskTitle">
     </div>
     <div>
-        <p class="edit-task-headlines">Description:</p>
+        <p class="edit-task-headlines">Description</p>
         <textarea id="editTaskDescription"></textarea>
     </div>
     <div>
-        <p class="edit-task-headlines">Prioriy:</p>
+        <p class="edit-task-headlines">Due Date:</p>
+        <input type="date" id="editTaskDate">
+    </div>
+    <div>
+        <p class="edit-task-headlines">Prioriy</p>
         <div style="display: flex;">
             <div class="div-prio" id="edit_prio_urgent" onclick="choosePrio('urgent', true)">
                 Urgent
@@ -26,16 +30,14 @@
         </div>
     </div>
     <div>
-        <p class="edit-task-headlines">Assigned To:</p>
+        <p class="edit-task-headlines">Assigned To</p>
         <div>
-            <div id="editAddTaskAsignedTo">
-                
-            </div>
+            <div id="editAddTaskAsignedTo"></div>
             <div id="editContactsAssignedTo" class="contactsAssignedTo d-none"></div>
         </div>
     </div>
     <div>
-        <p class="edit-task-headlines">Subtasks:</p>
+        <p class="edit-task-headlines">Subtasks</p>
         <div class="div-add-new-subtask">
             <input type="text" id="editSubtasks" placeholder="Add new subtask">
             <img src="assets/icons/plus.png" id="editSubtasks-plus" class="subtasks-add-icons">

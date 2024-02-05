@@ -101,6 +101,22 @@ select {
 
 /*Index*/
 
+.inputLoginName {
+    background-image: url('assets/icons/mail.png');
+    background-position: right 20px center;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    margin-bottom: 0;
+}
+
+.inputLoginPassword {
+    background-image: url('assets/icons/lock.png');
+    background-position: right 20px center;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    margin-bottom: 0;
+}
+
 .register-successfully{
     position: absolute;
     right: 20px;
