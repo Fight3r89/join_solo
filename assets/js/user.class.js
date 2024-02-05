@@ -5,4 +5,5 @@ class User{
     eMail;
     password;
     color;
+    inizials;
 }

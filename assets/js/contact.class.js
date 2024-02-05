@@ -6,4 +6,5 @@ class Contact {
     phone;
     assignedTo;
     color;
+    inizials;
 }

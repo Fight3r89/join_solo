@@ -12,6 +12,8 @@ async function register() {
         let userInputName = document.getElementById('name').value.split(" ");
         let firstName = userInputName[0];
         let lastName;
+        let inizials = userInputName[0][0]+userInputName[userInputName.length-1][0];
+        console.log(inizials);
         (userInputName.length = 2) ? lastName = userInputName[1] : lastName = ' ';
 
         newUser.id = users.length;
@@ -19,6 +21,7 @@ async function register() {
         newUser.lastName = lastName;
         newUser.eMail = email.value;
         newUser.password = document.getElementById('passwrd').value;
+        newUser.inizials = inizials;
         users.push(newUser);
         //saveUser();
         document.getElementById('name').value = '';
