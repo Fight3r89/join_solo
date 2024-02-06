@@ -742,6 +742,21 @@ main {
     gap: 27px;
 }
 
+.input-edit-subtask{
+    padding: 0 21px;
+    margin: 0;
+    border-radius: 0;
+    height: 20px;
+    border: 0;
+    margin-right: 20px;
+    background-color: #F6F7F8;
+    ;
+}
+
+.subtask-edit-underline{
+    border-bottom: 1px solid #000;
+}
+
 @media (max-width: 905px) {
     body {
         font-size: 14px;

@@ -214,13 +214,13 @@ function showSubtasks(edit) {
     document.getElementById(container).innerHTML = '';
     addSubtask.forEach(function (ast, i) {
         document.getElementById(container).innerHTML += `
-        <div class="subtasks-hover">
-            <li>${ast.task}</li>
+        <div id="subtask-unterlinde${i}" class="subtasks-hover">
+            <li id="subtask-${i}">${ast.task}</li>
             <div style="display:flex; gap:8px">
                 <img src="assets/icons/delete.png" onclick="deleteSubtask(${i}, ${edit})">
                 <div style="width: 1px; background: #d1d1d1;">
                 </div>
-                <img src="assets/icons/edit.png">
+                <img id="editSubtaskIcon-${i}" src="assets/icons/edit.png" onclick="toggleEditSaveFunction(${i}, ${edit})">
             </div>
         </div>`;
     });
@@ -455,6 +455,41 @@ function changeLockIcon(iconTarget){
         document.getElementById(iconTarget+'Icon').src = 'assets/icons/lock.png';
         document.getElementById(iconTarget+'Icon').classList.remove('cursor-pointer');
     }
+}
+
+function toggleEditSaveFunction(arrayPosition){
+    if(!isEditing){
+        editSubtask(arrayPosition);
+        isEditing = true;
+    }
+    else{
+        saveEditedSubtask(arrayPosition);
+        isEditing = false;
+    }
+}
+
+function editSubtask(arrayPosition) {
+    let liElement = document.getElementById('subtask-'+arrayPosition);
+    let inputElement = document.createElement("input");
+    inputElement.classList.add('input-edit-subtask');
+    inputElement.id = 'input-edit-subtask';
+    inputElement.value = liElement.innerHTML;
+    liElement.replaceWith(inputElement);
+    document.getElementById('subtask-unterlinde'+arrayPosition).classList.add('subtask-edit-underline');
+    document.getElementById('editSubtaskIcon-'+arrayPosition).src = 'assets/icons/check_blue.png';
+    //console.log(liElement);
+    
+}
+
+function saveEditedSubtask(arrayPosition) {
+    let liElement = document.createElement("li");
+    let inputElement = document.getElementById('input-edit-subtask');
+    liElement.id = 'subtask-'+arrayPosition;
+    liElement.innerHTML = inputElement.value;
+    inputElement.replaceWith(liElement);
+    document.getElementById('subtask-unterlinde'+arrayPosition).classList.remove('subtask-edit-underline');
+    document.getElementById('editSubtaskIcon-'+arrayPosition).src = 'assets/icons/edit.png';
+    addSubtask[arrayPosition].task = inputElement.value;
 }
 
 
