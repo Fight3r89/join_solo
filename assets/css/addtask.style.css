@@ -27,7 +27,6 @@ select {
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    height: 56px;
     margin-bottom: 32px;
     gap: 16px;
 }
@@ -258,5 +257,14 @@ select {
 
     .button-bordered {
         display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .div-input-prio{
+        flex-direction: column;
+    }
+    .div-prio {
+        width: 100%;
     }
 }

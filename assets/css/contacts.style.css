@@ -398,8 +398,6 @@ button{
 
     .div-contacts{
         min-width: 100%;
-        padding-left: 16px;
-        padding-right: 16px;
     }
 }
 
@@ -432,13 +430,36 @@ button{
         max-height: 530px;
         padding: 0 16px;
     }
-}
 
-@media (max-width:905px){
     .contacts-add-card-right {
         flex-direction: column;
     }
     #contact-add-edit-img {
         margin-top: -130px;
+    }
+}
+
+@media (max-width:400px){
+    .div-contacts-add-form{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .button-bordered{
+        width: 100%;
+    }
+    .div-contacts-add-form button {
+        max-width: 100%;
+    }
+}
+
+@media (max-width:375px){
+    .div-contacts {
+        padding: 22px 2px;
+    }
+    .div-contacts-list{
+        max-width: 300px;
+    }
+    main{
+        padding-right: 0;
     }
 }

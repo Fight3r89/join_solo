@@ -866,5 +866,14 @@ main {
     .div-register {
         margin-top: 165px;
     }
+    .nav-mobile {
+        gap: 0;
+        padding: 0;
+    }
+}
 
+@media (max-width: 370px) {
+    .nav-mobile {
+        font-size: 14px;
+    }
 }
