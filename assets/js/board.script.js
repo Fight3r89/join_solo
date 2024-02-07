@@ -90,7 +90,7 @@ function renderTaskCards(inputSearch) {
     }
 }
 
-function renderTasksInCategory(tasks){
+function renderTasksInCategory(tasks) {
     if (tasks.task == 'todo') { document.getElementById('div-tasks-to-do').innerHTML += renderTaskCardHtml(tasks) };
     if (tasks.task == 'inprogress') { document.getElementById('div-tasks-in-progress').innerHTML += renderTaskCardHtml(tasks) };
     if (tasks.task == 'awaitfeedback') { document.getElementById('div-tasks-await-feedback').innerHTML += renderTaskCardHtml(tasks) };
@@ -119,7 +119,7 @@ function renderSubtasks(task) {
 
 function renderTaskCardHtml(task) {
     let backgroundColor;
-    (task.category == 'User Story')? backgroundColor = '#0038ff' : backgroundColor = '#1FD7C1';
+    (task.category == 'User Story') ? backgroundColor = '#0038ff' : backgroundColor = '#1FD7C1';
     return `
         <div class="task-card" id="task-card${task.taskId}" onclick="slideIn('task-card-slide',${task.taskId})" draggable="true" ondragstart="moveTo(${task.taskId})">
             <div class="task-card-category" style="background-color:${backgroundColor};">
@@ -180,7 +180,7 @@ function setSingleTasCardContent(taskId) {
             let dateSplit = userTasks[i].date.split('-');
             let dateOutput = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0];
             let backgroundColor;
-            (userTasks[i].category == 'User Story')? backgroundColor = '#0038ff' : backgroundColor = '#1FD7C1';
+            (userTasks[i].category == 'User Story') ? backgroundColor = '#0038ff' : backgroundColor = '#1FD7C1';
             console.log(backgroundColor);
 
             document.getElementById('task-single-card-category').innerHTML = userTasks[i].category;
@@ -289,14 +289,14 @@ function filterTasksByTitle(inputSearch) {
     return userTasks.filter(userTasks => userTasks.title.toLowerCase().includes(inputSearch));
 }
 
-function editTask(taskPositionInArray){
+function editTask(taskPositionInArray) {
     document.getElementById('editShowSubtasks').innerHTML = '';
     slideOut('task-card-slide');
     slideIn('task-card-slide-edit');
     userTasks[taskPositionInArray].subtasks.forEach(subtask => {
         addSubtask.push(subtask);
     });
-    userTasks[taskPositionInArray].assigned_to.forEach(function(assignedTo,i) {
+    userTasks[taskPositionInArray].assigned_to.forEach(function (assignedTo, i) {
         addAssignedTo.push(assignedTo);
     });
     document.getElementById('editTaskDate').min = new Date().toISOString().split('T')[0];
@@ -312,7 +312,7 @@ function editTask(taskPositionInArray){
     document.getElementById('editTaskDescription').value = userTasks[taskPositionInArray].description;
     showSubtasks(true);
     document.getElementById('editTaskOkButton').innerHTML = `<button onclick="saveEditTask(${taskPositionInArray})" class="btn-edit-ok">OK<img src="./assets/icons/check.png"></button>`;
-    
+
 }
 
 async function saveEditTask(taskArrayPosition) {
@@ -324,9 +324,9 @@ async function saveEditTask(taskArrayPosition) {
     uploadTask.assigned_to = [...addAssignedTo];
     uploadTask.subtasks = [...addSubtask];
     await loadTasksFromBackend();
-    tasks.forEach(function(task,i) {
-        if(task.taskId == uploadTask.taskId) {
-            tasks.splice(i,1,uploadTask);
+    tasks.forEach(function (task, i) {
+        if (task.taskId == uploadTask.taskId) {
+            tasks.splice(i, 1, uploadTask);
         }
     });
     await setItem('tasks', tasks);

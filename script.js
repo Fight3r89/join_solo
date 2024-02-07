@@ -20,8 +20,7 @@ function firstLoad() {
         document.getElementById('div-index-register').classList.remove('d-none');
         //document.getElementById('footer').classList.remove('d-none');
         eventListeners();
-    }, 500);
-    
+    }, 500);   
 }
 
 function openSignUp() {
@@ -101,8 +100,7 @@ function clearInputFields() {
     document.getElementById('category').value = '';
     document.getElementById('subtasks').value = '';
     document.getElementById('showSubtasks').innerHTML = '';
-    if(selected != 'medium'){choosePrio('medium')};
-   
+    if(selected != 'medium'){choosePrio('medium')};  
 }
 
 function setAmounts() {
@@ -224,7 +222,6 @@ function showSubtasks(edit) {
             </div>
         </div>`;
     });
-
 }
 
 async function addContactsToAssignedTo(edit, taskArrayPosition) {
@@ -241,7 +238,6 @@ async function addContactsToAssignedTo(edit, taskArrayPosition) {
         await loadUsersContacts();
         if (userContacts.length == 0) container.innerHTML += 'No Contacts Available';
     }
-
     for (let i = 0; i < userContacts.length; i++) {
         if (!userContacts[i].assign) {
             userContacts[i].assign = false;
@@ -476,9 +472,7 @@ function editSubtask(arrayPosition) {
     inputElement.value = liElement.innerHTML;
     liElement.replaceWith(inputElement);
     document.getElementById('subtask-unterlinde'+arrayPosition).classList.add('subtask-edit-underline');
-    document.getElementById('editSubtaskIcon-'+arrayPosition).src = 'assets/icons/check_blue.png';
-    //console.log(liElement);
-    
+    document.getElementById('editSubtaskIcon-'+arrayPosition).src = 'assets/icons/check_blue.png';    
 }
 
 function saveEditedSubtask(arrayPosition) {
@@ -492,6 +486,35 @@ function saveEditedSubtask(arrayPosition) {
     addSubtask[arrayPosition].task = inputElement.value;
 }
 
+function openTerm(term){
+    let targetContainer = document.getElementById('flex-content-main'); 
+    targetContainer.innerHTML = '';
+    if(getDestinationSite() == 'contacts.html'){
+        document.getElementById('div-contacts').remove();
+    }  
+    targetContainer.classList.add('pr-96');
+    fetch('assets/templates/'+term+'.html')
+        .then (response => {
+            return response.text();
+        })
+        .then (html =>{
+            targetContainer.innerHTML += html;
+        })
+        .then(() => {
+            document.getElementById('backIconTerms').onclick = closeTerm;
+        });
+}
+
+function closeTerm(){
+    let targetContainer = document.getElementById('flex-content-main');
+    window.location.href = getDestinationSite();
+}
+
+function getDestinationSite(){
+    let url = window.location.href;
+    var parts = url.split('/');
+    return parts[parts.length - 1]; 
+}
 
 async function completeBackendReset() {
     userContacts = [];

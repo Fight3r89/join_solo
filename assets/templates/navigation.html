@@ -1,10 +1,20 @@
 <div class="nav-desktop">
     <img src="assets/icons/logo-white.png" alt="">
-    <div class="nav-desktop-link-container">
-        <div onclick="openSite('summary')" id="nav-summary" class="nav-desktop-links"><img src="assets/icons/add_task.png">Summay</div>
-        <div onclick="openSite('addtask')" id="nav-addtask" class="nav-desktop-links"><img src="assets/icons/add_task.png">Add Task</div>
-        <div onclick="openSite('board')" id="nav-board" class="nav-desktop-links"><img src="assets/icons/add_task.png">Board</div>
-        <div onclick="openSite('contacts')" id="nav-contacts" class="nav-desktop-links"><img src="assets/icons/add_task.png">Contacts</div>
+    <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+        <div class="nav-desktop-link-container">
+            <div onclick="openSite('summary')" id="nav-summary" class="nav-desktop-links"><img
+                    src="assets/icons/add_task.png">Summay</div>
+            <div onclick="openSite('addtask')" id="nav-addtask" class="nav-desktop-links"><img
+                    src="assets/icons/add_task.png">Add Task</div>
+            <div onclick="openSite('board')" id="nav-board" class="nav-desktop-links"><img
+                    src="assets/icons/add_task.png">Board</div>
+            <div onclick="openSite('contacts')" id="nav-contacts" class="nav-desktop-links"><img
+                    src="assets/icons/add_task.png">Contacts</div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap:20px">
+            <p onclick="openTerm('policy')">Privacy Policy</p>
+            <p>Legal Notice</p>
+        </div>
     </div>
 </div>
 

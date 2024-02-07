@@ -168,6 +168,12 @@ select {
 
 .task-card-footer-left {
     display: flex;
+    max-width: 155px;
+    flex-wrap: wrap;
+}
+
+.task-card-footer-prio{
+    height: 34px;
 }
 
 .main-content {
