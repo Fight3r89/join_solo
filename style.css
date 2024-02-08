@@ -418,6 +418,18 @@ header span {
     height: 39px;
 }
 
+.user-menue {
+    display: flex;
+    width: 130px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+}
+.user-menue:hover {
+    background-color: #2a3d59;
+    cursor: pointer;
+}
+
 nav {
     background-color: #2a3647;
     color: #cdcdcd;
@@ -755,7 +767,6 @@ main {
     color: #fff;
     border-radius: 20px 0 20px 20px;
     margin-top: 17px;
-    gap: 27px;
 }
 
 .input-edit-subtask{

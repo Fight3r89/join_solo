@@ -487,6 +487,7 @@ function saveEditedSubtask(arrayPosition) {
 }
 
 function openTerm(term){
+    document.getElementById('header-user-menu-dropdown').classList.add('d-none');
     let targetContainer = document.getElementById('flex-content-main'); 
     targetContainer.innerHTML = '';
     if(getDestinationSite() == 'contacts.html'){
