@@ -10,16 +10,19 @@
     <div class="index-form-div">
       <input required id="name" type="text" placeholder="Name" class="inputLoginName">
       <input required id="email" type="text" placeholder="Email" class="inputEmail">
-      <div class="div-input">
+      <p class="login_error d-none" id="email_error"> E-Mail already in use</p>
+      <div id="divPassword" class="div-input">
         <input class="div-input-field" id="passwrd" type="password" placeholder="Password">
-        <img id="passwrdIcon" src="/assets/icons/lock.png">
+        <img id="passwrdIcon" src="assets/icons/lock.png">
       </div>
-      <div class="div-input">
+      <p class="login_error d-none" id="password_error">Passwords not match</p>
+      <div id="divPasswordConfirm" class="div-input">
         <input class="div-input-field" id="passwrdConf" type="password" placeholder="Confirm Password">
-        <img id="passwrdConfIcon" src="/assets/icons/lock.png">
+        <img id="passwrdConfIcon" src="assets/icons/lock.png">
       </div>
+      <p class="login_error d-none" id="passwordConfirm_error">Passwords not match</p>
       <div class="div-policy">
-        <img id="policy" src="/assets/icons/check_box.png" onclick="changeCheckboxImage(this.src)">
+        <img id="policy" src="assets/icons/check_box.png" onclick="changeCheckboxImage(this.src)">
         <p>I accept the <a>Privacy policy</a></p>
       </div>
     </div>

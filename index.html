@@ -21,10 +21,13 @@
     </div>
     <div class="grid-container-index">
         <div class="div-index-register d-none" id="div-index-register">
-            <p>Not a Join user?</p>
-            <button onclick="openSignUp()">Sign up</button>
+            <div class="div-index-signup" id="div-index-signup">
+                <p>Not a Join user?</p>
+                <button onclick="openSignUp()">Sign up</button>
+            </div>
         </div>
-        <div w3-include-html="assets/templates/login.html" id="content-login" class="content-index login-padding d-none"></div>
+        <div w3-include-html="assets/templates/login.html" id="content-login"
+            class="content-index login-padding d-none"></div>
         <div w3-include-html="assets/templates/register.html" id="content-register" class="content-index d-none"></div>
         <footer w3-include-html="assets/templates/footer.html" id="footer"></footer>
         <div class="register-successfully" id="register-successfully">You Signed Up successfully</div>

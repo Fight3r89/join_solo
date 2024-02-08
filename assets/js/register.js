@@ -3,12 +3,23 @@
  */
 async function register() {
     await loadUsers();
+    clearError();
     let email = document.getElementById('email');
+    let password = document.getElementById('passwrd');
+    let passwordConfirm = document.getElementById('passwrdConf');
     if (await checkUserExist(email.value)) {
-        console.log('user existiert');
         email.classList.add('error-border');
-        document.getElementById('passwrd').value = '';
-        document.getElementById('passwrdConf').value = '';
+        document.getElementById('email_error').classList.remove('d-none');
+        password.value = '';
+        passwordConfirm.value = '';
+    }
+    else if(password.value != passwordConfirm.value){
+        document.getElementById('password_error').classList.remove('d-none');
+        document.getElementById('passwordConfirm_error').classList.remove('d-none');
+        document.getElementById('divPassword').classList.add('error-border');
+        document.getElementById('divPasswordConfirm').classList.add('error-border');
+        password.value = '';
+        passwordConfirm.value = '';
     }
     else {
         let newUser = new User();
@@ -16,29 +27,45 @@ async function register() {
         let firstName = userInputName[0];
         let lastName;
         let inizials = userInputName[0][0]+userInputName[userInputName.length-1][0];
-        console.log(inizials);
         (userInputName.length = 2) ? lastName = userInputName[1] : lastName = ' ';
 
         newUser.id = users.length;
         newUser.firstName = firstName;
         newUser.lastName = lastName;
         newUser.eMail = email.value;
-        newUser.password = document.getElementById('passwrd').value;
+        newUser.password = password.value;
         newUser.inizials = inizials;
         users.push(newUser);
         saveUser();
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('passwrd').value = '';
-        document.getElementById('passwrdConf').value = '';
-
-        document.getElementById('content-register').classList.add('d-none');
-        document.getElementById('content-login').classList.remove('d-none');
-        document.getElementById('div-index-register').classList.remove('d-none');
+        clearRegistration();
         document.getElementById('register-successfully').classList.add('reg-animation');
-       
     }
     users = [];
+}
+
+function clearRegistration(){
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('passwrd').value = '';
+    document.getElementById('passwrdConf').value = '';
+    document.getElementById('passwrd').classList.remove('error-border');
+    document.getElementById('passwrdConf').classList.remove('error-border');
+    document.getElementById('content-register').classList.add('d-none');
+    document.getElementById('content-login').classList.remove('d-none');
+    document.getElementById('div-index-register').classList.remove('d-none');
+    document.getElementById('policy').src = 'assets/icons/check_box.png';
+    document.getElementById('btn-signUp').disabled = true;
+    document.getElementById('btn-signUp').classList.add('button_no_hover')
+    clearError();
+}
+
+function clearError(){
+    document.getElementById('email').classList.remove('error-border');
+    document.getElementById('email_error').classList.add('d-none');
+    document.getElementById('password_error').classList.add('d-none');
+    document.getElementById('passwordConfirm_error').classList.add('d-none');
+    document.getElementById('divPassword').classList.remove('error-border');
+    document.getElementById('divPasswordConfirm').classList.remove('error-border');
 }
 
 /**
@@ -72,8 +99,7 @@ async function saveUser() {
 function changeCheckboxImage(path) {
     let imagePath = new URL(path).pathname.split('/');
     imagePath.shift();
-    imagePath = imagePath.join('/');
-    if (imagePath == 'assets/icons/check_box.png') {
+    if (imagePath[imagePath.length - 1] == 'check_box.png') {
         document.getElementById('policy').src = 'assets/icons/check_box_checked.png';
         document.getElementById('btn-signUp').disabled = false;
         document.getElementById('btn-signUp').classList.remove('button_no_hover');

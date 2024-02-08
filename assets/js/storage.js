@@ -109,7 +109,6 @@ async function saveChangesTaskChanges(taskIdFromChangedTask, taskPosition){
     await loadTasksFromBackend();
     tasks.forEach(function (task,i) {
         if(task.taskId == taskIdFromChangedTask){
-            console.log(tasks[i]);
             tasks.splice(i,1,taskPosition);
         }
     });

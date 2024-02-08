@@ -267,6 +267,12 @@ select {
     justify-content: end;
 }
 
+.div-index-signup{
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
 .register button {
     width: 91px;
     height: 49px;
@@ -538,7 +544,7 @@ main {
     padding-top: 110px;
     padding-left: 96px;
     padding-right: 16px;
-
+    overflow: auto;
 }
 
 .grid-container {
@@ -591,7 +597,7 @@ main {
 }
 
 .error-border {
-    border-color: red;
+    border-color: red !important;
 }
 
 .login_error {
@@ -812,7 +818,7 @@ main {
 
 @media (max-width: 905px) {
     body {
-        font-size: 14px;
+        font-size: 20px;
     }
 
     header span {
@@ -928,6 +934,7 @@ main {
     .div-index-register {
         margin: 0;
         margin-bottom: 22px;
+        margin-top: 22px;
         justify-self: center;
     }
 
@@ -938,6 +945,10 @@ main {
     .nav-mobile {
         gap: 0;
         padding: 0;
+    }
+    .buttons-login {
+        flex-direction: column;
+        align-items: center;
     }
 }
 

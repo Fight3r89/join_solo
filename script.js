@@ -24,16 +24,15 @@ function firstLoad() {
     setTimeout(function () {
         document.getElementById('content-login').classList.remove('d-none');
         document.getElementById('div-index-register').classList.remove('d-none');
-        //document.getElementById('footer').classList.remove('d-none');
         eventListeners();
-    }, 500);   
+    }, 500);
 }
 
 /**
  * Opens the sign-up form and hides the login form.
  */
 function openSignUp() {
-    document.getElementById('div-index-register').classList.add('d-none');
+    document.getElementById('div-index-signup').classList.add('d-none');
     document.getElementById('content-login').classList.add('d-none');
     document.getElementById('content-register').classList.remove('d-none');
 }
@@ -43,9 +42,10 @@ function openSignUp() {
  *
  */
 function closeSignUp() {
-    document.getElementById('div-index-register').classList.remove('d-none');
+    document.getElementById('div-index-signup').classList.remove('d-none');
     document.getElementById('content-login').classList.remove('d-none');
     document.getElementById('content-register').classList.add('d-none');
+    clearRegistration();
 }
 
 /**
@@ -62,9 +62,9 @@ function openSite(site) {
  */
 async function loadUsers() {
     users = [];
-    users = JSON.parse(await getItem('users'));
-    console.log(users);
-    users.forEach(e => {
+    usersFromBackend = [];
+    usersFromBackend = JSON.parse(await getItem('users'));
+    usersFromBackend.forEach(e => {
         let loadUser = new User();
         loadUser.id = e.id;
         loadUser.firstName = e.firstName;
@@ -74,6 +74,7 @@ async function loadUsers() {
         loadUser.inizials = e.inizials;
         users.push(loadUser);
     });
+    usersFromBackend = [];
 }
 
 /**
@@ -95,7 +96,7 @@ async function checkLoggedIn() {
  */
 async function createNewTask() {
     let newTask = new Task;
-    if(selected == null){
+    if (selected == null) {
         selected = 'medium';
     }
     console.log(selected);
@@ -132,7 +133,7 @@ function clearInputFields() {
     document.getElementById('category').value = '';
     document.getElementById('subtasks').value = '';
     document.getElementById('showSubtasks').innerHTML = '';
-    if(selected != 'medium'){choosePrio('medium')};  
+    if (selected != 'medium') { choosePrio('medium') };
 }
 
 /**
@@ -325,7 +326,7 @@ async function addContactsToAssignedTo(edit, taskArrayPosition) {
             <img id="${addon}checkbox${i}" src="assets/icons/check_box.png">
         </div>`;
         if (userContacts[i].assign) {
-            contactCBackgroundColor(i,edit);
+            contactCBackgroundColor(i, edit);
         }
         document.getElementById('assignedToContactsListInizials' + i).style.backgroundColor = userContacts[i].color;
     }
@@ -367,10 +368,10 @@ async function openContactsAssignedTo(edit, taskArrayPosition) {
  */
 function selectContactForAssign(i, edit) {
     let addon = '';
-    if(edit){
+    if (edit) {
         addon = 'edit';
     }
-    let path = document.getElementById(addon+'checkbox' + i).src;
+    let path = document.getElementById(addon + 'checkbox' + i).src;
     let imagePath = new URL(path).pathname.split('/');
     imagePath.shift();
     imagePath = imagePath.join('/');
@@ -425,19 +426,19 @@ function deleteContactsToAssignedToArray(userId) {
  * @param {number} i - The index of the contact
  * @param {boolean} edit - Indicates if the element is in edit mode
  */
-function contactCBackgroundColor(i,edit) {
+function contactCBackgroundColor(i, edit) {
     let addon = '';
-    if(edit){
+    if (edit) {
         addon = 'edit';
     }
-    if (document.getElementById(addon+'contact' + i).classList.contains('contactSelected')) {
-        document.getElementById(addon+'contact' + i).classList.remove('contactSelected');
-        document.getElementById(addon+'checkbox' + i).src = 'assets/icons/check_box.png';
+    if (document.getElementById(addon + 'contact' + i).classList.contains('contactSelected')) {
+        document.getElementById(addon + 'contact' + i).classList.remove('contactSelected');
+        document.getElementById(addon + 'checkbox' + i).src = 'assets/icons/check_box.png';
 
     }
     else {
-        document.getElementById(addon+'contact' + i).classList.add('contactSelected');
-        document.getElementById(addon+'checkbox' + i).src = 'assets/icons/check_box_checked.png';
+        document.getElementById(addon + 'contact' + i).classList.add('contactSelected');
+        document.getElementById(addon + 'checkbox' + i).src = 'assets/icons/check_box_checked.png';
     }
 }
 
@@ -566,7 +567,7 @@ function getMinDate() {
 function eventListeners() {
     document.getElementById('passwrd').addEventListener('input', function () {
         changeLockIcon('passwrd');
-        
+
     });
     document.getElementById('passwrdConf').addEventListener('input', function () {
         changeLockIcon('passwrdConf');
@@ -574,6 +575,27 @@ function eventListeners() {
     document.getElementById('pass').addEventListener('input', function () {
         changeLockIcon('pass');
     });
+    document.getElementById('passIcon').addEventListener('click', function () {
+        changeLockIconOnClick('pass');
+    });
+    document.getElementById('passwrdIcon').addEventListener('click', function () {
+        changeLockIconOnClick('passwrd');
+    });
+    document.getElementById('passwrdConfIcon').addEventListener('click', function () {
+        changeLockIconOnClick('passwrdConf');
+    });
+}
+
+function changeLockIconOnClick(iconTarget) {
+    let imagePath = new URL(new URL(document.getElementById(iconTarget + 'Icon').src)).pathname.split('/');
+    if (imagePath[imagePath.length - 1] == 'visibility_off.png') {
+        document.getElementById(iconTarget + 'Icon').src = 'assets/icons/visibility.png';
+        document.getElementById(iconTarget).type = "text";
+    }
+    else {
+        document.getElementById(iconTarget + 'Icon').src = 'assets/icons/visibility_off.png';
+        document.getElementById(iconTarget).type = "password";
+    }
 }
 
 /**
@@ -581,24 +603,25 @@ function eventListeners() {
  *
  * @param {string} iconTarget - the ID of the input field
  */
-function changeLockIcon(iconTarget){
-    if(document.getElementById(iconTarget).value != "") {
-        document.getElementById(iconTarget+'Icon').src = 'assets/icons/visibility_off.png';
-        document.getElementById(iconTarget+'Icon').classList.add('cursor-pointer');
-        document.getElementById(iconTarget+'Icon').addEventListener('click', function(){
-            if(new URL(document.getElementById(iconTarget+'Icon').src).pathname == '/assets/icons/visibility_off.png'){
-                document.getElementById(iconTarget+'Icon').src = 'assets/icons/visibility.png';
-                document.getElementById(iconTarget).type = "text";
-            }
-            else{
-                document.getElementById(iconTarget+'Icon').src = 'assets/icons/visibility_off.png';
-                document.getElementById(iconTarget).type = "password";
-            }
-        });
+function changeLockIcon(iconTarget) {
+    if (document.getElementById(iconTarget).value != "") {
+        document.getElementById(iconTarget + 'Icon').src = 'assets/icons/visibility_off.png';
+        document.getElementById(iconTarget + 'Icon').classList.add('cursor-pointer');
+        // document.getElementById(iconTarget + 'Icon').addEventListener('click', function () {
+        //     let imagePath = new URL(new URL(document.getElementById(iconTarget + 'Icon').src)).pathname.split('/');
+        //     if (imagePath[imagePath.length - 1] == 'visibility_off.png') {
+        //         document.getElementById(iconTarget + 'Icon').src = 'assets/icons/visibility.png';
+        //         document.getElementById(iconTarget).type = "text";
+        //     }
+        //     else {
+        //         document.getElementById(iconTarget + 'Icon').src = 'assets/icons/visibility_off.png';
+        //         document.getElementById(iconTarget).type = "password";
+        //     }
+        // });
     }
-    else{
-        document.getElementById(iconTarget+'Icon').src = 'assets/icons/lock.png';
-        document.getElementById(iconTarget+'Icon').classList.remove('cursor-pointer');
+    else {
+        document.getElementById(iconTarget + 'Icon').src = 'assets/icons/lock.png';
+        document.getElementById(iconTarget + 'Icon').classList.remove('cursor-pointer');
     }
 }
 
@@ -607,12 +630,12 @@ function changeLockIcon(iconTarget){
  *
  * @param {number} arrayPosition - the position of the subtask in the array
  */
-function toggleEditSaveFunction(arrayPosition){
-    if(!isEditing){
+function toggleEditSaveFunction(arrayPosition) {
+    if (!isEditing) {
         editSubtask(arrayPosition);
         isEditing = true;
     }
-    else{
+    else {
         saveEditedSubtask(arrayPosition);
         isEditing = false;
     }
@@ -624,14 +647,14 @@ function toggleEditSaveFunction(arrayPosition){
  * @param {number} arrayPosition - the position of the subtask in the array
  */
 function editSubtask(arrayPosition) {
-    let liElement = document.getElementById('subtask-'+arrayPosition);
+    let liElement = document.getElementById('subtask-' + arrayPosition);
     let inputElement = document.createElement("input");
     inputElement.classList.add('input-edit-subtask');
     inputElement.id = 'input-edit-subtask';
     inputElement.value = liElement.innerHTML;
     liElement.replaceWith(inputElement);
-    document.getElementById('subtask-unterlinde'+arrayPosition).classList.add('subtask-edit-underline');
-    document.getElementById('editSubtaskIcon-'+arrayPosition).src = 'assets/icons/check_blue.png';    
+    document.getElementById('subtask-unterlinde' + arrayPosition).classList.add('subtask-edit-underline');
+    document.getElementById('editSubtaskIcon-' + arrayPosition).src = 'assets/icons/check_blue.png';
 }
 
 /**
@@ -642,11 +665,11 @@ function editSubtask(arrayPosition) {
 function saveEditedSubtask(arrayPosition) {
     let liElement = document.createElement("li");
     let inputElement = document.getElementById('input-edit-subtask');
-    liElement.id = 'subtask-'+arrayPosition;
+    liElement.id = 'subtask-' + arrayPosition;
     liElement.innerHTML = inputElement.value;
     inputElement.replaceWith(liElement);
-    document.getElementById('subtask-unterlinde'+arrayPosition).classList.remove('subtask-edit-underline');
-    document.getElementById('editSubtaskIcon-'+arrayPosition).src = 'assets/icons/edit.png';
+    document.getElementById('subtask-unterlinde' + arrayPosition).classList.remove('subtask-edit-underline');
+    document.getElementById('editSubtaskIcon-' + arrayPosition).src = 'assets/icons/edit.png';
     addSubtask[arrayPosition].task = inputElement.value;
 }
 
@@ -655,19 +678,19 @@ function saveEditedSubtask(arrayPosition) {
  *
  * @param {string} term - the side to be opened
  */
-function openTerm(term){
-    let targetContainer = document.getElementById('flex-content-main'); 
+function openTerm(term) {
+    let targetContainer = document.getElementById('flex-content-main');
     targetContainer.innerHTML = '';
-    if(getDestinationSite() == 'contacts.html'){
+    if (getDestinationSite() == 'contacts.html') {
         document.getElementById('div-contacts').remove();
-    }  
+    }
     targetContainer.classList.add('pr-96');
     targetContainer.classList.add('pb-32px');
-    fetch('assets/templates/'+term+'.html')
-        .then (response => {
+    fetch('assets/templates/' + term + '.html')
+        .then(response => {
             return response.text();
         })
-        .then (html =>{
+        .then(html => {
             targetContainer.innerHTML += html;
         })
         .then(() => {
@@ -680,7 +703,7 @@ function openTerm(term){
  *
  * @return {string} The URL of the destination site.
  */
-function closeTerm(){
+function closeTerm() {
     window.location.href = getDestinationSite();
 }
 
@@ -689,10 +712,10 @@ function closeTerm(){
  *
  * @return {string} The destination site extracted from the URL.
  */
-function getDestinationSite(){
+function getDestinationSite() {
     let url = window.location.href;
     var parts = url.split('/');
-    return parts[parts.length - 1]; 
+    return parts[parts.length - 1];
 }
 
 /**
@@ -708,6 +731,6 @@ async function completeBackendReset() {
     await setItem('users', users);
 
     await setItem('users', [{ "id": 0, "firstName": "Guest", "eMail": "guest@test.de", "password": "", "lastName": "", "inizials": "G" }]);
-    await setItem('tasks', [{"taskId": 1, "task": "inprogress", "autor": 0, "title": "Kochwelt Page & Recipe Recommander", "description": "Build start page with recipe recommendation.", "assigned_to": [], "date": "2023-05-10", "prio": "medium", "category": "User Story", "subtasks": [{"task": "Implement Recipe Recommendation", "done": true}, {"task": "Start Page Layout", "done": false}]}]);
-    await setItem('contacts', [{"id": 0, "firstName": "Benedikt", "lastName": "Ziegler", "eMail": "benedikt@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#9747FF", "inizials": "BZ"}, {"id": 1, "firstName": "David", "lastName": "Eisenberg", "eMail": "davidberg@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#1FD7C1", "inizials": "DE"}, {"id": 2, "firstName": "Eva", "lastName": "Fischer", "eMail": "eva@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#6E52FF", "inizials": "EF"}, {"id": 3, "firstName": "Emmanuel", "lastName": "Mauer", "eMail": "emmanuelma@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#9747FF", "inizials": "EM"}, {"id": 4, "firstName": "Marcel", "lastName": "Bauer", "eMail": "bauer@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#FF4646", "inizials": "MB"}, {"id": 5, "firstName": "Tanja", "lastName": "Wolf", "eMail": "wolf@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#FF4646", "inizials": "TW"}, {"id": 6, "firstName": "Anton", "lastName": "Mayer", "eMail": "antonm@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#00BEE8", "inizials": "AM"}, {"id": 7, "firstName": "Anja", "lastName": "Schulz", "eMail": "schulz@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#6E52FF", "inizials": "AS"}]);
+    await setItem('tasks', [{ "taskId": 1, "task": "inprogress", "autor": 0, "title": "Kochwelt Page & Recipe Recommander", "description": "Build start page with recipe recommendation.", "assigned_to": [], "date": "2023-05-10", "prio": "medium", "category": "User Story", "subtasks": [{ "task": "Implement Recipe Recommendation", "done": true }, { "task": "Start Page Layout", "done": false }] }]);
+    await setItem('contacts', [{ "id": 0, "firstName": "Benedikt", "lastName": "Ziegler", "eMail": "benedikt@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#9747FF", "inizials": "BZ" }, { "id": 1, "firstName": "David", "lastName": "Eisenberg", "eMail": "davidberg@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#1FD7C1", "inizials": "DE" }, { "id": 2, "firstName": "Eva", "lastName": "Fischer", "eMail": "eva@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#6E52FF", "inizials": "EF" }, { "id": 3, "firstName": "Emmanuel", "lastName": "Mauer", "eMail": "emmanuelma@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#9747FF", "inizials": "EM" }, { "id": 4, "firstName": "Marcel", "lastName": "Bauer", "eMail": "bauer@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#FF4646", "inizials": "MB" }, { "id": 5, "firstName": "Tanja", "lastName": "Wolf", "eMail": "wolf@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#FF4646", "inizials": "TW" }, { "id": 6, "firstName": "Anton", "lastName": "Mayer", "eMail": "antonm@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#00BEE8", "inizials": "AM" }, { "id": 7, "firstName": "Anja", "lastName": "Schulz", "eMail": "schulz@gmail.com", "phone": "1234", "assignedTo": 0, "color": "#6E52FF", "inizials": "AS" }]);
 }
