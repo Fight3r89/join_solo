@@ -1,3 +1,6 @@
+/**
+ * Asynchronously registers a new user, performs validation, and updates the user list accordingly.
+ */
 async function register() {
     await loadUsers();
     let email = document.getElementById('email');
@@ -38,6 +41,12 @@ async function register() {
     users = [];
 }
 
+/**
+ * Asynchronously checks if a user with the given email exists in the users array.
+ *
+ * @param {string} email - The email to check for existence in the users array.
+ * @return {boolean} Whether a user with the given email exists in the users array.
+ */
 async function checkUserExist(email) {
     let exist = false;
     for (let i = 0; i < users.length; i++) {
@@ -48,10 +57,18 @@ async function checkUserExist(email) {
     return exist;
 }
 
+/**
+ * Asynchronously saves the user data to the 'users' storage.
+ */
 async function saveUser() {
     await setItem('users', users);
 }
 
+/**
+ * Changes the checkbox image based on the provided path.
+ *
+ * @param {string} path - The path of the new checkbox image.
+ */
 function changeCheckboxImage(path) {
     let imagePath = new URL(path).pathname.split('/');
     imagePath.shift();

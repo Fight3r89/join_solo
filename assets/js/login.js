@@ -1,3 +1,6 @@
+/**
+ * Asynchronous function for user login.
+ */
 async function login() {
     let email = document.getElementById('mail');
     let pswd = document.getElementById('pass');
@@ -28,6 +31,9 @@ async function login() {
     }
 }
 
+/**
+ * Logs in a guest user by setting session storage and redirecting to the summary page.
+ */
 function loginGuest() {
 
     sessionStorage.setItem('user', JSON.stringify(

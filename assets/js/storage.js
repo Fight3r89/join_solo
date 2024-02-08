@@ -1,6 +1,13 @@
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 const STORAGE_TOKEN = 'UU4RB7BRPN2YSGRZ06XDWN8DMCNIQREQNQAJ6DYF';
 
+/**
+ * Asynchronously sets an item in the storage.
+ *
+ * @param {string} key - The key of the item to be set
+ * @param {any} value - The value of the item to be set
+ * @return {Promise<any>} A Promise that resolves to the JSON representation of the response
+ */
 async function setItem(key, value) {
     const payload = { key, value, token: STORAGE_TOKEN };
 
@@ -8,6 +15,12 @@ async function setItem(key, value) {
         .then(res => res.json());
 }
 
+/**
+ * Asynchronously retrieves an item from the storage using the provided key.
+ *
+ * @param {string} key - The key used to retrieve the item from the storage.
+ * @return {Promise} A promise that resolves to the value of the retrieved item.
+ */
 async function getItem(key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
     return fetch(url).then(res => res.json()).then(res => {
@@ -20,10 +33,16 @@ async function getItem(key) {
     });
 }
 
+/**
+ * Asynchronously retrieves user data from the session storage.
+ */
 async function getUserDataFromSessionStorage() {
     loggedInUser = JSON.parse(sessionStorage.getItem('user'));
 }
 
+/**
+ * Asynchronously loads user tasks from the backend and filters them based on the logged in user.
+ */
 async function loadUserTasks() {
     userTasks = [];
     await loadTasksFromBackend();
@@ -46,6 +65,11 @@ async function loadUserTasks() {
     tasks = [];
 }
 
+/**
+ * Save tasks to backend after loading tasks, setting task ID, and updating the tasks list.
+ *
+ * @param {Object} taskToSave - the task to save to the backend
+ */
 async function saveTasksToBackend(taskToSave) {
     await loadTasksFromBackend();
     taskToSave.taskId = setTaskId();
@@ -54,10 +78,18 @@ async function saveTasksToBackend(taskToSave) {
     tasks = [];
 }
 
+/**
+ * Asynchronously loads tasks from the backend.
+ */
 async function loadTasksFromBackend() {
     tasks = JSON.parse(await getItem('tasks'));
 }
 
+/**
+ * Generates a new task ID based on the existing tasks.
+ *
+ * @return {number} The new task ID
+ */
 function setTaskId() {
     if (tasks.length > 0) {
         return Number(tasks[tasks.length - 1].taskId) + 1;
@@ -67,6 +99,12 @@ function setTaskId() {
     }
 }
 
+/**
+ * Save changes to a task and update its position.
+ *
+ * @param {string} taskIdFromChangedTask - The ID of the task to be changed
+ * @param {object} taskPosition - The position of the task
+ */
 async function saveChangesTaskChanges(taskIdFromChangedTask, taskPosition){
     await loadTasksFromBackend();
     tasks.forEach(function (task,i) {
@@ -78,6 +116,11 @@ async function saveChangesTaskChanges(taskIdFromChangedTask, taskPosition){
     await setItem('tasks', tasks);
 }
 
+/**
+ * Deletes a task from the backend based on the provided taskId.
+ *
+ * @param {string} taskId - The ID of the task to be deleted.
+ */
 async function deleteTaskFromBackend(taskId){
     await loadTasksFromBackend();
     tasks.forEach(function(task, i) {
@@ -88,10 +131,18 @@ async function deleteTaskFromBackend(taskId){
     await setItem('tasks', tasks);
 }
 
+/**
+ * Asynchronously loads contacts from the backend.
+ */
 async function loadContactsFromBackend() {
     allContacts = JSON.parse(await getItem('contacts'));
 }
 
+/**
+ * Asynchronously creates a contact to save.
+ *
+ * @param {Object} contact - the contact to be created and saved
+ */
 async function createContactToSave(contact) {
     await loadContactsFromBackend();
     contact.id = allContacts.length;
@@ -100,6 +151,9 @@ async function createContactToSave(contact) {
     allContacts = [];
 }
 
+/**
+ * Asynchronously loads the user's contacts from the backend and filters them based on the logged in user's ID.
+ */
 async function loadUsersContacts() {
     userContacts = [];
     await loadContactsFromBackend();
@@ -121,6 +175,10 @@ async function loadUsersContacts() {
     allContacts = [];
 }
 
+/**
+ * Saves the contacts to the backend asynchronously.
+ *
+ */
 async function saveContactsToBackend(){
     await setItem('contacts', allContacts);
 }

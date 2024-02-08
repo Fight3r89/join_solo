@@ -18,6 +18,12 @@ async function init() {
     }
 }
 
+/**
+ * Change the color of the navigation elements and disable their onclick event.
+ *
+ * No parameters
+ * No return value
+ */
 function navChangeColor() {
     document.getElementById('nav-board').classList.add('link-active');
     document.getElementById('nav-board').onclick = null;
@@ -25,6 +31,12 @@ function navChangeColor() {
     document.getElementById('mobile-nav-board').onclick = null;
 }
 
+/**
+ * Slide in the specified container with the given task ID or task.
+ *
+ * @param {string} container - The ID of the container to slide in
+ * @param {number|object} taskIdOrTask - The ID of the task or the task object
+ */
 function slideIn(container, taskIdOrTask) {
     document.getElementById(container + '-container').classList.remove('d-none');
     document.getElementById(container).style.right = '16px';
@@ -37,6 +49,11 @@ function slideIn(container, taskIdOrTask) {
     }
 }
 
+/**
+ * Slides out the specified container element and performs additional tasks.
+ *
+ * @param {string} container - The id of the container element to slide out
+ */
 function slideOut(container) {
     document.getElementById(container).style.animation = 'slide_out 0.3s ease-out';
     setTimeout(function () {
@@ -52,6 +69,9 @@ function slideOut(container) {
     document.getElementById('addTaskAssignedToSelectDefault').innerHTML = 'Select contacts to assign';
 }
 
+/**
+ * Renders the HTML by clearing the task card container, checking for tasks to do, rendering task cards, and adding the selected task.
+ */
 function renderHtml() {
     clearTaskCardContainer();
     noTasksToDo();
@@ -59,6 +79,9 @@ function renderHtml() {
     addSelection(selected);
 }
 
+/**
+ * Clear the task card container by setting the innerHTML of each task container to an empty string.
+ */
 function clearTaskCardContainer() {
     document.getElementById('div-tasks-to-do').innerHTML = '';
     document.getElementById('div-tasks-in-progress').innerHTML = '';
@@ -66,6 +89,9 @@ function clearTaskCardContainer() {
     document.getElementById('div-tasks-done').innerHTML = '';
 }
 
+/**
+ * Updates the HTML content of task divs if there are no tasks to do, in order to display a message.
+ */
 function noTasksToDo() {
     if (tasksTodo == 0) document.getElementById('div-tasks-to-do').innerHTML = noTasksToDoHtml();
     if (tasksInProgress == 0) document.getElementById('div-tasks-in-progress').innerHTML = noTasksToDoHtml();
@@ -73,10 +99,20 @@ function noTasksToDo() {
     if (tasksDone == 0) document.getElementById('div-tasks-done').innerHTML = noTasksToDoHtml();
 }
 
+/**
+ * Returns an HTML string representing a message for when there are no tasks to do.
+ *
+ * @return {string} HTML message for no tasks
+ */
 function noTasksToDoHtml() {
     return '<div class="no-tasks">No tasks To do</div>';
 }
 
+/**
+ * Renders task cards based on the input search. If no input search is provided, it renders all user tasks.
+ *
+ * @param {array} inputSearch - The input search for filtering tasks
+ */
 function renderTaskCards(inputSearch) {
     if (inputSearch) {
         inputSearch.forEach(tasks => {
@@ -90,6 +126,11 @@ function renderTaskCards(inputSearch) {
     }
 }
 
+/**
+ * Render tasks in the specified category.
+ *
+ * @param {object} tasks - The tasks to be rendered
+ */
 function renderTasksInCategory(tasks) {
     if (tasks.task == 'todo') { document.getElementById('div-tasks-to-do').innerHTML += renderTaskCardHtml(tasks) };
     if (tasks.task == 'inprogress') { document.getElementById('div-tasks-in-progress').innerHTML += renderTaskCardHtml(tasks) };
@@ -97,6 +138,12 @@ function renderTasksInCategory(tasks) {
     if (tasks.task == 'done') { document.getElementById('div-tasks-done').innerHTML += renderTaskCardHtml(tasks) };
 }
 
+/**
+ * Renders the progress bar and amount of completed subtasks for a given task.
+ *
+ * @param {Object} task - The task object containing subtasks
+ * @return {string} The HTML for the progress bar and amount of completed subtasks
+ */
 function renderSubtasks(task) {
     let subtsasks_done = 0;
     if (task.subtasks.length > 0) {
@@ -117,6 +164,12 @@ function renderSubtasks(task) {
     }
 }
 
+/**
+ * Renders the HTML for a task card based on the provided task object.
+ *
+ * @param {Object} task - The task object containing task details.
+ * @return {string} The HTML content for the task card.
+ */
 function renderTaskCardHtml(task) {
     let backgroundColor;
     (task.category == 'User Story') ? backgroundColor = '#0038ff' : backgroundColor = '#1FD7C1';
@@ -143,6 +196,12 @@ function renderTaskCardHtml(task) {
             </div>`
 }
 
+/**
+ * Returns the HTML for assigned users in a task card footer.
+ *
+ * @param {Object} task - The task object containing assigned_to property
+ * @return {string} The HTML for the assigned users
+ */
 function getAssignTo(task) {
     let output = '';
     task.assigned_to.forEach(at => {
@@ -154,14 +213,19 @@ function getAssignTo(task) {
 
 }
 
-
-
+/**
+ * Renders a single task card based on the given taskId.
+ *
+ * @param {number} taskId - The ID of the task to render 
+ */
 function renderSingleTaskCard(taskId) {
     clearSingleTaskCard();
     setSingleTasCardContent(taskId);
-
 }
 
+/**
+ * Clears all the content and resets the visibility for a single task card.
+ */
 function clearSingleTaskCard() {
     document.getElementById('task-single-card-category').innerHTML = '';
     document.getElementById('task-single-card-category').classList.remove('d-none');
@@ -174,6 +238,11 @@ function clearSingleTaskCard() {
     document.getElementById('task-single-card-footer').innerHTML = '';
 }
 
+/**
+ * Set the content of a single task card based on the taskId provided.
+ *
+ * @param {number} taskId - The ID of the task to be displayed
+ */
 function setSingleTasCardContent(taskId) {
     for (let i = 0; i < userTasks.length; i++) {
         if (userTasks[i].taskId == taskId) {
@@ -181,7 +250,6 @@ function setSingleTasCardContent(taskId) {
             let dateOutput = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0];
             let backgroundColor;
             (userTasks[i].category == 'User Story') ? backgroundColor = '#0038ff' : backgroundColor = '#1FD7C1';
-            console.log(backgroundColor);
 
             document.getElementById('task-single-card-category').innerHTML = userTasks[i].category;
             document.getElementById('task-single-card-category').style.backgroundColor = backgroundColor;
@@ -223,6 +291,12 @@ function setSingleTasCardContent(taskId) {
     }
 }
 
+/**
+ * Toggles the 'done' property of a subtask within a task, then renders the updated task card, saves the changes to the task, and re-renders the HTML.
+ *
+ * @param {number} taskPosition - The position of the task in the userTasks array.
+ * @param {number} subTaskPosition - The position of the subtask within the task.
+ */
 function changeSubtaskDone(taskPosition, subTaskPosition) {
     userTasks[taskPosition].subtasks[subTaskPosition].done = !userTasks[taskPosition].subtasks[subTaskPosition].done
     renderSingleTaskCard(userTasks[taskPosition].taskId);
@@ -230,6 +304,11 @@ function changeSubtaskDone(taskPosition, subTaskPosition) {
     renderHtml();
 }
 
+/**
+ * Renders the HTML for the footer of the task single card.
+ *
+ * @param {number} i - The index of the task
+ */
 function renderFooterHtml(i) {
     document.getElementById('task-single-card-footer').innerHTML =
         `<div class="task-single-card-delete" onclick="deleteTask(${i})">
@@ -241,6 +320,11 @@ function renderFooterHtml(i) {
 </div>`;
 }
 
+/**
+ * Deletes a task from the userTasks array and from the backend, then updates the UI.
+ *
+ * @param {number} i - The index of the task to be deleted
+ */
 function deleteTask(i) {
     deleteTaskFromBackend(userTasks[i].taskId);
     userTasks.splice(i, 1);
@@ -249,14 +333,29 @@ function deleteTask(i) {
     renderHtml();
 }
 
+/**
+ * Moves the current dragged element to a new task with the specified ID.
+ *
+ * @param {type} taskId - The ID of the task to move the current dragged element to.
+ */
 function moveTo(taskId) {
     currentDraggedElement = taskId;
 }
 
+/**
+ * Function to allow dropping of an element.
+ *
+ * @param {Event} ev - the event object
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * Updates the userTasks with the given section, saves changes, updates the amounts, and renders the HTML.
+ *
+ * @param {type} section - contains the section where it was dropped
+ */
 function drop(section) {
     userTasks.forEach(ut => {
         if (ut.taskId == currentDraggedElement) {
@@ -268,14 +367,27 @@ function drop(section) {
     renderHtml();
 }
 
+/**
+ * Show the drop area for a given section.
+ *
+ * @param {string} section - The name of the section to show the drop area for
+ */
 function showDropArea(section) {
     document.getElementById(section).classList.add('drag-area-shown');
 }
 
+/**
+ * Hides the drop area for the specified section.
+ *
+ * @param {string} section - The name of the section to hide the drop area for.
+ */
 function hideDropArea(section) {
     document.getElementById(section).classList.remove('drag-area-shown');
 }
 
+/**
+ * Event listener for the search input field. Clears the task card container, filters tasks by title, and renders the filtered tasks.
+ */
 function seachEventListener() {
     document.getElementById('input-boad-search').addEventListener('input', function () {
         clearTaskCardContainer();
@@ -285,10 +397,21 @@ function seachEventListener() {
     });
 }
 
+/**
+ * Filters tasks by title.
+ *
+ * @param {string} inputSearch - the search keyword
+ * @return {Array} filtered tasks
+ */
 function filterTasksByTitle(inputSearch) {
     return userTasks.filter(userTasks => userTasks.title.toLowerCase().includes(inputSearch));
 }
 
+/**
+ * Edit a task and update the UI accordingly.
+ *
+ * @param {number} taskPositionInArray - the position of the task in the array
+ */
 function editTask(taskPositionInArray) {
     document.getElementById('editShowSubtasks').innerHTML = '';
     slideOut('task-card-slide');
@@ -315,6 +438,11 @@ function editTask(taskPositionInArray) {
 
 }
 
+/**
+ * Save the edited task in the user task list.
+ *
+ * @param {number} taskArrayPosition - The position of the task in the user task list array
+ */
 async function saveEditTask(taskArrayPosition) {
     if(selected == null){
         selected = 'medium';

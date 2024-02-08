@@ -1,3 +1,6 @@
+/**
+ * Asynchronously includes HTML content into elements with the 'w3-include-html' attribute.
+ */
 async function includeHTML() {
     let elements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < elements.length; i++) {
@@ -13,6 +16,9 @@ async function includeHTML() {
     }
 }
 
+/**
+ * Executes the initial setup and event listeners after a delay of 500 milliseconds.
+ */
 function firstLoad() {
     includeHTML();
     setTimeout(function () {
@@ -23,22 +29,37 @@ function firstLoad() {
     }, 500);   
 }
 
+/**
+ * Opens the sign-up form and hides the login form.
+ */
 function openSignUp() {
     document.getElementById('div-index-register').classList.add('d-none');
     document.getElementById('content-login').classList.add('d-none');
     document.getElementById('content-register').classList.remove('d-none');
 }
 
+/**
+ * Closes the sign-up form and shows the login content.
+ *
+ */
 function closeSignUp() {
     document.getElementById('div-index-register').classList.remove('d-none');
     document.getElementById('content-login').classList.remove('d-none');
     document.getElementById('content-register').classList.add('d-none');
 }
 
+/**
+ * Opens the specified site by updating the window location to the provided site URL appended with '.html'.
+ *
+ * @param {string} site - The URL of the site to be opened.
+ */
 function openSite(site) {
     window.location.href = site + '.html';
 }
 
+/**
+ * Asynchronously loads users from storage and populates the users array with the parsed JSON data.
+ */
 async function loadUsers() {
     users = [];
     users = JSON.parse(await getItem('users'));
@@ -55,6 +76,11 @@ async function loadUsers() {
     });
 }
 
+/**
+ * Asynchronous function to check if a user is logged in.
+ *
+ * @return {boolean} true if the user is logged in, false otherwise
+ */
 async function checkLoggedIn() {
     if (loggedInUser) {
         return true;
@@ -64,6 +90,9 @@ async function checkLoggedIn() {
     }
 }
 
+/**
+ * Asynchronously creates a new task by gathering input from the user interface, constructing a Task object, and saving it to the backend. 
+ */
 async function createNewTask() {
     let newTask = new Task;
     if(selected == null){
@@ -84,6 +113,9 @@ async function createNewTask() {
     location.href = 'board.html';
 }
 
+/**
+ * Clear all input fields for the add tasks and reset variables.
+ */
 function clearInputFields() {
     addSubtask = [];
     addAssignedTo = [];
@@ -103,6 +135,9 @@ function clearInputFields() {
     if(selected != 'medium'){choosePrio('medium')};  
 }
 
+/**
+ * Sets the amounts of different task statuses and priorities based on the userTasks array.
+ */
 function setAmounts() {
     amountOfTasks = userTasks.length;
     tasksTodo = 0;
@@ -132,6 +167,12 @@ function setAmounts() {
     }
 }
 
+/**
+ * Function to choose priority and perform corresponding actions.
+ *
+ * @param {string} prio - the priority to choose
+ *@param {boolean} edit - Indicates if the element is in edit mode
+ */
 function choosePrio(prio, edit) {
     if (!selected) {
         addSelection(prio, edit);
@@ -148,6 +189,12 @@ function choosePrio(prio, edit) {
     }
 }
 
+/**
+ * Removes the selection styling from the specified element.
+ *
+ * @param {string} selected - The ID of the selected element
+ * @param {boolean} edit - Indicates if the element is in edit mode
+ */
 function removeSelection(selected, edit) {
     if (selected) {
         if (edit) {
@@ -162,6 +209,12 @@ function removeSelection(selected, edit) {
 }
 
 
+/**
+ * Function to add selection to a priority element.
+ *
+ * @param {string} prio - The priority 
+ * @param {boolean} edit - Indicates if the element is in edit mode
+ */
 function addSelection(prio, edit) {
     if (edit) {
         document.getElementById('edit_prio_' + prio).classList.add('bg-color-' + prio);
@@ -173,6 +226,9 @@ function addSelection(prio, edit) {
     }
 }
 
+/**
+ * Change subtasks and add image functionality.
+ */
 function changeSubtasksAddImage() {
     const subtasksInput = document.getElementById('subtasks');
     const editSubtasksInput = document.getElementById('editSubtasks');
@@ -201,6 +257,11 @@ function changeSubtasksAddImage() {
     }
 }
 
+/**
+ * Show subtasks in the specified container and allow editing if specified.
+ *
+ * @param {boolean} edit - Indicates if the element is in edit mode
+ */
 function showSubtasks(edit) {
     let container;
     if (edit) {
@@ -224,6 +285,12 @@ function showSubtasks(edit) {
     });
 }
 
+/**
+ * Function to add contacts to the assigned section.
+ *
+ * @param {boolean} edit - Indicates if the element is in edit mode
+ * @param {number} taskArrayPosition - The position of the task in the array.
+ */
 async function addContactsToAssignedTo(edit, taskArrayPosition) {
     let container;
     let addon = '';
@@ -264,6 +331,12 @@ async function addContactsToAssignedTo(edit, taskArrayPosition) {
     }
 }
 
+/**
+ * Opens the contacts assigned to the specified task for editing or viewing, and toggles the visibility of the input field.
+ *
+ * @param {boolean} edit - Indicates if the element is in edit mode
+ * @param {number} taskArrayPosition - The position of the task in the array.
+ */
 async function openContactsAssignedTo(edit, taskArrayPosition) {
     let inputAssignedTo;
     let container;
@@ -286,6 +359,12 @@ async function openContactsAssignedTo(edit, taskArrayPosition) {
     toggleShowAssignedTo = !toggleShowAssignedTo;
 }
 
+/**
+ * Function to select a contact for assignment.
+ *
+ * @param {number} i - The index of the contact
+ * @param {boolean} edit - Indicates if the element is in edit mode
+ */
 function selectContactForAssign(i, edit) {
     let addon = '';
     if(edit){
@@ -307,15 +386,31 @@ function selectContactForAssign(i, edit) {
     }
 }
 
+/**
+ * This function changes the assigned contacts.
+ *
+ * @param {number} i - index of the contact
+ * @param {boolean} edit - Indicates if the element is in edit mode
+ */
 function changeAssignToContacts(i, edit) {
     contactCBackgroundColor(i, edit);
     changeDefaultAssignedTo(edit);
 }
 
+/**
+ * Adds contacts to the assignedToArray at the specified position in the array.
+ *
+ * @param {number} arrayPosition - The position in the user in the userContacts array
+ */
 function addContactsToAssignedToArray(arrayPosition) {
     addAssignedTo.push(userContacts[arrayPosition]);
 }
 
+/**
+ * Deletes contacts from the addAssignedTo array based on the provided userId.
+ *
+ * @param {number} userId - The id of the user whose contacts need to be deleted
+ */
 function deleteContactsToAssignedToArray(userId) {
     for (let i = 0; i < addAssignedTo.length; i++) {
         if (addAssignedTo[i].id == userId) {
@@ -324,6 +419,12 @@ function deleteContactsToAssignedToArray(userId) {
     }
 }
 
+/**
+ * Function to toggle the background color of a contact item based on the provided index and edit mode.
+ *
+ * @param {number} i - The index of the contact
+ * @param {boolean} edit - Indicates if the element is in edit mode
+ */
 function contactCBackgroundColor(i,edit) {
     let addon = '';
     if(edit){
@@ -340,6 +441,11 @@ function contactCBackgroundColor(i,edit) {
     }
 }
 
+/**
+ * Function to change the default assigned person for a task edit or addition.
+ *
+ * @param {boolean} edit - Indicates if the element is in edit mode
+ */
 function changeDefaultAssignedTo(edit) {
     let container;
     if (edit) {
@@ -365,11 +471,22 @@ function changeDefaultAssignedTo(edit) {
     }
 }
 
+/**
+ * Deletes a subtask from the specified position in the array and then shows the updated subtasks.
+ *
+ * @param {number} arrayPosition - The position of the subtask in the array to be deleted
+ *@param {boolean} edit - Indicates if the element is in edit mode
+ */
 function deleteSubtask(arrayPosition, edit) {
     addSubtask.splice([arrayPosition], 1);
     showSubtasks(edit);
 }
 
+/**
+ * Deletes the input for a subtask, and shows the add button in the specified container.
+ *
+ * @param {boolean} edit - Indicates if the element is in edit mode
+ */
 function subtaskInputDelete(edit) {
     let container;
     if (edit) {
@@ -383,6 +500,11 @@ function subtaskInputDelete(edit) {
     document.getElementById(container + '-add-delete').classList.add('d-none');
 }
 
+/**
+ * Adds a subtask to an array based on the edit parameter, updates the DOM, and clears the input field.
+ *
+ * @param {boolean} edit - Indicates if the element is in edit mode
+ */
 function addSubtaskToArray(edit) {
     let container;
     if (edit) {
@@ -398,27 +520,49 @@ function addSubtaskToArray(edit) {
     showSubtasks(edit);
 }
 
+/**
+ * Renders the user menu initials in the header.
+ */
 function renderUserMenueInizials() {
     document.getElementById('header-user-menu').innerHTML = loggedInUser.inizials;
 }
 
+/**
+ * Function to open the user menu by toggling the visibility of the dropdown element.
+ *
+ */
 function openUserMenue() {
     document.getElementById('header-user-menu-dropdown').classList.toggle('d-none');
 }
 
+/**
+ * Logs out the user by removing user data from session storage and redirecting to the index page.
+ *
+ */
 function logout() {
     sessionStorage.removeItem('user');
     window.location.href = 'index.html';
 }
 
+/**
+ * Generate a random color from the color array.
+ *
+ * @return {string} The randomly selected color from the color array.
+ */
 function generateColor() {
     return colors[colorArrayPosition = Math.floor(Math.random() * 10)];
 }
 
+/**
+ * Function to set the minimum date for the element with id 'date' to the current date.
+ */
 function getMinDate() {
     document.getElementById('date').min = new Date().toISOString().split('T')[0];
 }
 
+/**
+ * Set up event listeners for password input fields and call the changeLockIcon function.
+ */
 function eventListeners() {
     document.getElementById('passwrd').addEventListener('input', function () {
         changeLockIcon('passwrd');
@@ -432,6 +576,11 @@ function eventListeners() {
     });
 }
 
+/**
+ * Function to change the lock icon based on the value of the input field and toggle the visibility of the text in the input field.
+ *
+ * @param {string} iconTarget - the ID of the input field
+ */
 function changeLockIcon(iconTarget){
     if(document.getElementById(iconTarget).value != "") {
         document.getElementById(iconTarget+'Icon').src = 'assets/icons/visibility_off.png';
@@ -453,6 +602,11 @@ function changeLockIcon(iconTarget){
     }
 }
 
+/**
+ * Function to toggle between editing and saving a subtask in an array.
+ *
+ * @param {number} arrayPosition - the position of the subtask in the array
+ */
 function toggleEditSaveFunction(arrayPosition){
     if(!isEditing){
         editSubtask(arrayPosition);
@@ -464,6 +618,11 @@ function toggleEditSaveFunction(arrayPosition){
     }
 }
 
+/**
+ * Edit a subtask element in the array position.
+ *
+ * @param {number} arrayPosition - the position of the subtask in the array
+ */
 function editSubtask(arrayPosition) {
     let liElement = document.getElementById('subtask-'+arrayPosition);
     let inputElement = document.createElement("input");
@@ -475,6 +634,11 @@ function editSubtask(arrayPosition) {
     document.getElementById('editSubtaskIcon-'+arrayPosition).src = 'assets/icons/check_blue.png';    
 }
 
+/**
+ * Saves the edited subtask at the specified array position.
+ *
+ * @param {number} arrayPosition - The position of the subtask in the array
+ */
 function saveEditedSubtask(arrayPosition) {
     let liElement = document.createElement("li");
     let inputElement = document.getElementById('input-edit-subtask');
@@ -486,8 +650,12 @@ function saveEditedSubtask(arrayPosition) {
     addSubtask[arrayPosition].task = inputElement.value;
 }
 
+/**
+ * Function to open and display the privacy police an the legal notice and renderts its content in the target container.
+ *
+ * @param {string} term - the side to be opened
+ */
 function openTerm(term){
-    document.getElementById('header-user-menu-dropdown').classList.add('d-none');
     let targetContainer = document.getElementById('flex-content-main'); 
     targetContainer.innerHTML = '';
     if(getDestinationSite() == 'contacts.html'){
@@ -507,16 +675,29 @@ function openTerm(term){
         });
 }
 
+/**
+ * Closes the current window and redirects to the destination site.
+ *
+ * @return {string} The URL of the destination site.
+ */
 function closeTerm(){
     window.location.href = getDestinationSite();
 }
 
+/**
+ * Retrieves the destination site from the current URL.
+ *
+ * @return {string} The destination site extracted from the URL.
+ */
 function getDestinationSite(){
     let url = window.location.href;
     var parts = url.split('/');
     return parts[parts.length - 1]; 
 }
 
+/**
+ * Reset the backend by clearing user contacts, tasks, and users, and then setting predefined items for tasks, contacts, and users.
+ */
 async function completeBackendReset() {
     userContacts = [];
     userTasks = [];

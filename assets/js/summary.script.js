@@ -12,6 +12,9 @@ async function init() {
     }
 }
 
+/**
+ * Changes the color and behavior of the navigation elements.
+ */
 function navChangeColor() {
     document.getElementById('nav-summary').classList.add('link-active');
     document.getElementById('nav-summary').onclick = null;
@@ -19,12 +22,19 @@ function navChangeColor() {
     document.getElementById('mobile-nav-summary').onclick = null;
 }
 
+/**
+ * Renders the HTML content by calling the renderGreeting and renderAmounts functions.
+ *
+ */
 function renderHtml() {
     renderGreeting();
     renderAmounts();
 
 }
 
+/**
+ * Renders the greeting message for the logged in user.
+ */
 function renderGreeting() {
     let lastName = '';
     if (loggedInUser.lastName){lastName = loggedInUser.lastName;};
@@ -34,12 +44,18 @@ function renderGreeting() {
     document.getElementById('greeting-user-name').innerHTML = loggedInUser.firstName + ' ' + lastName;
 }
 
+/**
+ * Renders the amounts by setting the amounts, clearing the HTML cards, and then setting the HTML cards.
+ */
 function renderAmounts() {
     setAmounts();
     clearHtmlCards();
     setHtmlCards();
 }
 
+/**
+ * Clear all HTML cards by setting their innerHTML to an empty string.
+ */
 function clearHtmlCards() {
     document.getElementById('amount-to-do').innerHTML = '';
     document.getElementById('amount-done').innerHTML = '';
@@ -50,6 +66,10 @@ function clearHtmlCards() {
     document.getElementById('upcoming-deadline-date').innerHTML = '';
 }
 
+/**
+ * Sets the innerHTML of various elements in the HTML document based on the values of different task-related variables.
+ *
+ */
 function setHtmlCards() {
     document.getElementById('amount-to-do').innerHTML = tasksTodo;
     document.getElementById('amount-done').innerHTML = tasksDone;
@@ -60,6 +80,11 @@ function setHtmlCards() {
     document.getElementById('upcoming-deadline-date').innerHTML = upcoomingDeadLine();
 }
 
+/**
+ * Returns a greeting based on the current time of day.
+ *
+ * @return {string} The greeting message.
+ */
 function greetingTime() {
     let currentTime = new Date();
     let currentHour = currentTime.getHours();
@@ -73,6 +98,11 @@ function greetingTime() {
     else return 'Good evening';
 }
 
+/**
+ * Finds the next upcoming deadline based on the user tasks with 'urgent' priority.
+ *
+ * @return {string} The formatted deadline date or 'No upcoming Deadline' if there is no upcoming deadline.
+ */
 function upcoomingDeadLine() {
     const heute = new Date();
     let nextDate;
@@ -91,6 +121,12 @@ function upcoomingDeadLine() {
 
 }
 
+/**
+ * Formats the given deadline date into a specific string format.
+ *
+ * @param {Date} nextDate - the date to be formatted
+ * @return {string} the formatted date string
+ */
 function formateDeadlineDate(nextDate) {
     const unformatedDate = new Date(nextDate);
     const option = { month: 'long', day: 'numeric', year: 'numeric' };
