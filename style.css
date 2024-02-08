@@ -720,6 +720,10 @@ main {
     padding-right: 96px;
 }
 
+.pb-32px {
+    padding-bottom: 32px;
+}
+
 #header-user-menu:hover {
     cursor: pointer;
 }

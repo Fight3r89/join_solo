@@ -316,6 +316,9 @@ function editTask(taskPositionInArray) {
 }
 
 async function saveEditTask(taskArrayPosition) {
+    if(selected == null){
+        selected = 'medium';
+    }
     let uploadTask = userTasks[taskArrayPosition];
     uploadTask.title = document.getElementById('editTaskTitle').value;
     uploadTask.description = document.getElementById('editTaskDescription').value;

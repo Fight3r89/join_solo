@@ -92,11 +92,11 @@ function clearInputFields() {
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
     document.getElementById('date').value = '';
-    document.getElementById('addTaskAsignedTo').innerHTML = `
+    document.getElementById('addTaskAssignedTo').innerHTML = `
     <div class="addTaskAssignedToSelectDefault" id="addTaskAssignedToSelectDefault"
     onclick="openContactsAssignedTo()">Select contacts to assign</div>`;
     document.getElementById('contactsAssignedTo').classList.add('d-none');
-    document.getElementById('addTaskAsignedTo').classList.remove('mb-0');
+    document.getElementById('addTaskAssignedTo').classList.remove('mb-0');
     document.getElementById('category').value = '';
     document.getElementById('subtasks').value = '';
     document.getElementById('showSubtasks').innerHTML = '';
@@ -493,6 +493,7 @@ function openTerm(term){
         document.getElementById('div-contacts').remove();
     }  
     targetContainer.classList.add('pr-96');
+    targetContainer.classList.add('pb-32px');
     fetch('assets/templates/'+term+'.html')
         .then (response => {
             return response.text();
@@ -506,7 +507,6 @@ function openTerm(term){
 }
 
 function closeTerm(){
-    let targetContainer = document.getElementById('flex-content-main');
     window.location.href = getDestinationSite();
 }
 
