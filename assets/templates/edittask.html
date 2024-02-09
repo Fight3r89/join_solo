@@ -1,5 +1,14 @@
 <div class="task-card-slide" id="task-card-slide-edit">
     <img class="close-slider" src="./assets/icons/close.png" onclick="slideOut('task-card-slide-edit')">
+    <div class="single-task-card-top-right">
+        <select id="singleTaskEditMoveTo">
+            <option value="todo">Todo</option>
+            <option value="inprogress">In Progress</option>
+            <option value="awaitfeedback">Await Feedback</option>
+            <option value="done">Done</option>
+        </select>
+        
+    </div>
     <div>
         <p class="edit-task-headlines">Title</p>
         <input type="text" id="editTaskTitle">

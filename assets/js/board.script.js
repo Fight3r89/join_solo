@@ -116,12 +116,12 @@ function noTasksToDoHtml() {
 function renderTaskCards(inputSearch) {
     if (inputSearch) {
         inputSearch.forEach(tasks => {
-            renderTasksInCategory(tasks)
+            renderTasksInCategory(tasks);
         });
     }
     else {
         userTasks.forEach(tasks => {
-            renderTasksInCategory(tasks)
+            renderTasksInCategory(tasks);
         });
     }
 }
@@ -136,6 +136,7 @@ function renderTasksInCategory(tasks) {
     if (tasks.task == 'inprogress') { document.getElementById('div-tasks-in-progress').innerHTML += renderTaskCardHtml(tasks) };
     if (tasks.task == 'awaitfeedback') { document.getElementById('div-tasks-await-feedback').innerHTML += renderTaskCardHtml(tasks) };
     if (tasks.task == 'done') { document.getElementById('div-tasks-done').innerHTML += renderTaskCardHtml(tasks) };
+    
 }
 
 /**
@@ -340,6 +341,7 @@ function deleteTask(i) {
  */
 function moveTo(taskId) {
     currentDraggedElement = taskId;
+    console.log(taskId);
 }
 
 /**
@@ -413,6 +415,7 @@ function filterTasksByTitle(inputSearch) {
  * @param {number} taskPositionInArray - the position of the task in the array
  */
 function editTask(taskPositionInArray) {
+    document.getElementById('singleTaskEditMoveTo').value = userTasks[taskPositionInArray].task;
     document.getElementById('editShowSubtasks').innerHTML = '';
     slideOut('task-card-slide');
     slideIn('task-card-slide-edit');
@@ -454,6 +457,7 @@ async function saveEditTask(taskArrayPosition) {
     uploadTask.date = document.getElementById('editTaskDate').value;
     uploadTask.assigned_to = [...addAssignedTo];
     uploadTask.subtasks = [...addSubtask];
+    uploadTask.task = document.getElementById('singleTaskEditMoveTo').value;
     await loadTasksFromBackend();
     tasks.forEach(function (task, i) {
         if (task.taskId == uploadTask.taskId) {
@@ -465,17 +469,19 @@ async function saveEditTask(taskArrayPosition) {
     selected = 'medium';
     tasks = [];
     slideOut('task-card-slide-edit');
+    setAmounts();
     renderHtml();
 }
 
-document.addEventListener('click', function(event) {
-    var container = document.getElementById('task-card-slide-container');
-    var slide = document.getElementById('task-card-slide');
+// document.addEventListener('click', function(event) {
+//     var container = document.getElementById('task-card-slide-container');
+//     var slide = document.getElementById('task-card-slide');
 
-    // Überprüfen, ob der Klick außerhalb des Containers stattgefunden hat
-    if (container.contains(event.target) && !slide.contains(event.target) && !container.classList.contains('d-none')) {
-        // Verstecke den Container
-        slideOut('task-card-slide');
-        console.log("test");
-    }
-});
+//     // Überprüfen, ob der Klick außerhalb des Containers stattgefunden hat
+//     if (container.contains(event.target) && !slide.contains(event.target) && !container.classList.contains('d-none')) {
+//         // Verstecke den Container
+//         slideOut('task-card-slide');
+//         console.log("test");
+//     }
+// });
+//console.log(document.getElementById('task-card3'));

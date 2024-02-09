@@ -44,7 +44,7 @@ function slideIn(container, addOrEdit, userToEdit) {
         </div>`;
         document.getElementById('contact_action').value = userToEdit;
         document.getElementById('contact-add-edit-title').innerHTML = `
-         <p>Edit Contact</p>
+         <p class="title-edit-add">Edit Contact</p>
          <div class="seperator-vertical"></div>`;
         document.getElementById('contact_name').value = userContacts[userToEdit].firstName + ' ' + userContacts[userToEdit].lastName;
         document.getElementById('contact_email').value = userContacts[userToEdit].eMail;
@@ -57,7 +57,7 @@ function slideIn(container, addOrEdit, userToEdit) {
         document.getElementById('contact-add-edit-img').innerHTML = '<img src="./assets/icons/contacts-default.png">';
         document.getElementById('contact_action').value = 'add';
         document.getElementById('contact-add-edit-title').innerHTML = `
-            <p>Add contact</p>
+            <p class="title-edit-add">Add contact</p>
             <p class="title-sub">Tasks are better with a team</p>
             <div class="seperator-vertical"></div>`;
         document.getElementById('div-contacts-add-form').innerHTML = `

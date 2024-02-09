@@ -114,7 +114,6 @@ button {
     bottom: 0;
     left: 0;
     right: 0;
-    overflow-x: hidden;
 }
 
 .contacts-add-card {
@@ -471,12 +470,14 @@ button {
     }
 }
 
+
 /*Add Contact Container*/
-@media (max-width:905px) {
+@media (max-width:960px) {
     .contacts-add-card {
         flex-direction: column;
-        max-height: 880px;
-        height: 100%;
+        max-height: none;
+        height: calc(100% - 160px);
+        overflow: auto;
     }
 
     .add-contacs-close-slider {
@@ -489,7 +490,10 @@ button {
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
         align-items: center;
-        max-height: 351px;
+        max-height: none;
+        padding: 66px 24px;
+        height: fit-content;
+        min-height: 248px;
     }
 
     .contacts-add-card-left img {
@@ -500,16 +504,19 @@ button {
         border-radius: 0;
         border-bottom-left-radius: 30px;
         border-bottom-right-radius: 30px;
-        max-height: 530px;
+        max-height: none;
         padding: 0 16px;
+        min-height: 406px;
     }
 
     .contacts-add-card-right {
         flex-direction: column;
+        padding: 80px 16px;
     }
 
     #contact-add-edit-img {
-        margin-top: -130px;
+        position: absolute;
+        top:190px;
     }
 
     .flex-content-main {
@@ -528,9 +535,9 @@ button {
         overflow-y: auto;
         height: calc(100% - 170px);
     }
-}
-
-@media (max-width:400px) {
+    .title-edit-add {
+        font-size: 40px !important;
+    }
     .div-contacts-add-form {
         flex-direction: column-reverse;
         align-items: center;
@@ -541,8 +548,12 @@ button {
     }
 
     .div-contacts-add-form button {
-        max-width: 100%;
+        max-width: 100% !important;
     }
+}
+
+@media (max-width:400px) {
+    
 }
 
 @media (max-width:375px) {

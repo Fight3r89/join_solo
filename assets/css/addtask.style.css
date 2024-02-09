@@ -228,9 +228,10 @@ select {
     }
 }
 
-@media (max-width: 905px) {
+@media (max-width: 960px) {
     main {
-        padding-bottom: 168px;
+        /* padding-bottom: 168px; */
+        padding-bottom: 90px;
     }
 
     .div-addtask-input-fields {
