@@ -468,7 +468,7 @@ function changeDefaultAssignedTo(edit) {
         });
     }
     else {
-        container.innerHTML = 'Select contacts to assign';
+        container.innerHTML = '<span>Select contacts to assign</span><img src="assets/icons/arrow_drop_down.png" alt="">';
     }
 }
 

@@ -677,6 +677,8 @@ main {
     width: 100%;
     background-color: #fff;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
 }
 
 .assignedToContactsListItemContainer {

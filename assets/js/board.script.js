@@ -66,7 +66,7 @@ function slideOut(container) {
     userContacts = [];
     document.getElementById('editContactsAssignedTo').classList.add('d-none');
     document.getElementById('contactsAssignedTo').classList.add('d-none');
-    document.getElementById('addTaskAssignedToSelectDefault').innerHTML = 'Select contacts to assign';
+    document.getElementById('addTaskAssignedToSelectDefault').innerHTML = '<span>Select contacts to assign</span><img src="assets/icons/arrow_drop_down.png" alt="">';
 }
 
 /**
@@ -426,7 +426,7 @@ function editTask(taskPositionInArray) {
     document.getElementById('editTaskDate').value = userTasks[taskPositionInArray].date;
     document.getElementById('editAddTaskAsignedTo').innerHTML = `
     <div class="addTaskAssignedToSelectDefault" id="editAddTaskAssignedToSelectDefault"
-    onclick="openContactsAssignedTo(true,${taskPositionInArray})">Select contacts to assign</div>`;
+    onclick="openContactsAssignedTo(true,${taskPositionInArray})"><span>Select contacts to assign</span><img src="assets/icons/arrow_drop_down.png" alt=""></div>`;
     changeDefaultAssignedTo(true);
     removeSelection(selected, true);
     selected = userTasks[taskPositionInArray].prio;
