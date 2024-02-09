@@ -444,7 +444,7 @@ function editTask(taskPositionInArray) {
  * @param {number} taskArrayPosition - The position of the task in the user task list array
  */
 async function saveEditTask(taskArrayPosition) {
-    if(selected == null){
+    if (selected == null) {
         selected = 'medium';
     }
     let uploadTask = userTasks[taskArrayPosition];
@@ -467,3 +467,15 @@ async function saveEditTask(taskArrayPosition) {
     slideOut('task-card-slide-edit');
     renderHtml();
 }
+
+document.addEventListener('click', function(event) {
+    var container = document.getElementById('task-card-slide-container');
+    var slide = document.getElementById('task-card-slide');
+
+    // Überprüfen, ob der Klick außerhalb des Containers stattgefunden hat
+    if (container.contains(event.target) && !slide.contains(event.target) && !container.classList.contains('d-none')) {
+        // Verstecke den Container
+        slideOut('task-card-slide');
+        console.log("test");
+    }
+});

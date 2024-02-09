@@ -581,6 +581,9 @@ label {
     .div-board-search-bar {
         display: none;
     }
+    .task-single-card-headline {
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 580px) {

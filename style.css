@@ -821,7 +821,7 @@ main {
     border-bottom: 1px solid #000;
 }
 
-@media (max-width: 905px) {
+@media (max-width: 910px) {
     body {
         font-size: 20px;
     }
