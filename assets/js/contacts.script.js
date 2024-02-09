@@ -32,12 +32,6 @@ function navChangeColor() {
  * @param {string} userToEdit - the user to edit
  */
 function slideIn(container, addOrEdit, userToEdit) {
-    if (container == 'single-contact' && !document.getElementById('single-contact-container').classList.contains('d-none')) {
-        setTimeout(function () {
-            document.getElementById('single-contact-container').classList.add('d-none');
-        }, 20);
-
-    }
     clearInputFields();
     document.getElementById(container + '-container').classList.remove('d-none');
     document.getElementById(container).style.right = '0';
@@ -214,10 +208,12 @@ function renderSingleContactContainerHtml(arrayPosotion) {
  * @param {type} arrayPosition - the position of the contact in the array
  */
 async function openSingleContact(target, arrayPosotion) {
-    document.getElementById('main-content').classList.remove('d-none');
     await renderSingleContact(arrayPosotion);
+    document.getElementById('div-contacts-main-placeholder').classList.add('d-none');
+    document.getElementById('single-contact-test').classList.remove('d-none');
+    //document.getElementById('single-contact-test').style.display = 'block';
+    //document.getElementById('imgBackContact').;
     slideIn(target);
-    document.getElementById('div-background-main-content').classList.remove('d-none');
 }
 
 /**
@@ -341,9 +337,9 @@ async function saveContactEdit(contactArrayPosition) {
     });
     await saveContactsToBackend();
     await loadUsersContacts();
-    slideOut('single-contact');
     slideOut('contacts-add-card');
     renderContactHtml();
+    renderSingleContact(contactArrayPosition);
 }
 
 /**
@@ -369,6 +365,7 @@ async function deleteUserTaskFromAssignTo(contactId){
  */
 function closeSingleContact() {
     slideOut('single-contact');
-    document.getElementById('div-background-main-content').classList.add('d-none');
-    document.getElementById('main-content').classList.add('d-none');
+    //document.getElementById('single-contact-test').style.display = 'none';
+    document.getElementById('single-contact-test').classList.add('d-none');
+    document.getElementById('div-contacts-main-placeholder').classList.remove('d-none');
 }

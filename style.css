@@ -150,6 +150,7 @@ select {
 }
 
 .register-successfully {
+    top: 140px;
     position: absolute;
     right: 20px;
     bottom: 20px;
@@ -162,7 +163,7 @@ select {
     padding: 0 25px;
     border-radius: 20px;
     width: fit-content;
-    height: 74px;
+    height: 60px;
     opacity: 0;
 }
 
@@ -762,6 +763,10 @@ main {
     padding-bottom: 32px;
 }
 
+.padding-08 {
+    padding: 0 8px;
+}
+
 #header-user-menu:hover {
     cursor: pointer;
 }
@@ -952,7 +957,7 @@ main {
     }
 }
 
-@media (max-width: 370px) {
+@media (max-width: 400px) {
     .nav-mobile {
         font-size: 14px;
     }

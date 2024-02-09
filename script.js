@@ -24,6 +24,7 @@ function firstLoad() {
     setTimeout(function () {
         document.getElementById('content-login').classList.remove('d-none');
         document.getElementById('div-index-register').classList.remove('d-none');
+        document.getElementById('footer').classList.remove('d-none');
         eventListeners();
     }, 500);
 }
@@ -374,8 +375,7 @@ function selectContactForAssign(i, edit) {
     let path = document.getElementById(addon + 'checkbox' + i).src;
     let imagePath = new URL(path).pathname.split('/');
     imagePath.shift();
-    imagePath = imagePath.join('/');
-    if (imagePath == 'assets/icons/check_box.png') {
+    if (imagePath[imagePath.length - 1] == 'check_box.png') {
         addContactsToAssignedToArray(i);
         changeAssignToContacts(i, edit);
         userContacts[i].assign = true;

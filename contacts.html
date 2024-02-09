@@ -21,35 +21,41 @@
         <nav w3-include-html="assets/templates/navigation.html"></nav>
         <main>
             <div id="div-contacts" class="div-contacts">
-                <button id="btn-add-new-contact" onclick="slideIn('contacts-add-card')">Add new contact <img
-                        src="assets/icons/contact_add.png"></button>
-            
+                <div class="padding-08">
+                    <button id="btn-add-new-contact" onclick="slideIn('contacts-add-card')">Add new contact <img
+                            src="assets/icons/contact_add.png"></button>
+                </div>
                 <div class="div-contacts-list" id="div-contacts-list">
-                    
                 </div>
             </div>
-            <div id="flex-content-main" class="flex-content-main">
-                <div class="site-title">
+            <div id="div-contacts-main-placeholder" class="site-title contacts-placeholder" style="margin-top: 64px;
+            margin-left: 52px;">
+                <div class="div-single-contact-header">
                     <p>Contacts</p>
-                    <div class="seperator"></div>
-                    <p class="title-sub">Better with a team</p>
-                    <div class="seperator-vertical"></div>
                 </div>
-                <div id="main-content" class="main-content d-none" onclick="closeSingleContact()">
-                    <div class="main-content-close">
-                        <img src="assets/icons/close.png">
-                    </div>
-                    <div id="single-contact-container" class="single-contact-container d-none"
-                        w3-include-html="assets/templates/single-contact.html"></div>
-                </div>
+                <div class="seperator"></div>
+                <p class="title-sub">Better with a team</p>
+                <div class="seperator-vertical"></div>
             </div>
         </main>
     </div>
-    <div id="div-background-main-content" class="div-background-main-content d-none"></div>
+
+    <div id="single-contact-test" class="single-contact-test d-none">
+        <div class="site-title">
+            <div class="div-single-contact-header">
+                <p>Contacts</p>
+                <img id="imgBackContact" src="assets/icons/back.png" onclick="closeSingleContact()">
+            </div>
+            <div class="seperator"></div>
+            <p class="title-sub">Better with a team</p>
+            <div class="seperator-vertical"></div>
+        </div>
+        <div id="single-contact-container" class="single-contact-container"
+            w3-include-html="assets/templates/single-contact.html"></div>
+    </div>
 
     <div id="contacts-add-card-container" class="contacts-add-card-container d-none"
         w3-include-html="assets/templates/contacts-add-card.html"></div>
-
 </body>
 
 </html>

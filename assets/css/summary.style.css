@@ -201,3 +201,31 @@
         height: 116px;
     }
 }
+
+@media (max-width: 500px) {
+    .flex-overview p {
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 425px) {
+    .site-title {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .main-content-flex-top {
+        flex-direction: column;
+    }
+    .flex-overview div{
+        padding: 0 8px;
+    }
+    .seperator-vertical-gray{
+        padding: 0 !important;
+    }
+    .main-content-flex-middle {
+        min-width: 100%;
+    }
+    #upcoming-deadline-date {
+        font-size: 16px;
+    }
+}
