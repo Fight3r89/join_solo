@@ -208,14 +208,18 @@ function renderSingleContactContainerHtml(arrayPosotion) {
  * @param {type} arrayPosition - the position of the contact in the array
  */
 async function openSingleContact(target, arrayPosotion) {
-    for (let i = 0; i < userContacts.length; i++) {
-        document.getElementById('contact'+i).classList.remove('div-contacts-list-active');
-    }
+    clearHighlight();
     await renderSingleContact(arrayPosotion);
     document.getElementById('div-contacts-main-placeholder').classList.add('d-none');
     document.getElementById('single-contact-test').classList.remove('d-none');
     document.getElementById('contact'+arrayPosotion).classList.add('div-contacts-list-active');
     slideIn(target);
+}
+
+function clearHighlight() {
+    for (let i = 0; i < userContacts.length; i++) {
+        document.getElementById('contact'+i).classList.remove('div-contacts-list-active');
+    }
 }
 
 /**
@@ -367,6 +371,7 @@ async function deleteUserTaskFromAssignTo(contactId){
  */
 function closeSingleContact() {
     slideOut('single-contact');
+    clearHighlight();
     document.getElementById('single-contact-test').classList.add('d-none');
     document.getElementById('div-contacts-main-placeholder').classList.remove('d-none');
 }
