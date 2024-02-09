@@ -1,13 +1,14 @@
 let toggleSingleContact = 0;
+let currentSelectedUser;
 
 async function init() {
     await getUserDataFromSessionStorage();
     if (await checkLoggedIn()) {
-    await includeHTML();
-    navChangeColor();
-    await loadUsersContacts();
-    renderContactHtml();
-    renderUserMenueInizials();
+        await includeHTML();
+        navChangeColor();
+        await loadUsersContacts();
+        renderContactHtml();
+        renderUserMenueInizials();
     }
     else {
         location.href = 'index.html';
@@ -208,17 +209,25 @@ function renderSingleContactContainerHtml(arrayPosotion) {
  * @param {type} arrayPosition - the position of the contact in the array
  */
 async function openSingleContact(target, arrayPosotion) {
-    clearHighlight();
-    await renderSingleContact(arrayPosotion);
-    document.getElementById('div-contacts-main-placeholder').classList.add('d-none');
-    document.getElementById('single-contact-test').classList.remove('d-none');
-    document.getElementById('contact'+arrayPosotion).classList.add('div-contacts-list-active');
-    slideIn(target);
+    
+    if (document.getElementById('single-contact-test').classList.contains('d-none') || currentSelectedUser != arrayPosotion) {
+        clearHighlight();
+        await renderSingleContact(arrayPosotion);
+        document.getElementById('div-contacts-main-placeholder').classList.add('d-none');
+        document.getElementById('single-contact-test').classList.remove('d-none');
+        document.getElementById('contact' + arrayPosotion).classList.add('div-contacts-list-active');
+        slideIn(target);
+        currentSelectedUser = arrayPosotion;
+    }
+    else{
+        closeSingleContact();
+        clearHighlight();
+    }
 }
 
 function clearHighlight() {
     for (let i = 0; i < userContacts.length; i++) {
-        document.getElementById('contact'+i).classList.remove('div-contacts-list-active');
+        document.getElementById('contact' + i).classList.remove('div-contacts-list-active');
     }
 }
 
@@ -353,16 +362,16 @@ async function saveContactEdit(contactArrayPosition) {
  *
  * @param {string} contactId - The ID of the contact whose task is to be deleted
  */
-async function deleteUserTaskFromAssignTo(contactId){
+async function deleteUserTaskFromAssignTo(contactId) {
     await loadTasksFromBackend();
     tasks.forEach(task => {
-        task.assigned_to.forEach(function(taskat, i) {
-            if(taskat.id == contactId) {
+        task.assigned_to.forEach(function (taskat, i) {
+            if (taskat.id == contactId) {
                 task.assigned_to.splice(i, 1);
             }
         });
     });
-    await setItem('tasks',tasks);
+    await setItem('tasks', tasks);
     tasks = [];
 }
 

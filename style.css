@@ -958,6 +958,12 @@ main {
         flex-direction: column;
         align-items: center;
     }
+    .button-bordered {
+        width: 100%;
+    }
+    button {
+        width: 100%;
+    }
 }
 
 @media (max-width: 400px) {

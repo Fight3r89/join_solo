@@ -521,6 +521,12 @@ button {
         left: 0 !important;
         right: 0 !important;
         bottom: 80px !important;
+        position: fixed;
+    }
+
+    .single-contact-container {
+        overflow-y: auto;
+        height: calc(100% - 170px);
     }
 }
 
