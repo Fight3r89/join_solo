@@ -150,7 +150,7 @@ function clearContactList() {
 function renderContactsHtmlCard() {
     for (let i = 0; i < userContacts.length; i++) {
         document.getElementById('contactFirstLetter' + userContacts[i].firstName[0].toUpperCase()).innerHTML += `
-        <div class="div-contacts-list-card" onclick="openSingleContact('single-contact', ${i})">
+        <div id="contact${i}" class="div-contacts-list-card" onclick="openSingleContact('single-contact', ${i})">
             <div class="div-contacts-list-logo" style="background-color: ${userContacts[i].color}">${userContacts[i].inizials}</div>
             <div class="div-contacts-list-data">
                 <p>${userContacts[i].firstName} ${userContacts[i].lastName}</p>
@@ -208,11 +208,13 @@ function renderSingleContactContainerHtml(arrayPosotion) {
  * @param {type} arrayPosition - the position of the contact in the array
  */
 async function openSingleContact(target, arrayPosotion) {
+    for (let i = 0; i < userContacts.length; i++) {
+        document.getElementById('contact'+i).classList.remove('div-contacts-list-active');
+    }
     await renderSingleContact(arrayPosotion);
     document.getElementById('div-contacts-main-placeholder').classList.add('d-none');
     document.getElementById('single-contact-test').classList.remove('d-none');
-    //document.getElementById('single-contact-test').style.display = 'block';
-    //document.getElementById('imgBackContact').;
+    document.getElementById('contact'+arrayPosotion).classList.add('div-contacts-list-active');
     slideIn(target);
 }
 
@@ -365,7 +367,6 @@ async function deleteUserTaskFromAssignTo(contactId){
  */
 function closeSingleContact() {
     slideOut('single-contact');
-    //document.getElementById('single-contact-test').style.display = 'none';
     document.getElementById('single-contact-test').classList.add('d-none');
     document.getElementById('div-contacts-main-placeholder').classList.remove('d-none');
 }

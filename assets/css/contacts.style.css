@@ -63,6 +63,11 @@ button {
     border-radius: 15px;
 }
 
+.div-contacts-list-active{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.05));
+    border-radius: 15px;
+}
+
 .div-contacts-list-logo {
     display: flex;
     align-items: center;
