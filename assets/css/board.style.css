@@ -544,6 +544,10 @@ label {
     width: 100px;
 }
 
+.div-edit-prio{
+    display: flex;
+}
+
 /*-----------------------------*/
 
 @media (max-width: 1430px) {
@@ -597,6 +601,10 @@ label {
 
     .task-single-card-headline {
         font-size: 30px;
+    }
+
+    .div-edit-prio {
+        flex-direction: column;
     }
 }
 

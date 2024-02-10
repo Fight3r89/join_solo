@@ -553,7 +553,9 @@ button {
 }
 
 @media (max-width:400px) {
-    
+    .div-contacts-list-data p:nth-child(2) {
+        font-size: 14px;
+    }
 }
 
 @media (max-width:375px) {

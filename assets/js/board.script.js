@@ -473,15 +473,13 @@ async function saveEditTask(taskArrayPosition) {
     renderHtml();
 }
 
-// document.addEventListener('click', function(event) {
-//     var container = document.getElementById('task-card-slide-container');
-//     var slide = document.getElementById('task-card-slide');
+document.addEventListener('click', function(event) {
+    var container = document.getElementById('task-card-slide-container');
+    var slide = document.getElementById('task-card-slide');
 
-//     // Überprüfen, ob der Klick außerhalb des Containers stattgefunden hat
-//     if (container.contains(event.target) && !slide.contains(event.target) && !container.classList.contains('d-none')) {
-//         // Verstecke den Container
-//         slideOut('task-card-slide');
-//         console.log("test");
-//     }
-// });
-//console.log(document.getElementById('task-card3'));
+    // Überprüfen, ob der Klick außerhalb des Containers stattgefunden hat
+    if (container.contains(event.target) && !slide.contains(event.target) && !container.classList.contains('d-none')) {
+        // Verstecke den Container
+        slideOut('task-card-slide');
+    }
+});
