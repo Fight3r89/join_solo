@@ -12,6 +12,7 @@
     <script src="assets/js/task.class.js"></script>
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/contact.class.js"></script>
+    <script src="assets/js/editAddTask.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="assets/css/board.style.css">
@@ -38,7 +39,7 @@
                     <div class="div-board-section section-to-do" ondragover="showDropArea('todo'); allowDrop(event);" ondrop="drop('todo'); hideDropArea('todo')" ondragleave="hideDropArea('todo')" >
                         <div class="div-board-section-headline ">
                             <p>To do</p>
-                            <img src="assets/icons/plus_button.png" onclick="slideIn('addtask-card');">
+                            <img id="imgBoardAddTodo" src="assets/icons/plus_button.png" onclick="checkScreenWidth('todo');">
                         </div>
                         <div id="div-tasks-to-do">
                             <!--Hier werden die Tasks reingerendert-->
@@ -48,7 +49,7 @@
                     <div class="div-board-section section-in-progress" ondragover="showDropArea('inprogress'); allowDrop(event);" ondrop="drop('inprogress'); hideDropArea('inprogress')" ondragleave="hideDropArea('inprogress')">
                         <div class="div-board-section-headline ">
                             <p>In progress</p>
-                            <img src="assets/icons/plus_button.png" onclick="slideIn('addtask-card','inprogress');">
+                            <img src="assets/icons/plus_button.png" onclick="checkScreenWidth('inprogress');">
                         </div>
                         <div id="div-tasks-in-progress">
                             <!--Hier werden die Tasks reingerendert-->
@@ -58,7 +59,7 @@
                     <div class="div-board-section section-await-feedback" ondragover="showDropArea('awaitfeedback'); allowDrop(event);" ondrop="drop('awaitfeedback'); hideDropArea('awaitfeedback')" ondragleave="hideDropArea('awaitfeedback')">
                         <div class="div-board-section-headline ">
                             <p>Await feedback</p>
-                            <img src="assets/icons/plus_button.png" onclick="slideIn('addtask-card','awaitfeedback');">
+                            <img src="assets/icons/plus_button.png" onclick="checkScreenWidth('awaitfeedback');">
                         </div>
                         <div id="div-tasks-await-feedback">
                             <!--Hier werden die Tasks reingerendert-->

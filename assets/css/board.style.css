@@ -500,7 +500,7 @@ label {
 }
 
 
- .close-slider {
+.close-slider {
     position: absolute;
     width: 32px !important;
     height: 32px !important;
@@ -544,7 +544,7 @@ label {
     width: 100px;
 }
 
-.div-edit-prio{
+.div-edit-prio {
     display: flex;
 }
 
@@ -630,4 +630,10 @@ label {
     display: flex;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 400px) {
+    #singleTaskEditMoveTo {
+        margin-top: 50px !important;
+    }
 }

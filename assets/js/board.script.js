@@ -264,8 +264,8 @@ function setSingleTasCardContent(taskId) {
                     let subtasDoneImg;
                     (userTasks[i].subtasks[j].done) ? subtasDoneImg = 'check_box_checked' : subtasDoneImg = 'check_box';
                     document.getElementById('task-single-card-subtasks-list').innerHTML += `
-                        <div class="task-single-card-list-card">
-                            <img src="assets/icons/${subtasDoneImg}.png" onclick="changeSubtaskDone(${i},${j})">
+                        <div class="task-single-card-list-card" onclick="changeSubtaskDone(${i},${j})">
+                            <img src="assets/icons/${subtasDoneImg}.png" ">
                             <p>${userTasks[i].subtasks[j].task}</p>
                         </div>`;
                 };
@@ -472,6 +472,15 @@ async function saveEditTask(taskArrayPosition) {
     setAmounts();
     renderHtml();
 }
+
+function checkScreenWidth(whichCathegory) {
+    if (window.innerWidth < 960) {
+        window.location.href = 'addtask.html?cat='+whichCathegory;
+    } else {
+        slideIn('addtask-card',whichCathegory);
+    }
+}
+//slideIn('addtask-card')
 
 document.addEventListener('click', function(event) {
     var container = document.getElementById('task-card-slide-container');
